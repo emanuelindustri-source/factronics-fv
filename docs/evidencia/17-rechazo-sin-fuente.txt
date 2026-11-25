@@ -1,0 +1,14 @@
+﻿F&V ÔÇö validaci├│n de contenido ┬À esquema v1.0.0
+Pack: C:\Users\SR_HID~1\AppData\Local\Temp\fv-pack-negativo (demo: s├¡)
+├ìtems: 1 ┬À con source_ref: 0 (0%) ┬À sin fuente: 1
+Por tipo: {"tecnologia":1}
+node : Ô£ù VALIDACI├ôN FALLIDA: 2 error(es).
+En línea: 1 Carácter: 266
++ ... n", $json); node packages\content-schema\src\cli.mjs validate $tmp 2> ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Ô£ù VALIDACI├ôN FALLIDA: 2 error(es).:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+  Ô£ù [FALTA-PROCEDENCIA] tec:demo-sin-fuente: SIN FUENTE NO SE PUBLICA: el ├¡tem no tiene source_ref (documento, 
+c├│digo oficial, revisi├│n, p├ígina, cita textual, confianza, revisor y fecha)
+  Ô£ù [JSON-SCHEMA] tec:demo-sin-fuente: estructura inv├ílida (tecnologia): / must have required property 'source_ref'

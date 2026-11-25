@@ -1,0 +1,17 @@
+=== npm ls --workspaces --depth 0 (raiz) ===
+factronics-fv-ecosystem@0.2.0 C:\Factronics_VJ_Ecosystem
++-- @factronics-fv/content-packs-demo@1.0.0 -> .\packages\content-packs-demo
+| `-- @factronics-fv/content-schema@1.0.0 deduped -> .\packages\content-schema
++-- @factronics-fv/content-schema@1.0.0 -> .\packages\content-schema
+| +-- ajv-formats@3.0.1
+| `-- ajv@8.20.0
+`-- @factronics-fv/shared-fixtures@1.0.0 -> .\packages\shared-fixtures
+
+
+=== npm ci --dry-run en apps/web (independiente de los workspaces) ===
+113 packages are looking for funding
+  run `npm fund` for details
+
+=== npm ci --dry-run en apps/portal (independiente de los workspaces) ===
+148 packages are looking for funding
+  run `npm fund` for details

@@ -24,6 +24,23 @@ jobs:
       - name: Escanear
         run: ./gitleaks detect --source . --redact --no-banner --exit-code 1
 
+  content:
+    name: Contenido (esquema + validate:content)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+          cache: npm
+          cache-dependency-path: package-lock.json
+      - name: Instalar dependencias del monorepo (workspaces packages/*)
+        run: npm ci
+      - name: Validar contenido (procedencia obligatoria)
+        run: npm run validate:content
+      - name: Tests del validador (incluye casos negativos)
+        run: npm test
+
   android:
     name: Android (build debug)
     runs-on: ubuntu-latest

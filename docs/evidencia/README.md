@@ -41,3 +41,30 @@ Todas las capturas fueron tomadas automáticamente por el agente en las pruebas 
 - Gitleaks local 8.30.1: "no leaks found".
 - Firma probada con `fv-release.keystore` (alias `fv`): `apksigner verify` → certificado `CN=F&V by Factronics`.
 - SHA-256 del APK publicado en la release `fase-0`.
+
+---
+
+# Evidencia — Fase 1.1 · Esquema canónico y procedencia (2026-11-25)
+
+Ejecución real en Windows local (Node v24.22.3). No aplica teléfono en esta fase.
+
+| Archivo | Qué demuestra |
+|---|---|
+| `15-validate-content.txt` | `npm run validate:content` sobre el pack demo: **25 ítems · 100 % con source_ref · 0 sin fuente · 0 errores** |
+| `16-tests-validador.txt` | `npm test`: **36/36 en verde** (30 del validador + 6 del pack demo), incluidos los casos negativos |
+| `17-rechazo-sin-fuente.txt` | Rechazo explícito por CLI de un ítem sin fuente: regla `FALTA-PROCEDENCIA — SIN FUENTE NO SE PUBLICA` (+ backstop `JSON-SCHEMA`) |
+| `18-workspaces-monorepo.txt` | `npm ls --workspaces`: los 3 paquetes existen como workspaces (`content-schema`, `content-packs-demo`, `shared-fixtures`); `npm ci` de `apps/web` y `apps/portal` sigue independiente |
+
+## Gate de F1.1 verificado
+
+- `npm run validate:content` en verde en local y en CI (job `content` nuevo en `.github/workflows/ci.yml`).
+- 100 % de los ítems demo con `source_ref` completo y revisor (Khristyan Hidalgo) — probado por test.
+- 0 ítems sin fuente: el validador rechaza explícitamente datos sin `source_ref` — test `un ítem SIN source_ref se rechaza explícitamente` + `17-rechazo-sin-fuente.txt`.
+- ADR-0006 escrito (`docs/adr/ADR-0006-esquema-canonico-y-procedencia.md`).
+- Gitleaks limpio y CI en verde (ver `PROJECT_STATE.md` para el enlace al run).
+
+## Nota de propiedad intelectual
+
+Los documentos reales (`1880C`) se copiaron solo a `VIDEOJET_DOCS_ENTRADA/01_CIJ/`
+(local, **fuera de git**) con su inventario local. Nada de su contenido ni códigos está en
+el repo público: los ítems demo usan exclusivamente códigos `DEMO-` (ADR-0003).
