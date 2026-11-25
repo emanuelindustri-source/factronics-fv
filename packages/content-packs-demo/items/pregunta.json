@@ -1,0 +1,89 @@
+[
+  {
+    "id": "qst:demo-0001",
+    "tipo": "pregunta",
+    "schema_version": "1.0.0",
+    "revision": 1,
+    "estado": "publicado",
+    "actualizado": "2026-11-25",
+    "etiquetas": ["DEMO"],
+    "source_ref": {
+      "documento": "Manual demo F&V — Guía de práctica",
+      "codigo_oficial": "DEMO-DOC-0002",
+      "revision": "DEMO-REV-A",
+      "pagina": 1,
+      "cita_textual": "Pregunta de práctica redactada sobre la introducción del escenario demo; no evalúa conocimiento de equipos reales.",
+      "confianza": "alta",
+      "revisor": "Khristyan Hidalgo",
+      "fecha_revision": "2026-11-25",
+      "documento_id": "doc:demo-manual"
+    },
+    "tipo_pregunta": "seleccion_simple",
+    "enunciado": "Según el manual demo, ¿cuál es el propósito de este pack de contenido?",
+    "opciones": [
+      "Probar el esquema de contenido y la procedencia de F&V",
+      "Documentar un equipo comercial existente",
+      "Sustituir a un manual oficial del fabricante"
+    ],
+    "respuesta_correcta": "Probar el esquema de contenido y la procedencia de F&V",
+    "explicacion": "El pack demo existe únicamente para validar el esquema canónico, la trazabilidad y los validadores.",
+    "dificultad": "basico",
+    "tema": "Procedencia y esquema",
+    "entidades": ["doc:demo-manual"]
+  },
+  {
+    "id": "qst:demo-0002",
+    "tipo": "pregunta",
+    "schema_version": "1.0.0",
+    "revision": 1,
+    "estado": "publicado",
+    "actualizado": "2026-11-25",
+    "etiquetas": ["DEMO"],
+    "source_ref": {
+      "documento": "Manual demo F&V — Guía de práctica",
+      "codigo_oficial": "DEMO-DOC-0002",
+      "revision": "DEMO-REV-A",
+      "pagina": 2,
+      "cita_textual": "Pregunta de práctica redactada sobre la preparación del ejercicio demo; no evalúa conocimiento de equipos reales.",
+      "confianza": "alta",
+      "revisor": "Khristyan Hidalgo",
+      "fecha_revision": "2026-11-25",
+      "documento_id": "doc:demo-manual"
+    },
+    "tipo_pregunta": "verdadero_falso",
+    "enunciado": "Verdadero o falso: en el escenario demo, el filtro de práctica se identifica con el código DEMO-PRT-0002.",
+    "opciones": ["Verdadero", "Falso"],
+    "respuesta_correcta": "Verdadero",
+    "explicacion": "El filtro ficticio del escenario demo usa el código DEMO-PRT-0002, inventado solo para práctica.",
+    "dificultad": "basico",
+    "tema": "Lista de partes demo",
+    "entidades": ["prt:demo-0002", "cmp:demo-filtro"]
+  },
+  {
+    "id": "qst:demo-0003",
+    "tipo": "pregunta",
+    "schema_version": "1.0.0",
+    "revision": 1,
+    "estado": "publicado",
+    "actualizado": "2026-11-25",
+    "etiquetas": ["DEMO"],
+    "source_ref": {
+      "documento": "Manual demo F&V — Guía de práctica",
+      "codigo_oficial": "DEMO-DOC-0002",
+      "revision": "DEMO-REV-A",
+      "pagina": 6,
+      "cita_textual": "Pregunta de práctica redactada sobre los mensajes ficticios del panel demo; no evalúa diagnóstico de equipos reales.",
+      "confianza": "alta",
+      "revisor": "Khristyan Hidalgo",
+      "fecha_revision": "2026-11-25",
+      "documento_id": "doc:demo-manual"
+    },
+    "tipo_pregunta": "diagnostico_error",
+    "enunciado": "En el escenario demo, el panel ficticio muestra el mensaje DEMO-ERR-02. Describe la causa sugerida y la acción sugerida según el manual demo.",
+    "respuesta_correcta": "Causa: el filtro ficticio alcanzó el fin de su vida útil de práctica. Acción: sustituir el filtro DEMO-PRT-0002 y restablecer el ejercicio.",
+    "explicacion": "Es un diagnóstico de práctica: los códigos DEMO-ERR-02 y DEMO-PRT-0002 son ficticios y solo existen para probar el banco de preguntas.",
+    "dificultad": "intermedio",
+    "tema": "Diagnóstico demo",
+    "entidades": ["err:demo-02", "prt:demo-0002"]
+  }
+]

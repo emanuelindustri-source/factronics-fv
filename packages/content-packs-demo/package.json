@@ -1,0 +1,15 @@
+{
+  "name": "@factronics-fv/content-packs-demo",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Pack de contenido DEMO autorizado de F&V: datos ficticios de práctica, claramente etiquetados como DEMO, con códigos 'DEMO-' y source_ref completo (revisor: Khristyan Hidalgo). Sin datos reales de Videojet/Factronics (ADR-0003).",
+  "type": "module",
+  "license": "UNLICENSED",
+  "scripts": {
+    "test": "node --test test/*.test.mjs",
+    "validate": "node ../content-schema/src/cli.mjs validate ."
+  },
+  "devDependencies": {
+    "@factronics-fv/content-schema": "1.0.0"
+  }
+}

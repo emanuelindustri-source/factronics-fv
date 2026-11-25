@@ -1,0 +1,25 @@
+[
+  {
+    "id": "fam:demo-serie-a",
+    "tipo": "familia",
+    "schema_version": "1.0.0",
+    "revision": 1,
+    "estado": "publicado",
+    "actualizado": "2026-11-25",
+    "etiquetas": ["DEMO"],
+    "source_ref": {
+      "documento": "Documento demo F&V — Declaración de procedencia",
+      "codigo_oficial": "DEMO-DOC-0001",
+      "revision": "DEMO-REV-A",
+      "pagina": 1,
+      "cita_textual": "La familia demo Serie DEMO-A agrupa los equipos ficticios usados en los ejemplos de práctica del pack demo.",
+      "confianza": "alta",
+      "revisor": "Khristyan Hidalgo",
+      "fecha_revision": "2026-11-25",
+      "documento_id": "doc:demo-origen"
+    },
+    "tecnologia_id": "tec:demo-cij",
+    "nombre": "Serie DEMO-A",
+    "descripcion": "Familia demo de equipos ficticios para práctica. No corresponde a ninguna serie real de ningún fabricante."
+  }
+]

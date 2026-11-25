@@ -1,0 +1,30 @@
+[
+  {
+    "id": "crt:demo-0001",
+    "tipo": "certificado",
+    "schema_version": "1.0.0",
+    "revision": 1,
+    "estado": "emitido",
+    "actualizado": "2026-11-25",
+    "etiquetas": ["DEMO"],
+    "source_ref": {
+      "documento": "Documento demo F&V — Declaración de procedencia",
+      "codigo_oficial": "DEMO-DOC-0001",
+      "revision": "DEMO-REV-A",
+      "pagina": 5,
+      "cita_textual": "Certificado de práctica del pack demo, emitido para validar la forma del dato y el aviso obligatorio de no oficialidad.",
+      "confianza": "alta",
+      "revisor": "Khristyan Hidalgo",
+      "fecha_revision": "2026-11-25",
+      "documento_id": "doc:demo-origen"
+    },
+    "programa": "Programa interno de competencias técnicas de Factronics, C.A. (demo)",
+    "titulo": "Certificado DEMO de práctica — Esquema y procedencia",
+    "usuario_alias": "tecnico-demo",
+    "emitido": "2026-11-25",
+    "estado": "publicado",
+    "estado_emision": "emitido",
+    "intento_ids": ["att:demo-0001"],
+    "aviso": "Certificado demo del programa interno de competencias técnicas de Factronics, C.A. No es una certificación oficial de Videojet Technologies."
+  }
+]

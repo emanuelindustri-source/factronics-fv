@@ -1,0 +1,48 @@
+[
+  {
+    "id": "sis:demo-fluido",
+    "tipo": "sistema",
+    "schema_version": "1.0.0",
+    "revision": 1,
+    "estado": "publicado",
+    "actualizado": "2026-11-25",
+    "etiquetas": ["DEMO"],
+    "source_ref": {
+      "documento": "Manual demo F&V — Guía de práctica",
+      "codigo_oficial": "DEMO-DOC-0002",
+      "revision": "DEMO-REV-A",
+      "pagina": 3,
+      "cita_textual": "El sistema de fluido demo transporta el insumo ficticio desde el depósito hasta el punto de aplicación en los ejemplos de práctica.",
+      "confianza": "alta",
+      "revisor": "Khristyan Hidalgo",
+      "fecha_revision": "2026-11-25",
+      "documento_id": "doc:demo-manual"
+    },
+    "nombre": "Sistema de fluido (demo)",
+    "descripcion": "Sistema demo genérico de transporte de insumo. Descripción de práctica sin correspondencia con equipos reales.",
+    "modelo_ids": ["mod:demo-1000"]
+  },
+  {
+    "id": "sis:demo-control",
+    "tipo": "sistema",
+    "schema_version": "1.0.0",
+    "revision": 1,
+    "estado": "publicado",
+    "actualizado": "2026-11-25",
+    "etiquetas": ["DEMO"],
+    "source_ref": {
+      "documento": "Manual demo F&V — Guía de práctica",
+      "codigo_oficial": "DEMO-DOC-0002",
+      "revision": "DEMO-REV-A",
+      "pagina": 3,
+      "cita_textual": "El sistema de control demo supervisa los estados del equipo ficticio y muestra los mensajes de práctica del pack demo.",
+      "confianza": "alta",
+      "revisor": "Khristyan Hidalgo",
+      "fecha_revision": "2026-11-25",
+      "documento_id": "doc:demo-manual"
+    },
+    "nombre": "Sistema de control (demo)",
+    "descripcion": "Sistema demo genérico de supervisión y mensajería. Descripción de práctica sin correspondencia con equipos reales.",
+    "modelo_ids": ["mod:demo-1000"]
+  }
+]

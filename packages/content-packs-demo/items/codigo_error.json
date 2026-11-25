@@ -1,0 +1,54 @@
+[
+  {
+    "id": "err:demo-01",
+    "tipo": "codigo_error",
+    "schema_version": "1.0.0",
+    "revision": 1,
+    "estado": "publicado",
+    "actualizado": "2026-11-25",
+    "etiquetas": ["DEMO"],
+    "source_ref": {
+      "documento": "Manual demo F&V — Guía de práctica",
+      "codigo_oficial": "DEMO-DOC-0002",
+      "revision": "DEMO-REV-A",
+      "pagina": 6,
+      "cita_textual": "El mensaje DEMO-ERR-01 aparece en el panel ficticio cuando el circuito de fluido de práctica no está preparado.",
+      "confianza": "alta",
+      "revisor": "Khristyan Hidalgo",
+      "fecha_revision": "2026-11-25",
+      "documento_id": "doc:demo-manual"
+    },
+    "codigo": "DEMO-ERR-01",
+    "titulo": "Circuito de fluido demo no preparado (demo)",
+    "descripcion": "Mensaje de error ficticio de práctica. No corresponde a ningún código real de ningún equipo; existe únicamente para probar el banco de preguntas y el validador.",
+    "causa_sugerida": "En el escenario demo: el insumo ficticio no fue cargado antes del ejercicio.",
+    "accion_sugerida": "En el escenario demo: cargar el insumo ficticio y reiniciar el ejercicio de práctica.",
+    "modelo_ids": ["mod:demo-1000"]
+  },
+  {
+    "id": "err:demo-02",
+    "tipo": "codigo_error",
+    "schema_version": "1.0.0",
+    "revision": 1,
+    "estado": "publicado",
+    "actualizado": "2026-11-25",
+    "etiquetas": ["DEMO"],
+    "source_ref": {
+      "documento": "Manual demo F&V — Guía de práctica",
+      "codigo_oficial": "DEMO-DOC-0002",
+      "revision": "DEMO-REV-A",
+      "pagina": 6,
+      "cita_textual": "El mensaje DEMO-ERR-02 aparece en el panel ficticio cuando el filtro de práctica está agotado según el escenario.",
+      "confianza": "alta",
+      "revisor": "Khristyan Hidalgo",
+      "fecha_revision": "2026-11-25",
+      "documento_id": "doc:demo-manual"
+    },
+    "codigo": "DEMO-ERR-02",
+    "titulo": "Filtro de práctica agotado (demo)",
+    "descripcion": "Mensaje de error ficticio de práctica. No corresponde a ningún código real de ningún equipo; existe únicamente para probar el banco de preguntas y el validador.",
+    "causa_sugerida": "En el escenario demo: el filtro ficticio alcanzó el fin de su vida útil de práctica.",
+    "accion_sugerida": "En el escenario demo: sustituir el filtro ficticio DEMO-PRT-0002 y restablecer el ejercicio.",
+    "modelo_ids": ["mod:demo-1000"]
+  }
+]

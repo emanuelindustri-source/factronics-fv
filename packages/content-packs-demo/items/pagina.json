@@ -1,0 +1,50 @@
+[
+  {
+    "id": "pag:demo-manual-p1",
+    "tipo": "pagina",
+    "schema_version": "1.0.0",
+    "revision": 1,
+    "estado": "publicado",
+    "actualizado": "2026-11-25",
+    "etiquetas": ["DEMO"],
+    "source_ref": {
+      "documento": "Manual demo F&V — Guía de práctica",
+      "codigo_oficial": "DEMO-DOC-0002",
+      "revision": "DEMO-REV-A",
+      "pagina": 1,
+      "cita_textual": "Página 1 del manual demo: introducción al escenario ficticio de práctica del Modelo DEMO-1000.",
+      "confianza": "alta",
+      "revisor": "Khristyan Hidalgo",
+      "fecha_revision": "2026-11-25",
+      "documento_id": "doc:demo-manual"
+    },
+    "documento_id": "doc:demo-manual",
+    "numero": 1,
+    "resumen": "Introducción al escenario demo (contenido ficticio).",
+    "texto": "Texto demo de práctica: esta página introduce al lector en el escenario ficticio usado para validar el esquema de contenido de F&V."
+  },
+  {
+    "id": "pag:demo-manual-p2",
+    "tipo": "pagina",
+    "schema_version": "1.0.0",
+    "revision": 1,
+    "estado": "publicado",
+    "actualizado": "2026-11-25",
+    "etiquetas": ["DEMO"],
+    "source_ref": {
+      "documento": "Manual demo F&V — Guía de práctica",
+      "codigo_oficial": "DEMO-DOC-0002",
+      "revision": "DEMO-REV-A",
+      "pagina": 2,
+      "cita_textual": "Página 2 del manual demo: descripción de los sistemas ficticios de fluido y de control del ejercicio.",
+      "confianza": "alta",
+      "revisor": "Khristyan Hidalgo",
+      "fecha_revision": "2026-11-25",
+      "documento_id": "doc:demo-manual"
+    },
+    "documento_id": "doc:demo-manual",
+    "numero": 2,
+    "resumen": "Sistemas ficticios del escenario demo (contenido ficticio).",
+    "texto": "Texto demo de práctica: esta página describe los sistemas ficticios del ejercicio, para probar el salto exacto a página desde los datos técnicos."
+  }
+]

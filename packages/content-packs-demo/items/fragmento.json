@@ -1,0 +1,54 @@
+[
+  {
+    "id": "frag:demo-0001",
+    "tipo": "fragmento",
+    "schema_version": "1.0.0",
+    "revision": 1,
+    "estado": "publicado",
+    "actualizado": "2026-11-25",
+    "etiquetas": ["DEMO"],
+    "source_ref": {
+      "documento": "Manual demo F&V — Guía de práctica",
+      "codigo_oficial": "DEMO-DOC-0002",
+      "revision": "DEMO-REV-A",
+      "pagina": 1,
+      "cita_textual": "El escenario demo se compone de un equipo ficticio, dos sistemas de práctica y un banco de preguntas de ejemplo.",
+      "confianza": "alta",
+      "revisor": "Khristyan Hidalgo",
+      "fecha_revision": "2026-11-25",
+      "documento_id": "doc:demo-manual"
+    },
+    "documento_id": "doc:demo-manual",
+    "pagina_id": "pag:demo-manual-p1",
+    "pagina_numero": 1,
+    "texto": "Cita textual de práctica (ficticia): «El escenario demo se compone de un equipo ficticio, dos sistemas de práctica y un banco de preguntas de ejemplo».",
+    "tema": "Descripción general del escenario demo",
+    "entidades": ["mod:demo-1000", "sis:demo-fluido", "sis:demo-control"]
+  },
+  {
+    "id": "frag:demo-0002",
+    "tipo": "fragmento",
+    "schema_version": "1.0.0",
+    "revision": 1,
+    "estado": "publicado",
+    "actualizado": "2026-11-25",
+    "etiquetas": ["DEMO"],
+    "source_ref": {
+      "documento": "Manual demo F&V — Guía de práctica",
+      "codigo_oficial": "DEMO-DOC-0002",
+      "revision": "DEMO-REV-A",
+      "pagina": 2,
+      "cita_textual": "Antes de iniciar el ejercicio de práctica, verifique que el insumo ficticio esté cargado y que el filtro demo sea el correcto.",
+      "confianza": "alta",
+      "revisor": "Khristyan Hidalgo",
+      "fecha_revision": "2026-11-25",
+      "documento_id": "doc:demo-manual"
+    },
+    "documento_id": "doc:demo-manual",
+    "pagina_id": "pag:demo-manual-p2",
+    "pagina_numero": 2,
+    "texto": "Cita textual de práctica (ficticia): «Antes de iniciar el ejercicio de práctica, verifique que el insumo ficticio esté cargado y que el filtro demo sea el correcto».",
+    "tema": "Preparación del ejercicio demo",
+    "entidades": ["cmp:demo-cartucho", "cmp:demo-filtro"]
+  }
+]

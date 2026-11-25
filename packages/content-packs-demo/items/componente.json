@@ -1,0 +1,50 @@
+[
+  {
+    "id": "cmp:demo-cartucho",
+    "tipo": "componente",
+    "schema_version": "1.0.0",
+    "revision": 1,
+    "estado": "publicado",
+    "actualizado": "2026-11-25",
+    "etiquetas": ["DEMO"],
+    "source_ref": {
+      "documento": "Manual demo F&V — Guía de práctica",
+      "codigo_oficial": "DEMO-DOC-0002",
+      "revision": "DEMO-REV-A",
+      "pagina": 4,
+      "cita_textual": "El cartucho demo almacena el insumo ficticio del sistema de fluido y se sustituye como parte del ejercicio de práctica.",
+      "confianza": "alta",
+      "revisor": "Khristyan Hidalgo",
+      "fecha_revision": "2026-11-25",
+      "documento_id": "doc:demo-manual"
+    },
+    "sistema_id": "sis:demo-fluido",
+    "nombre": "Cartucho de insumo (demo)",
+    "funcion": "Almacenar el insumo ficticio del sistema de fluido en los ejemplos de práctica.",
+    "modelo_ids": ["mod:demo-1000"]
+  },
+  {
+    "id": "cmp:demo-filtro",
+    "tipo": "componente",
+    "schema_version": "1.0.0",
+    "revision": 1,
+    "estado": "publicado",
+    "actualizado": "2026-11-25",
+    "etiquetas": ["DEMO"],
+    "source_ref": {
+      "documento": "Manual demo F&V — Guía de práctica",
+      "codigo_oficial": "DEMO-DOC-0002",
+      "revision": "DEMO-REV-A",
+      "pagina": 4,
+      "cita_textual": "El filtro demo retiene las partículas del insumo ficticio dentro del circuito de fluido de práctica.",
+      "confianza": "alta",
+      "revisor": "Khristyan Hidalgo",
+      "fecha_revision": "2026-11-25",
+      "documento_id": "doc:demo-manual"
+    },
+    "sistema_id": "sis:demo-fluido",
+    "nombre": "Filtro de circuito (demo)",
+    "funcion": "Retener partículas del insumo ficticio en el circuito de fluido de práctica.",
+    "modelo_ids": ["mod:demo-1000"]
+  }
+]

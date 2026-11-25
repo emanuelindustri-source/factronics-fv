@@ -1,0 +1,51 @@
+[
+  {
+    "id": "ink:demo-0001",
+    "tipo": "tinta",
+    "schema_version": "1.0.0",
+    "revision": 1,
+    "estado": "publicado",
+    "actualizado": "2026-11-25",
+    "etiquetas": ["DEMO"],
+    "source_ref": {
+      "documento": "Documento demo F&V — Declaración de procedencia",
+      "codigo_oficial": "DEMO-DOC-0001",
+      "revision": "DEMO-REV-A",
+      "pagina": 3,
+      "cita_textual": "El insumo DEMO-INK-0001 es una tinta ficticia de práctica que el pack demo usa para ejercicios de consumo simulado.",
+      "confianza": "alta",
+      "revisor": "Khristyan Hidalgo",
+      "fecha_revision": "2026-11-25",
+      "documento_id": "doc:demo-origen"
+    },
+    "codigo": "DEMO-INK-0001",
+    "clase": "tinta",
+    "color": "negro (demo)",
+    "descripcion": "Tinta ficticia de práctica. Código DEMO inventado: no corresponde a ningún insumo real ni a ninguna especificación de fabricante.",
+    "modelo_ids": ["mod:demo-1000"]
+  },
+  {
+    "id": "ink:demo-0002",
+    "tipo": "tinta",
+    "schema_version": "1.0.0",
+    "revision": 1,
+    "estado": "publicado",
+    "actualizado": "2026-11-25",
+    "etiquetas": ["DEMO"],
+    "source_ref": {
+      "documento": "Documento demo F&V — Declaración de procedencia",
+      "codigo_oficial": "DEMO-DOC-0001",
+      "revision": "DEMO-REV-A",
+      "pagina": 3,
+      "cita_textual": "El insumo DEMO-INK-0002 es un make-up ficticio de práctica para el circuito de fluido del escenario demo.",
+      "confianza": "alta",
+      "revisor": "Khristyan Hidalgo",
+      "fecha_revision": "2026-11-25",
+      "documento_id": "doc:demo-origen"
+    },
+    "codigo": "DEMO-INK-0002",
+    "clase": "make_up",
+    "descripcion": "Make-up ficticio de práctica. Código DEMO inventado: no corresponde a ningún insumo real ni a ninguna especificación de fabricante.",
+    "modelo_ids": ["mod:demo-1000"]
+  }
+]

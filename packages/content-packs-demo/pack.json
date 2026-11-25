@@ -1,0 +1,11 @@
+{
+  "id": "pack-fv-demo",
+  "nombre": "Pack demo F&V",
+  "descripcion": "Contenido DEMO autorizado para probar el esquema canónico y la procedencia de F&V. Datos ficticios de práctica: no describe equipos, códigos, partes ni procedimientos reales de Videojet/Factronics (ADR-0003).",
+  "version": "1.0.0",
+  "schema_version": "1.0.0",
+  "demo": true,
+  "idioma_default": "es",
+  "creado": "2026-11-25",
+  "responsable": "Khristyan Hidalgo"
+}

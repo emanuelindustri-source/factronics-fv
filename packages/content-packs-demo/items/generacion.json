@@ -1,0 +1,24 @@
+[
+  {
+    "id": "gen:demo-gen-1",
+    "tipo": "generacion",
+    "schema_version": "1.0.0",
+    "revision": 1,
+    "estado": "publicado",
+    "actualizado": "2026-11-25",
+    "etiquetas": ["DEMO"],
+    "source_ref": {
+      "documento": "Documento demo F&V — Declaración de procedencia",
+      "codigo_oficial": "DEMO-DOC-0001",
+      "revision": "DEMO-REV-A",
+      "pagina": 2,
+      "cita_textual": "La Generación DEMO-1 es la primera y única generación del catálogo ficticio de práctica del pack demo.",
+      "confianza": "alta",
+      "revisor": "Khristyan Hidalgo",
+      "fecha_revision": "2026-11-25",
+      "documento_id": "doc:demo-origen"
+    },
+    "familia_id": "fam:demo-serie-a",
+    "nombre": "Generación DEMO-1"
+  }
+]

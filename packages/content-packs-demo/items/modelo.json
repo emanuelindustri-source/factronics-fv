@@ -1,0 +1,26 @@
+[
+  {
+    "id": "mod:demo-1000",
+    "tipo": "modelo",
+    "schema_version": "1.0.0",
+    "revision": 1,
+    "estado": "publicado",
+    "actualizado": "2026-11-25",
+    "etiquetas": ["DEMO"],
+    "source_ref": {
+      "documento": "Documento demo F&V — Declaración de procedencia",
+      "codigo_oficial": "DEMO-DOC-0001",
+      "revision": "DEMO-REV-A",
+      "pagina": 2,
+      "cita_textual": "El Modelo DEMO-1000 es un equipo ficticio de práctica; su nombre no representa ningún producto comercial existente.",
+      "confianza": "alta",
+      "revisor": "Khristyan Hidalgo",
+      "fecha_revision": "2026-11-25",
+      "documento_id": "doc:demo-origen"
+    },
+    "generacion_id": "gen:demo-gen-1",
+    "tecnologia_id": "tec:demo-cij",
+    "nombre": "Modelo DEMO-1000",
+    "descripcion": "Modelo demo inventado con fines de práctica. No describe capacidades, rendimiento ni compatibilidades reales."
+  }
+]

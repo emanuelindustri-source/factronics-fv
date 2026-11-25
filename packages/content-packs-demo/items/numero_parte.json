@@ -1,0 +1,50 @@
+[
+  {
+    "id": "prt:demo-0001",
+    "tipo": "numero_parte",
+    "schema_version": "1.0.0",
+    "revision": 1,
+    "estado": "publicado",
+    "actualizado": "2026-11-25",
+    "etiquetas": ["DEMO"],
+    "source_ref": {
+      "documento": "Manual demo F&V — Guía de práctica",
+      "codigo_oficial": "DEMO-DOC-0002",
+      "revision": "DEMO-REV-A",
+      "pagina": 5,
+      "cita_textual": "El número de parte DEMO-PRT-0001 identifica al cartucho ficticio en la lista de partes de práctica del manual demo.",
+      "confianza": "alta",
+      "revisor": "Khristyan Hidalgo",
+      "fecha_revision": "2026-11-25",
+      "documento_id": "doc:demo-manual"
+    },
+    "codigo": "DEMO-PRT-0001",
+    "componente_id": "cmp:demo-cartucho",
+    "descripcion": "Cartucho de insumo ficticio. Código DEMO inventado para práctica: no corresponde a ningún número de parte real.",
+    "modelo_ids": ["mod:demo-1000"]
+  },
+  {
+    "id": "prt:demo-0002",
+    "tipo": "numero_parte",
+    "schema_version": "1.0.0",
+    "revision": 1,
+    "estado": "publicado",
+    "actualizado": "2026-11-25",
+    "etiquetas": ["DEMO"],
+    "source_ref": {
+      "documento": "Manual demo F&V — Guía de práctica",
+      "codigo_oficial": "DEMO-DOC-0002",
+      "revision": "DEMO-REV-A",
+      "pagina": 5,
+      "cita_textual": "El número de parte DEMO-PRT-0002 identifica al filtro ficticio en la lista de partes de práctica del manual demo.",
+      "confianza": "alta",
+      "revisor": "Khristyan Hidalgo",
+      "fecha_revision": "2026-11-25",
+      "documento_id": "doc:demo-manual"
+    },
+    "codigo": "DEMO-PRT-0002",
+    "componente_id": "cmp:demo-filtro",
+    "descripcion": "Filtro de circuito ficticio. Código DEMO inventado para práctica: no corresponde a ningún número de parte real.",
+    "modelo_ids": ["mod:demo-1000"]
+  }
+]
