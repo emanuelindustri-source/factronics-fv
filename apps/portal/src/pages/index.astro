@@ -8,6 +8,7 @@ const progress = JSON.parse(fs.readFileSync(progressPath, "utf8"));
 const total = progress.phases.length;
 const done = progress.phases.filter((p) => p.status === "completada").length;
 const pct = Math.round((done / total) * 100);
+const lastDone = [...progress.phases].reverse().find((p) => p.status === "completada");
 
 const team = [
   { name: "Eduardo Rodríguez", role: "Supervisor Técnico" },
@@ -138,7 +139,7 @@ const team = [
       </svg>
       <h1>F&amp;V</h1>
       <p>by Factronics — Estudio, diagnóstico y herramientas de campo</p>
-      <span class="badge">Fase 0 completada</span>
+      <span class="badge">{lastDone ? `Fase ${lastDone.id} completada` : "En desarrollo"}</span>
     </header>
 
     <main>

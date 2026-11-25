@@ -2,6 +2,26 @@
 
 Formato basado en [Keep a Changelog](https://keepachangelog.com/es-ES/1.1.0/).
 
+## [0.2.0] — 2026-11-25 — Fase 1.1 · Esquema canónico y procedencia
+
+### Añadido
+- **Núcleo compartido de datos** en `packages/content-schema` (`@factronics-fv/content-schema` v1.0.0): los **15 tipos de entidad** del dominio (tecnología, familia, generación, modelo, sistema, componente, número de parte, código de error, tinta, documento, página, fragmento, pregunta, intento, certificado) con JSON Schema draft 2020-12 (17 esquemas) y **tipos TypeScript compartidos** (`src/types.ts`).
+- **Procedencia obligatoria (`source_ref`)** en todo dato técnico: documento, código oficial, revisión, página, cita textual, nivel de confianza, revisor y fecha. **Sin fuente no se valida ni se publica**: el validador rechaza explícitamente datos sin `source_ref` (regla `FALTA-PROCEDENCIA`), con tests que lo demuestran.
+- **Validadores ejecutables:** `npm run validate:content` (CLI con reglas semánticas: IDs estables, referencias resueltas, coherencia documento/página, certificados con aviso de no oficialidad, respuestas dentro de opciones), `npm test` (36 pruebas, casos negativos incluidos) y `npm run migrate:content`.
+- **IDs estables** (`<prefijo>:<slug>`, inmutables), **versionado semántico del esquema** (`schema_version`) y **migraciones declarativas** (registro `MIGRATIONS`, runner encadenado; los packs más nuevos que la herramienta se rechazan). Mecanismo probado con migraciones sintéticas; solo existe v1.
+- **Pack demo autorizado** en `packages/content-packs-demo`: 25 ítems que cubren las 15 entidades, claramente etiquetados `DEMO`, con códigos inequívocamente `DEMO-` (sin números de parte ni códigos reales inventados) y `source_ref` completo apuntando al documento demo con revisor Khristyan Hidalgo. Reglas automáticas que blindan el pack: etiqueta `DEMO` obligatoria y prefijo `DEMO-` en todo código.
+- **Fixtures compartidos** en `packages/shared-fixtures`: casos válidos e inválidos (sin fuente, sin revisor, sin cita, IDs malformados, códigos no-DEMO, certificado sin aviso...) reutilizables por las apps.
+- **Workspaces del monorepo** (`package.json` raíz, `workspaces: ["packages/*"]`); `apps/*` conservan su `npm ci` independiente (verificado).
+- **CI:** nuevo job `content` en `.github/workflows/ci.yml` que ejecuta `npm ci`, `npm run validate:content` y `npm test` en cada push/PR.
+
+### Documentado
+- **ADR-0006** Esquema canónico de contenido y sistema de procedencia (decisiones y 7 alternativas rechazadas).
+- Evidencia de ejecución en `docs/evidencia/` (15–18): validación del pack demo, 36 tests, rechazo explícito por CLI de datos sin fuente, workspaces verificados.
+- Handoff `docs/handoff/FASE_1.2.md` con el prompt exacto de la siguiente fase.
+
+### Seguridad / propiedad intelectual
+- La documentación real del equipo (`1880C`) se copió **solo localmente** a `VIDEOJET_DOCS_ENTRADA/01_CIJ/` (gitignored, con inventario local). Nada de contenido ni códigos reales en el repo público (ADR-0003).
+
 ## [0.1.0] — 2026-11-25 — Fase 0 · Fundaciones
 
 ### Añadido
