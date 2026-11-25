@@ -7,7 +7,9 @@ Aplicación de estudio, diagnóstico y herramientas de campo para técnicos de *
 - **Portal público** (Astro + GitHub Pages)
 - **Backend** (Supabase, en fases posteriores)
 
-> Estado actual: **Fase 0 completada** (fundaciones, seguridad y walking skeleton). Consulta el tracker en el portal o en [`PROGRESS.json`](PROGRESS.json).
+> Estado actual: **F1.2 (internacionalización real) en verificación**: código y pruebas
+> automáticas en verde; falta el smoke en teléfono físico. F1.1 completada. Consulta el
+> tracker en el portal o en [`PROGRESS.json`](PROGRESS.json).
 
 ## Repositorios
 
@@ -22,7 +24,7 @@ Aplicación de estudio, diagnóstico y herramientas de campo para técnicos de *
 apps/android      Android nativo (Kotlin/Compose)
 apps/web          PWA offline (React/TS/Vite)
 apps/portal       Portal público (Astro → GitHub Pages)
-packages/         Esquema de contenido, packs demo, fixtures
+packages/         Esquema de contenido, packs demo, fixtures e i18n (catálogo de idiomas)
 tools/            Ingesta, Blender headless, informes
 supabase/         Migraciones, RLS, Edge Functions (fase F8+)
 docs/             ADRs, plan, legal, handoff, evidencia

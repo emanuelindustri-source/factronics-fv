@@ -121,7 +121,7 @@ fun HomeScreen() {
                         shape = MaterialTheme.shapes.small
                     ) {
                         Text(
-                            text = stringResource(R.string.coming_soon),
+                            text = stringResource(R.string.home_coming_soon),
                             style = MaterialTheme.typography.labelLarge,
                             color = MaterialTheme.colorScheme.onTertiary,
                             modifier = Modifier.padding(horizontal = 10.dp, vertical = 4.dp)
@@ -138,7 +138,7 @@ fun HomeScreen() {
                 modifier = Modifier.fillMaxWidth()
             ) {
                 Text(
-                    text = stringResource(R.string.demo_badge),
+                    text = stringResource(R.string.home_demo_badge),
                     style = MaterialTheme.typography.bodyMedium,
                     color = MaterialTheme.colorScheme.onSecondaryContainer,
                     modifier = Modifier.padding(12.dp)

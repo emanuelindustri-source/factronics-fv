@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- SOLO DEBUG: receptor para el smoke test de idiomas por ADB (ADR-0007). -->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <application>
+        <receiver
+            android:name=".debug.DebugLocaleReceiver"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.factronics.fv.DEBUG_SET_LANG" />
+            </intent-filter>
+        </receiver>
+    </application>
+</manifest>

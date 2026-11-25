@@ -2,6 +2,33 @@
 
 Formato basado en [Keep a Changelog](https://keepachangelog.com/es-ES/1.1.0/).
 
+## [0.3.0] — 2026-11-25 — Fase 1.2 · Internacionalización real (en verificación)
+
+> Estado honesto: código, recursos, CI y pruebas automáticas listos. El **smoke en
+> teléfono físico y las capturas Android (23–28) quedaron pendientes** porque el
+> dispositivo se retiró del equipo de pruebas. No se etiqueta `fase-1.2` hasta completarlos.
+
+### Añadido
+- **Catálogo único de textos de interfaz** en `packages/i18n` (`@factronics-fv/i18n`): **67 claves × 13 locales** (es-VE base, en, pt-BR, pt-PT, it, de, fr, zh-Hans, ja, ko, hi + latín `la` y pseudo-local `es-XA`). Una sola fuente de verdad para Android y PWA.
+- **Generador determinista** (`npm run i18n:build`): escribe los 13 `strings.xml`, `locales_config.xml`, los JSON de i18next y su índice. `npm run i18n:check` falla si hay *drift*.
+- **Android:** `locales_config` (11 idiomas reales), selector in-app con 48 dp y semántica de radio, persistencia sin reinicio del sistema, integración con el idioma por aplicación de Android 13+, formatos de número/porcentaje/fecha por locale (`java.text`) y pantalla de ejemplo en Ajustes.
+- **PWA:** i18next con detección (elección guardada → navegador → es-VE), selector persistente en `localStorage` + IndexedDB, `Intl` para número/porcentaje/fecha, `html lang` dinámico y ejemplo de formato.
+- **Pseudo-local `es-XA`** generado desde es-VE (acentos, `⟦…⟧`, +35 % de longitud) y **detector de literales** (`scan-hardcoded.mjs`) para Compose y TSX, con validación de claves `t()` y recursos `R.string.*`.
+- **Easter egg:** 7 pulsaciones sobre la versión desbloquean latín y pseudo-local. El latín es solo interfaz/logros, nunca contenido técnico.
+- **Glosario** `docs/plan/GLOSARIO.md`: 40 términos del dominio en 11 idiomas, todos **pendientes de revisión** (ninguno aprobado).
+- **ADR-0007:** catálogo único, generación, detección, `values-qps` para el pseudo (evita secuestrar dispositivos en español), separación UI/contenido y límites de la revisión nativa.
+- **CI:** nuevo job `i18n` (`i18n:check`), tests unitarios Android en el job `android` y Playwright i18n en el job `web`.
+- **Evidencia:** capturas PWA es-VE/ja/hi, Ajustes y pseudo; logs de i18n, Vitest, Playwright, tests Android, contenido y gitleaks.
+
+### Corregido
+- Deriva y literales del walking skeleton: textos de equipo, fuentes, versión, iniciales del avatar y selector es/en pasan al sistema de traducción o a recursos `translatable="false"` documentados.
+- Android: el pseudo-local en `values-es-rXA` era elegido por **cualquier** teléfono en español; se movió a `values-qps` y se añadió mapeo `resourceTag`.
+
+### Pendiente (bloqueo documentado)
+- Smoke Android de 13 locales y capturas 23–25/27/28 en dispositivo físico.
+- Prueba manual del selector en teléfono (2 idiomas).
+- Revisión por hablantes nativos de las traducciones de interfaz.
+
 ## [0.2.0] — 2026-11-25 — Fase 1.1 · Esquema canónico y procedencia
 
 ### Añadido

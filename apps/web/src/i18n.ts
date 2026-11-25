@@ -1,111 +1,85 @@
-// F&V (by Factronics) — internacionalización (es-VE principal, en)
+// F&V (by Factronics) — internacionalización de la PWA (F1.2).
+// Mismas claves que Android: ambos consumen packages/i18n.
 import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
+import { LOCALE_TAGS, resources } from "./locales";
+import {
+  BASE_LOCALE,
+  STORAGE_LANGUAGE,
+  STORAGE_SPECIAL,
+  isSpecialTag,
+  isSupportedTag,
+  matchSupportedLocale
+} from "./supported-locales";
 
-const es = {
-  "app.name": "F&V",
-  "nav.home": "Inicio",
-  "nav.profile": "Perfil",
-  "nav.settings": "Ajustes",
-  "nav.about": "Acerca de",
-  "home.greeting": "Hola, F&V",
-  "home.subtitle": "Tu herramienta de estudio y campo — by Factronics",
-  "home.phase": "Fase 0 · Fundaciones",
-  "home.phaseDone": "Completada",
-  "home.modules": "Módulos del programa",
-  "home.module.study": "Estudio y exámenes",
-  "home.module.calc": "Calculadora de consumo",
-  "home.module.parts": "Números de parte",
-  "home.module.reports": "Informes técnicos",
-  "home.module.3d": "Tutoriales 3D",
-  "home.module.certs": "Certificados",
-  "home.comingSoon": "Próximamente",
-  "home.demoBadge": "Contenido demo",
-  "home.offlineReady": "Lista para funcionar sin internet",
-  "profile.title": "Perfil",
-  "profile.demoNote": "Perfil de demostración. Los perfiles reales llegan en la Fase 2.2.",
-  "profile.role.demo": "Técnico de Servicio de Campo",
-  "profile.level": "Nivel",
-  "profile.medals": "Medallas",
-  "profile.streak": "Racha",
-  "profile.days": "días",
-  "profile.edit": "Editar perfil",
-  "profile.nameLabel": "Nombre",
-  "profile.save": "Guardar",
-  "profile.saved": "Guardado en este dispositivo",
-  "settings.title": "Ajustes",
-  "settings.language": "Idioma",
-  "settings.theme": "Tema",
-  "settings.theme.system": "Sistema",
-  "settings.theme.light": "Claro",
-  "settings.theme.dark": "Oscuro",
-  "settings.data": "Datos locales",
-  "settings.dataNote": "Tu perfil se guarda solo en este dispositivo (IndexedDB).",
-  "about.title": "Acerca de",
-  "about.desc": "F&V es la aplicación interna de estudio, diagnóstico y herramientas de campo del equipo técnico de Factronics, C.A.",
-  "about.disclaimer": "Programa interno de Factronics, C.A. No es una certificación oficial de Videojet Technologies.",
-  "about.version": "Versión",
-  "about.team": "Equipo de validación técnica",
-  "about.sources": "Fuentes institucionales",
-  "about.privacy": "Privacidad: la app no solicita permisos innecesarios. Tus datos personales se guardan en el dispositivo."
-};
+export function specialLocalesUnlocked(): boolean {
+  try {
+    return localStorage.getItem(STORAGE_SPECIAL) === "1";
+  } catch {
+    return false;
+  }
+}
 
-const en: typeof es = {
-  "app.name": "F&V",
-  "nav.home": "Home",
-  "nav.profile": "Profile",
-  "nav.settings": "Settings",
-  "nav.about": "About",
-  "home.greeting": "Hello, F&V",
-  "home.subtitle": "Your study and field tool — by Factronics",
-  "home.phase": "Phase 0 · Foundations",
-  "home.phaseDone": "Completed",
-  "home.modules": "Program modules",
-  "home.module.study": "Study & exams",
-  "home.module.calc": "Consumption calculator",
-  "home.module.parts": "Part numbers",
-  "home.module.reports": "Technical reports",
-  "home.module.3d": "3D tutorials",
-  "home.module.certs": "Certificates",
-  "home.comingSoon": "Coming soon",
-  "home.demoBadge": "Demo content",
-  "home.offlineReady": "Ready to work offline",
-  "profile.title": "Profile",
-  "profile.demoNote": "Demo profile. Real profiles arrive in Phase 2.2.",
-  "profile.role.demo": "Field Service Technician",
-  "profile.level": "Level",
-  "profile.medals": "Medals",
-  "profile.streak": "Streak",
-  "profile.days": "days",
-  "profile.edit": "Edit profile",
-  "profile.nameLabel": "Name",
-  "profile.save": "Save",
-  "profile.saved": "Saved on this device",
-  "settings.title": "Settings",
-  "settings.language": "Language",
-  "settings.theme": "Theme",
-  "settings.theme.system": "System",
-  "settings.theme.light": "Light",
-  "settings.theme.dark": "Dark",
-  "settings.data": "Local data",
-  "settings.dataNote": "Your profile is stored only on this device (IndexedDB).",
-  "about.title": "About",
-  "about.desc": "F&V is the internal study, diagnostics and field tools app for the technical team of Factronics, C.A.",
-  "about.disclaimer": "Internal program of Factronics, C.A. Not an official Videojet Technologies certification.",
-  "about.version": "Version",
-  "about.team": "Technical validation team",
-  "about.sources": "Institutional sources",
-  "about.privacy": "Privacy: the app requests no unnecessary permissions. Your personal data stays on the device."
-};
+export function setSpecialLocalesUnlocked(value: boolean): void {
+  try {
+    localStorage.setItem(STORAGE_SPECIAL, value ? "1" : "0");
+  } catch {
+    // Sin almacenamiento: el desbloqueo dura solo la sesión.
+  }
+}
+
+function storedLanguage(): string | null {
+  try {
+    const stored = localStorage.getItem(STORAGE_LANGUAGE);
+    if (!stored || !isSupportedTag(stored)) return null;
+    if (isSpecialTag(stored) && !specialLocalesUnlocked()) return null;
+    return stored;
+  } catch {
+    return null;
+  }
+}
+
+/** Prioridad: elección guardada → idioma del navegador → es-VE. */
+export function detectLanguage(): string {
+  const stored = storedLanguage();
+  if (stored) return stored;
+
+  const candidates =
+    typeof navigator !== "undefined"
+      ? [...(navigator.languages ?? []), navigator.language].filter(Boolean)
+      : [];
+  for (const candidate of candidates) {
+    const match = matchSupportedLocale(candidate);
+    if (match) return match;
+  }
+  return BASE_LOCALE;
+}
+
+export function persistLanguage(tag: string): void {
+  try {
+    localStorage.setItem(STORAGE_LANGUAGE, tag);
+  } catch {
+    // La elección seguirá viva en memoria durante la sesión.
+  }
+  document.documentElement.lang = tag;
+  document.documentElement.dir = "ltr";
+}
+
+const initialLanguage = detectLanguage();
 
 void i18n.use(initReactI18next).init({
-  resources: {
-    es: { translation: es },
-    en: { translation: en }
-  },
-  lng: "es",
-  fallbackLng: "es",
-  interpolation: { escapeValue: false }
+  resources,
+  lng: initialLanguage,
+  fallbackLng: BASE_LOCALE,
+  supportedLngs: [...LOCALE_TAGS],
+  load: "currentOnly",
+  keySeparator: false,
+  nsSeparator: false,
+  returnNull: false,
+  interpolation: { prefix: "{", suffix: "}", escapeValue: false }
 });
+
+persistLanguage(initialLanguage);
+i18n.on("languageChanged", persistLanguage);
 
 export default i18n;

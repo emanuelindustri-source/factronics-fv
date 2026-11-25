@@ -1,0 +1,13 @@
+{
+  "name": "@factronics-fv/i18n",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Catálogo único de textos de interfaz de F&V: 11 idiomas + latín (easter egg) + pseudo-local. Genera recursos Android y JSON para la PWA.",
+  "scripts": {
+    "build": "node src/generate.mjs",
+    "check": "node src/generate.mjs --check",
+    "scan": "node src/scan-hardcoded.mjs",
+    "test": "node --test test/*.test.mjs"
+  }
+}

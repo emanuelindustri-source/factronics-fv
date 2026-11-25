@@ -1,0 +1,9 @@
+﻿
+> factronics-fv-ecosystem@0.3.0 validate:content
+> node packages/content-schema/src/cli.mjs validate packages/content-packs-demo
+
+F&V ÔÇö validaci├│n de contenido ┬À esquema v1.0.0
+Pack: packages/content-packs-demo (demo: s├¡)
+├ìtems: 25 ┬À con source_ref: 25 (100%) ┬À sin fuente: 0
+Por tipo: {"certificado":1,"codigo_error":2,"componente":2,"documento":2,"familia":1,"fragmento":2,"generacion":1,"intento":1,"modelo":1,"numero_parte":2,"pagina":2,"pregunta":3,"sistema":2,"tecnologia":1,"tinta":2}
+Ô£ô VALIDACI├ôN CORRECTA: 0 errores. Todo dato t├®cnico tiene fuente completa.

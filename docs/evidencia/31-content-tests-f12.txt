@@ -1,0 +1,83 @@
+﻿
+> factronics-fv-ecosystem@0.3.0 test
+> npm test --workspace=@factronics-fv/content-schema --workspace=@factronics-fv/content-packs-demo
+
+> @factronics-fv/content-schema@1.0.0 test
+> node --test test/*.test.mjs
+
+ÔûÂ migraciones: mecanismo declarado
+  Ô£ö un pack ya en la versi├│n vigente no se toca (3.662ms)
+  Ô£ö un pack m├ís nuevo que la herramienta se rechaza (no se adivina) (0.7675ms)
+  Ô£ö sin ruta de migraci├│n declarada, un pack viejo no se inventa: se rechaza (0.5987ms)
+  Ô£ö una migraci├│n sint├®tica declarada transforma y normaliza el pack (1.4605ms)
+  Ô£ö una migraci├│n que no avanza de versi├│n se rechaza (1.3612ms)
+  Ô£ö el registro real MIGRATIONS existe (vac├¡o en v1) y el comparador semver funciona (0.5968ms)
+Ô£ö migraciones: mecanismo declarado (11.4426ms)
+ÔûÂ migraciones: pack demo real
+  Ô£ö el pack del repositorio ya est├í en la versi├│n vigente (6.4764ms)
+Ô£ö migraciones: pack demo real (6.9827ms)
+ÔûÂ casos de control (├¡tems v├ílidos)
+  Ô£ö un ├¡tem con source_ref completo y etiqueta DEMO valida sin errores (103.8484ms)
+  Ô£ö pregunta v├ílida con respuesta dentro de las opciones (15.5065ms)
+  Ô£ö referencias resueltas: documento citado por source_ref.documento_id (11.2204ms)
+Ô£ö casos de control (├¡tems v├ílidos) (132.292ms)
+ÔûÂ procedencia obligatoria (source_ref)
+  Ô£ö un ├¡tem SIN source_ref se rechaza expl├¡citamente (sin fuente no se publica) (2.9508ms)
+  Ô£ö source_ref sin revisor se rechaza (procedencia incompleta) (1.0916ms)
+  Ô£ö source_ref sin cita_textual se rechaza (procedencia incompleta) (0.6844ms)
+  Ô£ö source_ref.documento_id no puede ser autorreferencia (1.1043ms)
+  Ô£ö source_ref con pagina_fin menor que pagina se rechaza (1.0039ms)
+Ô£ö procedencia obligatoria (source_ref) (7.9886ms)
+ÔûÂ IDs estables
+  Ô£ö ID malformado se rechaza (0.781ms)
+  Ô£ö prefijo del ID incoherente con el tipo se rechaza (0.5919ms)
+  Ô£ö ID duplicado se rechaza (1.1408ms)
+Ô£ö IDs estables (2.8546ms)
+ÔûÂ referencias entre ├¡tems
+  Ô£ö referencia rota (el destino no existe) se rechaza (1.2847ms)
+  Ô£ö referencia al tipo equivocado se rechaza (0.6359ms)
+Ô£ö referencias entre ├¡tems (2.2351ms)
+ÔûÂ reglas de packs demo
+  Ô£ö ├¡tem sin etiqueta DEMO en pack demo se rechaza (0.592ms)
+  Ô£ö c├│digo sin prefijo DEMO- en pack demo se rechaza (7.5438ms)
+  Ô£ö el c├│digo 'DEMO-...' si se acepta (2.2263ms)
+Ô£ö reglas de packs demo (11.1304ms)
+ÔûÂ preguntas y certificados
+  Ô£ö respuesta fuera de las opciones se rechaza (1.1671ms)
+  Ô£ö certificado sin el aviso obligatorio se rechaza (11.023ms)
+  Ô£ö certificado que se declara oficial se rechaza (0.7628ms)
+Ô£ö preguntas y certificados (13.3291ms)
+ÔûÂ pack demo del repositorio (integraci├│n)
+  Ô£ö el pack demo completo valida sin errores (74.9972ms)
+  Ô£ö el 100% de los ├¡tems tiene source_ref completo y revisor (1.3326ms)
+  Ô£ö todos los ├¡tems del pack demo est├ín etiquetados como DEMO (0.2987ms)
+  Ô£ö el manifiesto del pack demo declara demo=true (0.1989ms)
+Ô£ö pack demo del repositorio (integraci├│n) (77.1944ms)
+Ôä╣ tests 30
+Ôä╣ suites 9
+Ôä╣ pass 30
+Ôä╣ fail 0
+Ôä╣ cancelled 0
+Ôä╣ skipped 0
+Ôä╣ todo 0
+Ôä╣ duration_ms 511.3803
+
+> @factronics-fv/content-packs-demo@1.0.0 test
+> node --test test/*.test.mjs
+
+ÔûÂ pack demo F&V (gate de F1.1)
+  Ô£ö el pack demo valida sin errores (235.2823ms)
+  Ô£ö 100 % de ├¡tems con source_ref completo; 0 sin fuente (1.6886ms)
+  Ô£ö todo source_ref tiene revisor y fecha de revisi├│n (0.6356ms)
+  Ô£ö todo c├│digo del pack es inequ├¡vocamente DEMO (0.4076ms)
+  Ô£ö todos los ├¡tems est├ín etiquetados DEMO y el manifiesto declara demo=true (0.2885ms)
+  Ô£ö el pack cubre los 15 tipos de entidad del dominio (1.234ms)
+Ô£ö pack demo F&V (gate de F1.1) (241.4316ms)
+Ôä╣ tests 6
+Ôä╣ suites 1
+Ôä╣ pass 6
+Ôä╣ fail 0
+Ôä╣ cancelled 0
+Ôä╣ skipped 0
+Ôä╣ todo 0
+Ôä╣ duration_ms 459.2427

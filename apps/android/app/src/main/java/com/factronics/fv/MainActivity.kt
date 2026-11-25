@@ -1,7 +1,6 @@
 package com.factronics.fv
 
 import android.content.Context
-import android.content.res.Configuration
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -11,10 +10,11 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import com.factronics.fv.data.LocaleHelper
 import com.factronics.fv.data.SettingsStore
+import com.factronics.fv.data.SupportedLocales
 import com.factronics.fv.ui.FVApp
 import com.factronics.fv.ui.theme.FVTheme
-import java.util.Locale
 
 class MainActivity : ComponentActivity() {
 
@@ -43,23 +43,14 @@ class MainActivity : ComponentActivity() {
                         settings.dynamicColor = enabled
                     },
                     onLanguageChange = { lang ->
-                        settings.language = lang
-                        recreate()
+                        val normalized = SupportedLocales.normalize(lang)
+                        settings.language = normalized
+                        // Android 13+ recrea la actividad al cambiar el idioma de la app.
+                        val appliedBySystem = LocaleHelper.applyToSystem(this, normalized)
+                        if (!appliedBySystem) recreate()
                     }
                 )
             }
         }
-    }
-}
-
-/** Aplica el idioma elegido por el usuario al contexto de la actividad. */
-object LocaleHelper {
-    fun wrap(context: Context): Context {
-        val lang = SettingsStore(context).language
-        val locale = Locale(lang)
-        val config = Configuration(context.resources.configuration)
-        config.setLocale(locale)
-        config.setLayoutDirection(locale)
-        return context.createConfigurationContext(config)
     }
 }

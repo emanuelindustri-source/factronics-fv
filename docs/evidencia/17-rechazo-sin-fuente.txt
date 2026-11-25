@@ -8,7 +8,7 @@ En línea: 1 Carácter: 266
 +                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     + CategoryInfo          : NotSpecified: (Ô£ù VALIDACI├ôN FALLIDA: 2 error(es).:String) [], RemoteException
     + FullyQualifiedErrorId : NativeCommandError
- 
-  Ô£ù [FALTA-PROCEDENCIA] tec:demo-sin-fuente: SIN FUENTE NO SE PUBLICA: el ├¡tem no tiene source_ref (documento, 
+
+  Ô£ù [FALTA-PROCEDENCIA] tec:demo-sin-fuente: SIN FUENTE NO SE PUBLICA: el ├¡tem no tiene source_ref (documento,
 c├│digo oficial, revisi├│n, p├ígina, cita textual, confianza, revisor y fecha)
   Ô£ù [JSON-SCHEMA] tec:demo-sin-fuente: estructura inv├ílida (tecnologia): / must have required property 'source_ref'

@@ -41,6 +41,21 @@ jobs:
       - name: Tests del validador (incluye casos negativos)
         run: npm test
 
+  i18n:
+    name: i18n (paridad, pseudo-local, literales)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+          cache: npm
+          cache-dependency-path: package-lock.json
+      - name: Instalar dependencias del monorepo
+        run: npm ci
+      - name: Regenerar y comprobar salidas (Android + PWA) sin drift
+        run: npm run i18n:check
+
   android:
     name: Android (build debug)
     runs-on: ubuntu-latest
@@ -58,10 +73,10 @@ jobs:
           yes | "$SDKMGR" --licenses > /dev/null 2>&1 || true
           "$SDKMGR" "platforms;android-35" "build-tools;35.0.0"
       - uses: gradle/actions/setup-gradle@v4
-      - name: Compilar APK debug
+      - name: Compilar APK debug y ejecutar tests unitarios (formatos y recursos)
         run: |
           chmod +x gradlew
-          ./gradlew :app:assembleDebug --console=plain
+          ./gradlew :app:assembleDebug :app:testDebugUnitTest --console=plain
         working-directory: apps/android
 
   web:
@@ -81,6 +96,12 @@ jobs:
       - run: npm run build
         working-directory: apps/web
       - run: npm run test
+        working-directory: apps/web
+      - name: Instalar Chromium para Playwright
+        run: npx playwright install --with-deps chromium
+        working-directory: apps/web
+      - name: E2E i18n (11 idiomas + latín + pseudo-local)
+        run: npx playwright test
         working-directory: apps/web
 
   portal:

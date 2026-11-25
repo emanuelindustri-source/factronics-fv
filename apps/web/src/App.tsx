@@ -1,7 +1,22 @@
-// F&V (by Factronics) — PWA walking skeleton (Fase 0)
+// F&V (by Factronics) — PWA (F1.2: 11 idiomas reales + latín/pseudo-local).
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
+import { ABOUT_SOURCES_VALUE, ABOUT_TEAM_NAMES, APP_VERSION } from "./constants";
 import { getProfile, saveProfile, type Profile } from "./db";
+import {
+  formatDate,
+  formatInteger,
+  formatNumber,
+  formatPercent,
+  SAMPLE_DATE,
+  SAMPLE_NUMBER,
+  SAMPLE_PERCENT
+} from "./format";
+import {
+  setSpecialLocalesUnlocked,
+  specialLocalesUnlocked as readSpecialLocalesUnlocked
+} from "./i18n";
+import { ALL_LOCALES, REAL_LOCALES } from "./supported-locales";
 import { applyTheme, type ThemeMode } from "./theme";
 
 type Tab = "home" | "profile" | "settings" | "about";
@@ -12,25 +27,34 @@ export default function App() {
   const [profile, setProfile] = useState<Profile | null>(null);
   const [theme, setTheme] = useState<ThemeMode>("system");
   const [savedMsg, setSavedMsg] = useState(false);
+  const [specialUnlocked, setSpecialUnlocked] = useState(() => readSpecialLocalesUnlocked());
 
   useEffect(() => {
     void getProfile().then((p) => {
       setProfile(p);
       setTheme(p.theme as ThemeMode);
       applyTheme(p.theme as ThemeMode);
-      void i18n.changeLanguage(p.language);
+      if (p.language !== i18n.language) {
+        void saveProfile({ language: i18n.language }).then(setProfile);
+      }
     });
   }, [i18n]);
 
   const changeLanguage = async (lang: string) => {
     await i18n.changeLanguage(lang);
-    await saveProfile({ language: lang });
+    const next = await saveProfile({ language: lang });
+    setProfile(next);
   };
 
   const changeTheme = async (mode: ThemeMode) => {
     setTheme(mode);
     applyTheme(mode);
     await saveProfile({ theme: mode });
+  };
+
+  const unlockSpecial = () => {
+    setSpecialLocalesUnlocked(true);
+    setSpecialUnlocked(true);
   };
 
   return (
@@ -40,6 +64,7 @@ export default function App() {
         <ProfileTab
           profile={profile}
           savedMsg={savedMsg}
+          language={i18n.language}
           onSave={async (name) => {
             const next = await saveProfile({ name });
             setProfile(next);
@@ -54,9 +79,10 @@ export default function App() {
           onTheme={changeTheme}
           onLanguage={changeLanguage}
           language={i18n.language}
+          specialUnlocked={specialUnlocked}
         />
       )}
-      {tab === "about" && <About />}
+      {tab === "about" && <About specialUnlocked={specialUnlocked} onUnlock={unlockSpecial} />}
 
       <nav className="nav" aria-label={t("app.name")}>
         {(["home", "profile", "settings", "about"] as Tab[]).map((id) => (
@@ -123,10 +149,12 @@ function Home() {
 function ProfileTab({
   profile,
   savedMsg,
+  language,
   onSave
 }: {
   profile: Profile | null;
   savedMsg: boolean;
+  language: string;
   onSave: (name: string) => Promise<void>;
 }) {
   const { t } = useTranslation();
@@ -145,15 +173,15 @@ function ProfileTab({
       <section className="card">
         <div className="stats">
           <div className="stat">
-            <b>1</b>
+            <b>{formatInteger(1, language)}</b>
             {t("profile.level")}
           </div>
           <div className="stat">
-            <b>0</b>
+            <b>{formatInteger(0, language)}</b>
             {t("profile.medals")}
           </div>
           <div className="stat">
-            <b>0</b>
+            <b>{t("profile.streakValue", { days: formatInteger(0, language) })}</b>
             {t("profile.streak")}
           </div>
         </div>
@@ -186,14 +214,17 @@ function SettingsTab({
   theme,
   onTheme,
   onLanguage,
-  language
+  language,
+  specialUnlocked
 }: {
   theme: ThemeMode;
   onTheme: (m: ThemeMode) => void;
   onLanguage: (l: string) => void;
   language: string;
+  specialUnlocked: boolean;
 }) {
   const { t } = useTranslation();
+  const locales = specialUnlocked ? ALL_LOCALES : REAL_LOCALES;
   return (
     <>
       <header className="hero">
@@ -201,27 +232,39 @@ function SettingsTab({
       </header>
 
       <section className="card">
-        <h2>{t("settings.language")}</h2>
-        <div className="radio-row">
-          <label>
-            <input
-              type="radio"
-              name="lang"
-              checked={language.startsWith("es")}
-              onChange={() => onLanguage("es")}
-            />
-            Español (VE)
-          </label>
-          <label>
-            <input
-              type="radio"
-              name="lang"
-              checked={language.startsWith("en")}
-              onChange={() => onLanguage("en")}
-            />
-            English
-          </label>
+        <h2 id="language-heading">{t("settings.language")}</h2>
+        <p className="status">{t("settings.languageNote")}</p>
+        <div className="locale-list" role="radiogroup" aria-labelledby="language-heading">
+          {locales.map((locale) => (
+            <label key={locale.tag} className="locale-option">
+              <input
+                type="radio"
+                name="lang"
+                checked={language === locale.tag}
+                onChange={() => onLanguage(locale.tag)}
+              />
+              <span>{locale.label}</span>
+            </label>
+          ))}
         </div>
+        {specialUnlocked && <p className="status">{t("settings.specialUnlocked")}</p>}
+      </section>
+
+      <section className="card">
+        <h2>{t("settings.formats")}</h2>
+        <div className="format-row">
+          <span>{t("settings.formats.number")}</span>
+          <strong>{formatNumber(SAMPLE_NUMBER, language)}</strong>
+        </div>
+        <div className="format-row">
+          <span>{t("settings.formats.percent")}</span>
+          <strong>{formatPercent(SAMPLE_PERCENT, language)}</strong>
+        </div>
+        <div className="format-row">
+          <span>{t("settings.formats.date")}</span>
+          <strong>{formatDate(SAMPLE_DATE, language)}</strong>
+        </div>
+        <p className="status">{t("settings.formats.note")}</p>
       </section>
 
       <section className="card">
@@ -249,8 +292,26 @@ function SettingsTab({
   );
 }
 
-function About() {
+function About({
+  specialUnlocked,
+  onUnlock
+}: {
+  specialUnlocked: boolean;
+  onUnlock: () => void;
+}) {
   const { t } = useTranslation();
+  const [taps, setTaps] = useState(0);
+
+  const handleVersionTap = () => {
+    const next = taps + 1;
+    if (next >= 7) {
+      onUnlock();
+      setTaps(0);
+      return;
+    }
+    setTaps(next);
+  };
+
   return (
     <>
       <header className="hero">
@@ -264,15 +325,18 @@ function About() {
 
       <section className="card">
         <h2>{t("about.version")}</h2>
-        <p className="status">F&V 0.1.0 — Fase 0 · walking skeleton</p>
+        <button type="button" className="version-link" onClick={handleVersionTap}>
+          {t("about.versionValue", { version: APP_VERSION })}
+        </button>
+        {taps >= 5 && <p className="status">{t("about.unlockAlmost")}</p>}
+        {specialUnlocked && <p className="status">{t("settings.specialUnlocked")}</p>}
         <h2>{t("about.team")}</h2>
-        <p className="status">
-          Eduardo Rodríguez · Luis Iungano · José Tovar · José Gabriel Ríos · Elián
-          Inojosa · Mariana Cerdeño
-        </p>
+        <p className="status">{ABOUT_TEAM_NAMES}</p>
         <h2>{t("about.sources")}</h2>
-        <p className="status">factronics.com.ve · videojet.com</p>
+        <p className="status">{ABOUT_SOURCES_VALUE}</p>
+        <p className="status">{t("about.licenses")}</p>
         <p className="status">{t("about.privacy")}</p>
+        <p className="status">{t("about.translationsPending")}</p>
       </section>
     </>
   );

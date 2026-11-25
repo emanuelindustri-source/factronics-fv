@@ -1,7 +1,7 @@
 {
   "name": "factronics-fv-ecosystem",
   "private": true,
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "F&V (by Factronics) — monorepo: apps, esquema de contenido y packs. Sin secretos; contenido real fuera de git (ADR-0003).",
   "type": "module",
   "workspaces": [
@@ -10,6 +10,8 @@
   "scripts": {
     "validate:content": "node packages/content-schema/src/cli.mjs validate packages/content-packs-demo",
     "migrate:content": "node packages/content-schema/src/cli.mjs migrate packages/content-packs-demo",
+    "i18n:build": "node packages/i18n/src/generate.mjs",
+    "i18n:check": "node packages/i18n/src/generate.mjs --check && node packages/i18n/src/scan-hardcoded.mjs && node --test packages/i18n/test/i18n.test.mjs",
     "test": "npm test --workspace=@factronics-fv/content-schema --workspace=@factronics-fv/content-packs-demo"
   },
   "engines": {

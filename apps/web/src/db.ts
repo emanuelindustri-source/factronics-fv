@@ -28,7 +28,7 @@ export const DEMO_PROFILE: Profile = {
   name: "Khristyan Hidalgo",
   role: "profile.role.demo",
   company: "Factronics, C.A.",
-  language: "es",
+  language: "es-VE",
   theme: "system"
 };
 

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Nombres propios y dominios institucionales: no se traducen (ver ADR-0007). -->
+<resources>
+    <string name="about_team_names" translatable="false">Eduardo Rodríguez · Luis Iungano · José Tovar · José Gabriel Ríos · Elián Inojosa · Mariana Cerdeño</string>
+    <string name="about_sources_value" translatable="false">factronics.com.ve · videojet.com</string>
+</resources>

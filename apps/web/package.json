@@ -1,7 +1,7 @@
 {
   "name": "fv-web",
   "private": true,
-  "version": "0.1.0",
+  "version": "0.3.0",
   "description": "F&V (by Factronics) — PWA offline de estudio y herramientas de campo",
   "type": "module",
   "scripts": {
@@ -21,6 +21,7 @@
   },
   "devDependencies": {
     "@playwright/test": "^1.49.1",
+    "@types/node": "^26.6.10",
     "@types/react": "^18.3.12",
     "@types/react-dom": "^18.3.1",
     "@vitejs/plugin-react": "^4.3.4",

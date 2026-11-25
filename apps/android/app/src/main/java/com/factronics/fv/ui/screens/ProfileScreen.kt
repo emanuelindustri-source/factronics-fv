@@ -21,15 +21,31 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.heading
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.factronics.fv.R
+import com.factronics.fv.data.FvFormatters
+import com.factronics.fv.data.SupportedLocales
 
 @Composable
 fun ProfileScreen() {
+    val locale = SupportedLocales.formattingLocale(
+        LocalConfiguration.current.locales[0].toLanguageTag()
+    )
+    val name = stringResource(R.string.profile_name_value)
+    val avatarDescription = stringResource(R.string.profile_avatar_desc)
+    val initials = name
+        .split(" ")
+        .filter { it.isNotBlank() }
+        .take(2)
+        .map { it.first().uppercaseChar() }
+        .joinToString("")
+
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -50,11 +66,12 @@ fun ProfileScreen() {
         Box(
             modifier = Modifier
                 .size(96.dp)
-                .background(MaterialTheme.colorScheme.primary, CircleShape),
+                .background(MaterialTheme.colorScheme.primary, CircleShape)
+                .semantics { contentDescription = avatarDescription },
             contentAlignment = Alignment.Center
         ) {
             Text(
-                text = "KH",
+                text = initials,
                 style = MaterialTheme.typography.headlineMedium,
                 color = MaterialTheme.colorScheme.onPrimary,
                 fontWeight = FontWeight.Bold
@@ -63,7 +80,7 @@ fun ProfileScreen() {
         Spacer(Modifier.height(12.dp))
 
         Text(
-            text = stringResource(R.string.profile_name_demo),
+            text = name,
             style = MaterialTheme.typography.titleLarge
         )
         Text(
@@ -82,9 +99,24 @@ fun ProfileScreen() {
             modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.spacedBy(12.dp)
         ) {
-            StatCard(stringResource(R.string.profile_level), "1", Modifier.weight(1f))
-            StatCard(stringResource(R.string.profile_medals), "0", Modifier.weight(1f))
-            StatCard(stringResource(R.string.profile_streak), "0 ${stringResource(R.string.profile_days)}", Modifier.weight(1f))
+            StatCard(
+                stringResource(R.string.profile_level),
+                FvFormatters.formatInteger(1, locale),
+                Modifier.weight(1f)
+            )
+            StatCard(
+                stringResource(R.string.profile_medals),
+                FvFormatters.formatInteger(0, locale),
+                Modifier.weight(1f)
+            )
+            StatCard(
+                stringResource(R.string.profile_streak),
+                stringResource(
+                    R.string.profile_streak_value,
+                    FvFormatters.formatInteger(0, locale)
+                ),
+                Modifier.weight(1f)
+            )
         }
 
         Spacer(Modifier.height(20.dp))
