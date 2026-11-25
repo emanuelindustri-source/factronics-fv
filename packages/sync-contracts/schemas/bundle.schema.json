@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://factronics-fv.github.io/schemas/sync/1.0.0/bundle.schema.json",
+  "title": "F&V — Bundle de instalación de pack .fvpack (contrato v1)",
+  "description": "Unidad de instalación/distribución de un pack: manifiesto de sincronización + firma + archivos completos del pack en un solo JSON. Es el formato que las apps importan/exportan y el que firma la herramienta de empaquetado. Los archivos viajan como cadenas UTF-8 exactas para que el SHA-256 declarado en el manifiesto sea verificable byte a byte. Ver ADR-0009.",
+  "type": "object",
+  "required": ["bundle_format", "sync_manifest", "signature", "pack_manifest", "files"],
+  "additionalProperties": false,
+  "properties": {
+    "bundle_format": {
+      "const": "fvpack/1"
+    },
+    "sync_manifest": { "$ref": "sync-manifest.schema.json" },
+    "signature": { "$ref": "signature.schema.json" },
+    "pack_manifest": {
+      "type": "object",
+      "description": "Contenido literal de pack.json del pack de contenido (esquema F1.1, sin modificar)."
+    },
+    "files": {
+      "type": "object",
+      "description": "Mapa ruta → contenido exacto del archivo (UTF-8). Debe incluir todas las rutas declaradas en sync_manifest.files.",
+      "additionalProperties": { "type": "string" }
+    }
+  }
+}

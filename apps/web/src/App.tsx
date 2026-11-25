@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { ABOUT_SOURCES_VALUE, ABOUT_TEAM_NAMES, APP_VERSION } from "./constants";
+import { ContentCard, ContentTab } from "./ContentUi";
 import { getProfile, saveProfile, type Profile } from "./db";
 import { FestivityArt } from "./FestivityArt";
 import {
@@ -26,7 +27,7 @@ import {
 import { ALL_LOCALES, REAL_LOCALES } from "./supported-locales";
 import { applyTheme, type ThemeMode } from "./theme";
 
-type Tab = "home" | "profile" | "settings" | "about";
+type Tab = "home" | "content" | "profile" | "settings" | "about";
 
 export default function App() {
   const { t, i18n } = useTranslation();
@@ -107,6 +108,7 @@ export default function App() {
   return (
     <div className="app">
       {tab === "home" && <Home festivityId={festivityId} />}
+      {tab === "content" && <ContentTab />}
       {tab === "profile" && (
         <ProfileTab
           profile={profile}
@@ -139,7 +141,7 @@ export default function App() {
       {tab === "about" && <About specialUnlocked={specialUnlocked} onUnlock={unlockSpecial} />}
 
       <nav className="nav" aria-label={t("app.name")}>
-        {(["home", "profile", "settings", "about"] as Tab[]).map((id) => (
+        {(["home", "content", "profile", "settings", "about"] as Tab[]).map((id) => (
           <button
             key={id}
             aria-current={tab === id ? "page" : undefined}
@@ -403,6 +405,8 @@ function SettingsTab({
           </p>
         )}
       </section>
+
+      <ContentCard />
 
       <section className="card">
         <h2>{t("settings.data")}</h2>

@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://factronics-fv.github.io/schemas/sync/1.0.0/signature.schema.json",
+  "title": "F&V — Firma de integridad de pack (contrato v1)",
+  "description": "Firma digital sobre el SHA-256 del archivo sync-manifest.json. Algoritmo: ECDSA P-256 con SHA-256 ('SHA256withECDSA'), codificación DER, clave pública SPKI DER en base64. Se eligió ECDSA P-256 y no Ed25519 por disponibilidad en Android < 13; el campo 'alg' permite migrar de algoritmo sin romper el contrato. Ver ADR-0009.",
+  "type": "object",
+  "required": ["alg", "key_id", "signed", "sig"],
+  "additionalProperties": false,
+  "properties": {
+    "alg": {
+      "const": "SHA256withECDSA"
+    },
+    "key_id": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Identificador de la clave pública en el almacén de confianza (truststore)."
+    },
+    "signed": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$",
+      "description": "SHA-256 (hex) de los bytes UTF-8 de sync-manifest.json tal cual se distribuye."
+    },
+    "sig": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Firma ECDSA DER en base64 sobre los bytes del hash 'signed'."
+    }
+  }
+}

@@ -212,3 +212,70 @@ Las fechas móviles (Pascua/Carnaval, enésimos domingos) son algorítmicas y pr
 fechas culturales venezolanas de familia (Madre/Padre/Niño) quedan **pendientes de
 validación cultural** por Factronics; no se presentan como oficiales ni como dato técnico.
 No se usó material de `VIDEOJET_DOCS_ENTRADA/`.
+
+---
+
+# Evidencia — Fase 1.4 · Offline, packs y contratos de sincronización (2026-11-25)
+
+Verificada en Windows, PWA (Playwright + Chromium) y **teléfono real Xiaomi Redmi
+22101316G (Android 14 / API 34)**. Nota de numeración: el handoff decía "desde 51",
+pero 51–57 ya pertenecen al cierre de F1.3; esta fase usa **58–73** (ADR-0009 §final).
+
+## Android — teléfono real
+
+| Archivo | Qué demuestra |
+|---|---|
+| `68-android-estado-vacio.png` | Estado vacío claro sin pack: "Sin contenido instalado" (sin contenido inventado) |
+| `66-android-pack-instalado.png` | Ajustes con el pack demo instalado por UI: Versión 1.0.0, Ítems 25, Tamaño 27 KB, última actualización y acciones (exportar/importar/limpiar) |
+| `67-android-busqueda-offline.png` | **Modo avión activado**: búsqueda "DEMO" con 25 resultados y "Ver fuente" con la procedencia del contenido |
+| `73-android-ajustes-tras-backup.png` | Ajustes tras exportar/importar la copia de seguridad |
+| `72-android-offline-log.txt` | Log automatizado: `adb install -r` Success, pm clear, estado vacío verificado, pack instalado (v1.0.0 · 25 ítems), **modo avión ON → búsqueda offline con 25 resultados y fuente `DEMO-DOC-0001` visible**, export (`fv-backup-20261125-231439.json`, 36 818 bytes) e import ("Copia restaurada en este dispositivo"), **logcat: 0 errores críticos** |
+
+Herramienta: `node tools/f14-content-evidence.mjs` (automatizada, repetible).
+
+## PWA — Playwright + Chromium
+
+| Archivo | Qué demuestra |
+|---|---|
+| `71-pwa-estado-vacio.png` | Estado vacío claro sin pack ("Sin contenido instalado") |
+| `69-pwa-pack-instalado.png` | Ajustes con el pack demo: versión, tamaño, ítems, última actualización y acciones |
+| `70-pwa-busqueda-offline.png` | Búsqueda "DEMO" con el service worker en modo avión: resultados y procedencia |
+
+- `e2e/content.spec.ts` → **4/4**: estado vacío, instalación + **búsqueda offline
+  (`setOffline(true)` + reload)**, "Ver fuente", **backup round-trip** (exportar →
+  limpiar → restaurar → mismos 25 ítems) y **rechazo de backup corrupto** (un bit
+  alterado ⇒ `errors.backupCorrupt`, contenido intacto).
+- Suite completa `npx playwright test` → **26/26** (22 de F1.2/F1.3 sin regresiones
+  + 4 nuevos). Log: `60-playwright-f14.txt`.
+
+## Contratos de sincronización y paridad de plataforma
+
+| Archivo | Qué demuestra |
+|---|---|
+| `61-sync-contracts-tests-f14.txt` | `@factronics-fv/sync-contracts`: **81/81** (bundles con 25 casos de mutación, deltas/tombstones/idempotencia/orden, backup, búsqueda, migraciones locales, vectores cripto y servidor simulado con convergencia offline 24 h) |
+| `59-vitest-f14.txt` | PWA: **133/133** (76 tests del contrato replican 1:1 la referencia JS + 7 del almacén Dexie + i18n/formatos/tema) |
+| `58-android-tests-f14.txt` | Android: **44/44** tests JVM (fixtures del contrato, almacén atómico con interrupciones paso a paso, disco lleno, migraciones con rollback, backup round-trip y bundle demo real) |
+| `63-validate-content-f14.txt` | `npm run validate:content`: 25/25 ítems con fuente, 0 errores (esquema F1.1 intacto) |
+| `64-content-tests-f14.txt` | Pack demo: **12/12** (incluye deriva del bundle `.fvpack`, firma DEMO verificada y truststore sin clave privada) |
+| `62-i18n-check-f14.txt` | `npm run i18n:check`: 13 idiomas, **148 claves**, salidas Android/PWA al día, **0 textos hardcodeados** |
+| `65-gitleaks-f14.txt` | Gitleaks: **no leaks found** (la clave DEMO de firma vive solo en `_private/`, fuera de git) |
+
+## Gate F1.4 verificado
+
+- **Migraciones locales**: base vacía → v1, v1 → v2 sintética y migración fallida con
+  rollback (el almacén queda intacto) — en Android, PWA y la referencia JS.
+- **Instalación atómica**: pack válido, hash inválido, JSON inválido/corrupto, versión
+  futura, downgrade, firma inválida, clave desconocida, sin firma, tamaño excedido e
+  **interrupción simulada en cada uno de los 7 pasos de la transacción** (rollback al
+  estado anterior; jamás un pack a medias). Disco lleno ⇒ `DISCO-LLENO`.
+- **Backup/export/import**: round-trip completo en Android y PWA, restauración en
+  almacenamiento limpio, rechazo de corruptos y **rechazo de datos personales**
+  (el esquema prohíbe `settings.name`).
+- **Contrato de sync**: fixtures de manifiesto/delta/tombstones, idempotencia
+  (aplicar dos veces = mismo estado), orden estricto (`ORDEN-INVALIDO` sin saltos) y
+  versión mínima de cliente, contra servidor simulado (duplicados, fuera de orden,
+  delta faltante, reconexión).
+- **Offline**: abrir, buscar y navegar sin red con packs instalados (teléfono en modo
+  avión + PWA con `setOffline`); estado vacío claro sin pack.
+- **Seguridad**: hash SHA-256 + firma ECDSA P-256 verificados en el cliente en las tres
+  plataformas (vectores de compatibilidad cruzada); sin secretos en el repo.

@@ -5,6 +5,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.filled.Person
+import androidx.compose.material.icons.filled.Search
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material3.Icon
 import androidx.compose.material3.NavigationBar
@@ -23,9 +24,12 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.factronics.fv.R
+import com.factronics.fv.data.pack.SearchItem
 import com.factronics.fv.ui.screens.AboutScreen
+import com.factronics.fv.ui.screens.ContentActions
 import com.factronics.fv.ui.screens.HomeScreen
 import com.factronics.fv.ui.screens.ProfileScreen
+import com.factronics.fv.ui.screens.SearchScreen
 import com.factronics.fv.ui.screens.SettingsScreen
 
 private data class FVRoute(val route: String, val labelRes: Int, val icon: @Composable () -> Unit)
@@ -33,6 +37,10 @@ private data class FVRoute(val route: String, val labelRes: Int, val icon: @Comp
 @Composable
 fun FVApp(
     festivityId: String,
+    content: ContentActions,
+    contentTipos: List<String>,
+    contentTecnologias: List<String>,
+    onContentSearch: (String, String?, String?) -> List<SearchItem>,
     onThemeModeChange: (String) -> Unit,
     onDynamicColorChange: (Boolean) -> Unit,
     onFestivitiesEnabledChange: (Boolean) -> Unit,
@@ -45,6 +53,9 @@ fun FVApp(
     val routes = listOf(
         FVRoute("home", R.string.nav_home) {
             Icon(Icons.Default.Home, contentDescription = null)
+        },
+        FVRoute("content", R.string.nav_content) {
+            Icon(Icons.Default.Search, contentDescription = null)
         },
         FVRoute("profile", R.string.nav_profile) {
             Icon(Icons.Default.Person, contentDescription = null)
@@ -87,10 +98,19 @@ fun FVApp(
             modifier = Modifier.padding(innerPadding)
         ) {
             composable("home") { HomeScreen(festivityId = festivityId) }
+            composable("content") {
+                SearchScreen(
+                    summary = content.summary,
+                    tipos = contentTipos,
+                    tecnologias = contentTecnologias,
+                    onSearch = onContentSearch
+                )
+            }
             composable("profile") { ProfileScreen() }
             composable("settings") {
                 SettingsScreen(
                     festivityId = festivityId,
+                    content = content,
                     onThemeModeChange = onThemeModeChange,
                     onDynamicColorChange = onDynamicColorChange,
                     onFestivitiesEnabledChange = onFestivitiesEnabledChange,

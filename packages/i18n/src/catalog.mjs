@@ -40,8 +40,8 @@ export const SPECIAL_LOCALES = [
 
 export const LOCALES = [...REAL_LOCALES, ...SPECIAL_LOCALES];
 
-/** Claves que legítimamente son iguales en todos los idiomas (marcas y nombres propios). */
-export const INVARIANT_KEYS = ["app.name", "profile.name.value", "profile.company.value"];
+/** Claves que legítimamente son iguales en todos los idiomas (marcas, nombres propios y símbolos). */
+export const INVARIANT_KEYS = ["app.name", "profile.name.value", "profile.company.value", "packs.sizeValue"];
 
 /**
  * Valores que pueden coincidir con el español sin ser un error de traducción.
@@ -67,11 +67,25 @@ export const SAME_AS_BASE_ALLOWED = {
   "festivity.carnival": ["pt-BR", "pt-PT", "fr"],
   "settings.festivity.enabled": ["pt-BR", "pt-PT"],
   "settings.festivity.auto": ["pt-BR", "pt-PT"],
-  "home.festivity.active": ["it", "pt-BR", "pt-PT"]
+  "home.festivity.active": ["it", "pt-BR", "pt-PT"],
+  // F1.4: etiquetas de búsqueda/contenido. Cognados idénticos en portugués e
+  // italiano (y la palabra latina 'Familia', origen común del español).
+  "search.filter.all": ["pt-BR", "pt-PT"],
+  "search.filter.type": ["pt-BR", "pt-PT", "it"],
+  "search.results": ["pt-BR", "pt-PT"],
+  "search.type.certificado": ["pt-BR", "pt-PT"],
+  "search.type.componente": ["pt-BR", "pt-PT", "it"],
+  "search.type.documento": ["pt-BR", "pt-PT", "it"],
+  "search.type.fragmento": ["pt-BR", "pt-PT"],
+  "search.type.modelo": ["pt-BR", "pt-PT"],
+  "search.type.pagina": ["pt-BR", "pt-PT"],
+  "search.type.sistema": ["pt-BR", "pt-PT", "it"],
+  "search.type.tinta": ["pt-BR", "pt-PT"],
+  "search.type.familia": ["la"]
 };
 
 /** Marcadores de posición admitidos. Deben ser iguales en todos los idiomas. */
-export const ALLOWED_PLACEHOLDERS = ["days", "name", "version"];
+export const ALLOWED_PLACEHOLDERS = ["days", "name", "version", "total"];
 
 /** Prefijo de los textos pseudo-localizados. */
 export const PSEUDO_OPEN = "⟦";

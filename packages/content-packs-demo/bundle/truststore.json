@@ -1,0 +1,12 @@
+{
+  "contract_version": "1.0.0",
+  "keys": [
+    {
+      "key_id": "demo-pack-fv-2026",
+      "alg": "SHA256withECDSA",
+      "demo": true,
+      "public_key": "MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEJOe2QFksgwM8seUwMY3h9O9D4LlfSH/cPBscsKjQR/Qu45LJ3+aQH6CnBtb0v6luRdpHk7YrdIwRWyqcEkv0DA==",
+      "nota": "Clave PÚBLICA DEMO del pack demo F&V. Solo verifica el mecanismo de firma; NO es una clave de producción (ADR-0009)."
+    }
+  ]
+}

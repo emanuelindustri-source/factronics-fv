@@ -1,0 +1,20 @@
+=== F1.4 · Evidencia Android (teléfono real) ===
+adb install -r → Performing Streamed Install
+Success
+pm clear → estado limpio (sin pack instalado)
+captura: 68-android-estado-vacio.png
+estado vacío verificado: 'Sin contenido instalado' visible sin pack
+captura: 66-android-pack-instalado.png
+pack demo instalado por UI: versión 1.0.0, 25 ítems, tamaño y actualización visibles
+modo avión ACTIVADO (wifi datos off): 1
+búsqueda offline 'DEMO': 25 resultados · resultados con contenido: true
+captura: 67-android-busqueda-offline.png
+'Ver fuente' expandido en offline: DEMO-DOC-0001
+modo avión DESACTIVADO
+exportación: Copia exportada: fv-backup-20261125-231439.json
+archivos de copia en el dispositivo:
+total 36
+-rw-rw---- 1 u0_a342 ext_data_rw 36818 2026-11-25 19:14 fv-backup-20261125-231439.json
+importación: Copia restaurada en este dispositivo
+logcat crítico (0 líneas): ninguno
+captura: 73-android-ajustes-tras-backup.png

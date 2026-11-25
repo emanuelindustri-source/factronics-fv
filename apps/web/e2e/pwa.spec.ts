@@ -46,14 +46,14 @@ test("la PWA carga en es-VE y muestra el saludo", async ({ page }) => {
 
 test("el perfil persiste en IndexedDB tras recargar", async ({ page }) => {
   await openWithLanguage(page, "es-VE");
-  await page.locator(".nav button").nth(1).click();
+  await page.locator(".nav button").nth(2).click();
   const input = page.getByLabel(catalogs["es-VE"].translation["profile.nameLabel"]);
   await input.fill("Khristyan Hidalgo");
   await page.getByRole("button", { name: catalogs["es-VE"].translation["profile.save"] }).click();
   await expect(page.getByText(catalogs["es-VE"].translation["profile.saved"])).toBeVisible();
 
   await page.reload();
-  await page.locator(".nav button").nth(1).click();
+  await page.locator(".nav button").nth(2).click();
   await expect(page.getByLabel(catalogs["es-VE"].translation["profile.nameLabel"])).toHaveValue(
     "Khristyan Hidalgo"
   );
@@ -77,7 +77,7 @@ test("funciona sin conexión y con service worker instalado", async ({ page, con
 
 test("el selector de idioma es persistente (japonés tras recargar)", async ({ page }) => {
   await page.goto("http://localhost:4173/");
-  await page.locator(".nav button").nth(2).click();
+  await page.locator(".nav button").nth(3).click();
   await page.getByText("日本語", { exact: true }).click();
   await page.locator(".nav button").nth(0).click();
   await expect(page.getByText(catalogs.ja.translation["home.greeting"])).toBeVisible();
@@ -88,7 +88,7 @@ test("el selector de idioma es persistente (japonés tras recargar)", async ({ p
 
 test("los formatos de Ajustes siguen el locale elegido", async ({ page }) => {
   await openWithLanguage(page, "es-VE");
-  await page.locator(".nav button").nth(2).click();
+  await page.locator(".nav button").nth(3).click();
   await expect(page.getByText(formatNumber(SAMPLE_NUMBER, "es-VE"))).toBeVisible();
   await expect(page.getByText(formatPercent(SAMPLE_PERCENT, "es-VE"))).toBeVisible();
   await expect(page.getByText(formatDate(SAMPLE_DATE, "es-VE"))).toBeVisible();
@@ -120,8 +120,8 @@ for (const locale of [...REAL_LOCALES, ALL_LOCALES.find((l) => l.tag === "la")!]
 
     await expect(page.getByRole("heading", { level: 1 })).toHaveText(catalog["home.greeting"]);
     const navButtons = page.locator(".nav button");
-    await expect(navButtons).toHaveCount(4);
-    for (const key of ["nav.home", "nav.profile", "nav.settings", "nav.about"]) {
+    await expect(navButtons).toHaveCount(5);
+    for (const key of ["nav.home", "nav.content", "nav.profile", "nav.settings", "nav.about"]) {
       await expect(page.getByRole("button", { name: catalog[key] })).toBeVisible();
     }
 
@@ -152,7 +152,7 @@ test("el pseudo-local revela que no quedan literales fuera del catálogo", async
   ]);
 
   let pseudoLines = 0;
-  for (let tab = 0; tab < 4; tab += 1) {
+  for (let tab = 0; tab < 5; tab += 1) {
     await page.locator(".nav button").nth(tab).click();
     const texts: string[] = await page.evaluate(() =>
       Array.from(document.querySelectorAll("h1,h2,h3,p,span,b,strong,label,button"))
@@ -177,24 +177,24 @@ test("el pseudo-local revela que no quedan literales fuera del catálogo", async
 
 test("el easter egg desbloquea latín y pseudo-local tras 7 pulsaciones", async ({ page }) => {
   await openWithLanguage(page, "es-VE");
-  await page.locator(".nav button").nth(3).click();
+  await page.locator(".nav button").nth(4).click();
   const version = page.locator("button.version-link");
   for (let i = 0; i < 7; i += 1) {
     await version.click();
   }
-  await page.locator(".nav button").nth(2).click();
+  await page.locator(".nav button").nth(3).click();
   await expect(page.getByText("Latina · easter egg")).toBeVisible();
   await expect(page.getByText("Pseudo-local · QA")).toBeVisible();
 
   // El desbloqueo persiste tras recargar (localStorage).
   await page.reload();
-  await page.locator(".nav button").nth(2).click();
+  await page.locator(".nav button").nth(3).click();
   await expect(page.getByText("Latina · easter egg")).toBeVisible();
 });
 
 test("festividad forzada, tema claro/oscuro y modo sobrio", async ({ page }) => {
   await openWithLanguage(page, "es-VE");
-  await page.locator(".nav button").nth(2).click();
+  await page.locator(".nav button").nth(3).click();
 
   // Forzar Navidad y comprobar el atributo + la etiqueta de Inicio.
   await page.locator("#festivity-override").selectOption("christmas");
@@ -208,7 +208,7 @@ test("festividad forzada, tema claro/oscuro y modo sobrio", async ({ page }) => 
   await expect(page.locator("html")).toHaveAttribute("data-festivity", "christmas");
 
   // Modo sobrio: sin festividad y sin animaciones.
-  await page.locator(".nav button").nth(2).click();
+  await page.locator(".nav button").nth(3).click();
   await page.getByLabel("Modo sobrio").check();
   await expect(page.locator("html")).toHaveAttribute("data-sober", "true");
   await expect(page.locator("html")).not.toHaveAttribute("data-festivity");

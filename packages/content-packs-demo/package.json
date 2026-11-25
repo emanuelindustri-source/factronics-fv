@@ -10,6 +10,7 @@
     "validate": "node ../content-schema/src/cli.mjs validate ."
   },
   "devDependencies": {
-    "@factronics-fv/content-schema": "1.0.0"
+    "@factronics-fv/content-schema": "1.0.0",
+    "@factronics-fv/sync-contracts": "1.0.0"
   }
 }

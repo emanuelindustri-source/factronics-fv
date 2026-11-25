@@ -46,6 +46,7 @@ import com.factronics.fv.ui.FestivityUi
 @Composable
 fun SettingsScreen(
     festivityId: String,
+    content: ContentActions,
     onThemeModeChange: (String) -> Unit,
     onDynamicColorChange: (Boolean) -> Unit,
     onFestivitiesEnabledChange: (Boolean) -> Unit,
@@ -215,6 +216,13 @@ fun SettingsScreen(
                 color = MaterialTheme.colorScheme.primary
             )
         }
+
+        Spacer(Modifier.height(8.dp))
+        HorizontalDivider()
+        Spacer(Modifier.height(16.dp))
+
+        // --- Contenido sin conexión (F1.4) ---
+        ContentSection(content)
 
         Spacer(Modifier.height(8.dp))
         HorizontalDivider()

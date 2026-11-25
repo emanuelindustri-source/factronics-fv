@@ -22,8 +22,8 @@ describe("catálogo de la PWA", () => {
     expect(ALL_LOCALES).toHaveLength(13);
   });
 
-  it("todos los locales tienen exactamente las mismas 83 claves", () => {
-    expect(baseKeys).toHaveLength(83);
+  it("todos los locales tienen exactamente las mismas 148 claves", () => {
+    expect(baseKeys).toHaveLength(148);
     for (const locale of ALL_LOCALES) {
       const catalog = resources[locale.tag as keyof typeof resources].translation;
       expect(Object.keys(catalog).sort(), locale.tag).toEqual(baseKeys);

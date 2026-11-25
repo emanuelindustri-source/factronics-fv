@@ -1,0 +1,105 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://factronics-fv.github.io/schemas/sync/1.0.0/delta.schema.json",
+  "title": "F&V — Delta de sincronización de pack (contrato v1)",
+  "description": "Actualización incremental de un pack instalado: sustitución de archivos (upserts) + borrados lógicos (tombstones). Aplicación estrictamente ordenada por 'sequence' e idempotente: aplicar dos veces el mismo delta deja el mismo estado. Ver ADR-0009.",
+  "type": "object",
+  "required": [
+    "contract_version",
+    "pack_id",
+    "base_version",
+    "delta_version",
+    "sequence",
+    "min_client_version",
+    "upserts",
+    "tombstones"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "contract_version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$"
+    },
+    "pack_id": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$"
+    },
+    "base_version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$",
+      "description": "Versión del pack sobre la que aplica este delta. Si no coincide con la instalada, el delta se rechaza (BASE-DESCUADRE): hace falta una reinstalación completa."
+    },
+    "delta_version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$",
+      "description": "Versión del pack tras aplicar este delta."
+    },
+    "sequence": {
+      "type": "integer",
+      "minimum": 1,
+      "description": "Orden de aplicación. Debe ser exactamente la última aplicada + 1; una secuencia ya aplicada es un no-op idempotente y una salto se rechaza (ORDEN-INVALIDO)."
+    },
+    "min_client_version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$"
+    },
+    "upserts": {
+      "type": "array",
+      "description": "Archivos del pack que se sustituyen por completo (la unidad de actualización es el archivo items/<tipo>.json).",
+      "items": {
+        "type": "object",
+        "required": ["path", "sha256", "bytes", "content"],
+        "additionalProperties": false,
+        "properties": {
+          "path": {
+            "type": "string",
+            "pattern": "^(pack\\.json|items/[a-z_]+\\.json)$"
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "bytes": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "content": {
+            "type": "string",
+            "description": "Contenido exacto del archivo (UTF-8)."
+          }
+        }
+      }
+    },
+    "tombstones": {
+      "type": "array",
+      "description": "Borrados lógicos por ID de ítem. Un tombstone es definitivo: un upsert posterior con el mismo ID se rechaza (TOMBSTONE-CONFLICTO).",
+      "items": {
+        "type": "object",
+        "required": ["id", "revision", "deleted_at", "reason"],
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^(tec|fam|gen|mod|sis|cmp|prt|err|ink|doc|pag|frag|qst|att|crt):[a-z0-9]+(-[a-z0-9]+)*$"
+          },
+          "tipo": {
+            "type": "string",
+            "pattern": "^[a-z_]+$"
+          },
+          "revision": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "deleted_at": {
+            "type": "string",
+            "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+          },
+          "reason": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,25 @@
+﻿
+> fv-web@0.4.0 test
+> vitest run
+
+
+[1m[7m[36m RUN [39m[27m[22m [36mv2.1.9 [39m[90mC:/Factronics_VJ_Ecosystem/apps/web[39m
+
+ [32mÔ£ô[39m src/theme-contrast.test.ts [2m([22m[2m4 tests[22m[2m)[22m[90m 21[2mms[22m[39m
+ [32mÔ£ô[39m src/packs/crypto.test.ts [2m([22m[2m11 tests[22m[2m)[22m[90m 58[2mms[22m[39m
+ [32mÔ£ô[39m src/packs/delta.test.ts [2m([22m[2m11 tests[22m[2m)[22m[90m 74[2mms[22m[39m
+ [32mÔ£ô[39m src/packs/backup.test.ts [2m([22m[2m9 tests[22m[2m)[22m[90m 92[2mms[22m[39m
+ [32mÔ£ô[39m src/packs/contract.test.ts [2m([22m[2m30 tests[22m[2m)[22m[90m 289[2mms[22m[39m
+ [32mÔ£ô[39m src/i18n.test.ts [2m([22m[2m5 tests[22m[2m)[22m[90m 198[2mms[22m[39m
+ [32mÔ£ô[39m src/packs/store.test.ts [2m([22m[2m7 tests[22m[2m)[22m[33m 395[2mms[22m[39m
+ [32mÔ£ô[39m src/packs/local-schema.test.ts [2m([22m[2m5 tests[22m[2m)[22m[90m 12[2mms[22m[39m
+ [32mÔ£ô[39m src/festivities.test.ts [2m([22m[2m30 tests[22m[2m)[22m[90m 164[2mms[22m[39m
+ [32mÔ£ô[39m src/format.test.ts [2m([22m[2m11 tests[22m[2m)[22m[90m 89[2mms[22m[39m
+ [32mÔ£ô[39m src/packs/search.test.ts [2m([22m[2m9 tests[22m[2m)[22m[90m 216[2mms[22m[39m
+ [32mÔ£ô[39m src/theme.test.ts [2m([22m[2m1 test[22m[2m)[22m[90m 5[2mms[22m[39m
+
+[2m Test Files [22m [1m[32m12 passed[39m[22m[90m (12)[39m
+[2m      Tests [22m [1m[32m133 passed[39m[22m[90m (133)[39m
+[2m   Start at [22m 19:15:02
+[2m   Duration [22m 2.62s[2m (transform 1.66s, setup 0ms, collect 3.02s, tests 1.61s, environment 27ms, prepare 4.38s)[22m
+

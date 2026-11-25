@@ -1,0 +1,26 @@
+﻿
+> @factronics-fv/content-packs-demo@1.0.0 test
+> node --test test/*.test.mjs
+
+Ô£ö el bundle del pack demo pasa la validaci├│n completa del contrato (67.8472ms)
+Ô£ö la firma del bundle verifica con el truststore DEMO (1.8052ms)
+Ô£ö el truststore DEMO solo contiene la clave p├║blica (nunca secretos en el repo) (0.278ms)
+Ô£ö sin deriva: el bundle coincide byte a byte con el pack fuente (1.4162ms)
+Ô£ö instalaci├│n del bundle demo: 25 ├¡tems, todos con fuente, ├¡ndices construidos (2.16ms)
+Ô£ö b├║squeda offline sobre el pack demo instalado (1.8308ms)
+ÔûÂ pack demo F&V (gate de F1.1)
+  Ô£ö el pack demo valida sin errores (159.1738ms)
+  Ô£ö 100 % de ├¡tems con source_ref completo; 0 sin fuente (1.2826ms)
+  Ô£ö todo source_ref tiene revisor y fecha de revisi├│n (0.5782ms)
+  Ô£ö todo c├│digo del pack es inequ├¡vocamente DEMO (0.2806ms)
+  Ô£ö todos los ├¡tems est├ín etiquetados DEMO y el manifiesto declara demo=true (0.1946ms)
+  Ô£ö el pack cubre los 15 tipos de entidad del dominio (1.0129ms)
+Ô£ö pack demo F&V (gate de F1.1) (164.3392ms)
+Ôä╣ tests 12
+Ôä╣ suites 1
+Ôä╣ pass 12
+Ôä╣ fail 0
+Ôä╣ cancelled 0
+Ôä╣ skipped 0
+Ôä╣ todo 0
+Ôä╣ duration_ms 320.6115

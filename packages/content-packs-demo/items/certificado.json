@@ -4,7 +4,6 @@
     "tipo": "certificado",
     "schema_version": "1.0.0",
     "revision": 1,
-    "estado": "emitido",
     "actualizado": "2026-11-25",
     "etiquetas": ["DEMO"],
     "source_ref": {

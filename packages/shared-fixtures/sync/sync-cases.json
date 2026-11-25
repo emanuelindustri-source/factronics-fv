@@ -1,0 +1,251 @@
+{
+  "nota": "Fixtures compartidos del contrato de sincronización F&V (ADR-0009). Los mismos casos se ejecutan en JavaScript (packages/sync-contracts), TypeScript (apps/web) y Kotlin (apps/android): las TRES plataformas deben dar exactamente los mismos resultados. Todo el contenido es DEMO sintético de prueba (códigos DEMO-, ADR-0003): no describe equipos reales. Los hashes y firmas se calculan en tiempo de ejecución con criptografía efímera por plataforma; solo crypto-vectors.json fija bytes exactos.",
+  "client_version": "0.5.0",
+  "mini_pack": {
+    "manifest": {
+      "id": "pack-fv-test",
+      "nombre": "Pack de pruebas F&V",
+      "descripcion": "Mini-pack sintético para fixtures del contrato de sincronización. Contenido DEMO de prueba; no describe equipos reales.",
+      "version": "1.0.0",
+      "schema_version": "1.0.0",
+      "demo": true,
+      "idioma_default": "es",
+      "creado": "2026-11-25",
+      "responsable": "Khristyan Hidalgo"
+    },
+    "items": {
+      "tecnologia": [
+        {
+          "id": "tec:demo-test",
+          "tipo": "tecnologia",
+          "schema_version": "1.0.0",
+          "revision": 1,
+          "estado": "publicado",
+          "actualizado": "2026-11-25",
+          "etiquetas": ["DEMO"],
+          "source_ref": {
+            "documento": "Documento demo F&V — Guía de pruebas del contrato",
+            "codigo_oficial": "DEMO-DOC-0010",
+            "revision": "DEMO-REV-A",
+            "pagina": 1,
+            "cita_textual": "Mini-pack sintético para probar el contrato de sincronización de F&V; no describe equipos ni capacidades reales.",
+            "confianza": "alta",
+            "revisor": "Khristyan Hidalgo",
+            "fecha_revision": "2026-11-25"
+          },
+          "nombre": "Tecnología DEMO de prueba de contrato",
+          "siglas": "DEMO-TC",
+          "descripcion": "Descripción demo genérica para fixtures del contrato; no describe equipos reales."
+        }
+      ],
+      "pregunta": [
+        {
+          "id": "qst:demo-test-0001",
+          "tipo": "pregunta",
+          "schema_version": "1.0.0",
+          "revision": 1,
+          "estado": "publicado",
+          "actualizado": "2026-11-25",
+          "etiquetas": ["DEMO"],
+          "source_ref": {
+            "documento": "Documento demo F&V — Guía de pruebas del contrato",
+            "codigo_oficial": "DEMO-DOC-0011",
+            "revision": "DEMO-REV-A",
+            "pagina": 2,
+            "cita_textual": "Pregunta demo redactada para probar la instalación de packs sin contenido real.",
+            "confianza": "alta",
+            "revisor": "Khristyan Hidalgo",
+            "fecha_revision": "2026-11-25"
+          },
+          "tipo_pregunta": "seleccion_simple",
+          "enunciado": "¿Para qué sirve el mini-pack de fixtures del contrato de sincronización?",
+          "opciones": [
+            "Para probar el contrato sin contenido real",
+            "Para publicar datos de equipos",
+            "Para almacenar contraseñas"
+          ],
+          "respuesta_correcta": "Para probar el contrato sin contenido real",
+          "explicacion": "El mini-pack es contenido DEMO de prueba del contrato (ADR-0009).",
+          "dificultad": "basico",
+          "tema": "Contrato de sincronización",
+          "entidades": ["tec:demo-test"]
+        }
+      ],
+      "certificado": [
+        {
+          "id": "crt:demo-test",
+          "tipo": "certificado",
+          "schema_version": "1.0.0",
+          "revision": 1,
+          "estado": "publicado",
+          "actualizado": "2026-11-25",
+          "etiquetas": ["DEMO"],
+          "source_ref": {
+            "documento": "Documento demo F&V — Guía de pruebas del contrato",
+            "codigo_oficial": "DEMO-DOC-0012",
+            "revision": "DEMO-REV-A",
+            "pagina": 3,
+            "cita_textual": "Certificado demo para probar las reglas de programa interno en el contrato.",
+            "confianza": "alta",
+            "revisor": "Khristyan Hidalgo",
+            "fecha_revision": "2026-11-25"
+          },
+          "programa": "Programa interno de competencias técnicas de Factronics, C.A.",
+          "aviso": "No es una certificación oficial de Videojet Technologies"
+        }
+      ]
+    }
+  },
+  "bundle_cases": [
+    { "name": "bundle válido (control)", "mutacion": "ninguna", "expect": "accept" },
+    { "name": "ítem sin source_ref se rechaza (SIN FUENTE NO SE PUBLICA)", "mutacion": "item-sin-source-ref", "expect": "reject", "codes_any": ["CONTENIDO-INVALIDO"], "rules_any": ["FALTA-PROCEDENCIA"] },
+    { "name": "source_ref incompleto se rechaza", "mutacion": "source-ref-incompleto", "expect": "reject", "codes_any": ["CONTENIDO-INVALIDO"], "rules_any": ["SOURCE-REF-INCOMPLETO"] },
+    { "name": "ID con formato inválido", "mutacion": "id-formato", "expect": "reject", "codes_any": ["CONTENIDO-INVALIDO"], "rules_any": ["ID-FORMATO"] },
+    { "name": "ID con prefijo ajeno al tipo", "mutacion": "id-tipo", "expect": "reject", "codes_any": ["CONTENIDO-INVALIDO"], "rules_any": ["ID-TIPO"] },
+    { "name": "ID duplicado", "mutacion": "id-duplicado", "expect": "reject", "codes_any": ["CONTENIDO-INVALIDO"], "rules_any": ["ID-DUPLICADO"] },
+    { "name": "ítem demo sin etiqueta DEMO", "mutacion": "etiqueta-demo", "expect": "reject", "codes_any": ["CONTENIDO-INVALIDO"], "rules_any": ["DEMO-ETIQUETA"] },
+    { "name": "código no DEMO- prohibido (nada real, nada inventado)", "mutacion": "codigo-no-demo", "expect": "reject", "codes_any": ["CONTENIDO-INVALIDO"], "rules_any": ["DEMO-CODIGO"] },
+    { "name": "schema_version del ítem distinto al manifiesto", "mutacion": "schema-version-dispar", "expect": "reject", "codes_any": ["CONTENIDO-INVALIDO"], "rules_any": ["SCHEMA-VERSION"] },
+    { "name": "ítem en archivo de otro tipo", "mutacion": "archivo-tipo", "expect": "reject", "codes_any": ["CONTENIDO-INVALIDO"], "rules_any": ["ARCHIVO-TIPO"] },
+    { "name": "certificado sin aviso interno", "mutacion": "certificado-sin-aviso", "expect": "reject", "codes_any": ["CONTENIDO-INVALIDO"], "rules_any": ["CERTIFICADO-AVISO"] },
+    { "name": "certificado que se declara oficial de Videojet", "mutacion": "certificado-programa-oficial", "expect": "reject", "codes_any": ["CONTENIDO-INVALIDO"], "rules_any": ["CERTIFICADO-PROGRAMA"] },
+    { "name": "respuesta_correcta fuera de las opciones", "mutacion": "pregunta-respuesta", "expect": "reject", "codes_any": ["CONTENIDO-INVALIDO"], "rules_any": ["PREGUNTA-RESPUESTA"] },
+    { "name": "archivo de ítems con JSON inválido", "mutacion": "json-invalido", "expect": "reject", "codes_any": ["PACK-CORRUPTO"] },
+    { "name": "hash de archivo alterado", "mutacion": "hash-alterado", "expect": "reject", "codes_any": ["HASH-INVALIDO"] },
+    { "name": "firma alterada", "mutacion": "firma-alterada", "expect": "reject", "codes_any": ["FIRMA-INVALIDA"] },
+    { "name": "clave de firma desconocida", "mutacion": "clave-desconocida", "expect": "reject", "codes_any": ["CLAVE-DESCONOCIDA"] },
+    { "name": "bundle sin firma", "mutacion": "sin-firma", "expect": "reject", "codes_any": ["FIRMA-AUSENTE", "FIRMA-INVALIDA"] },
+    { "name": "manifiesto sin campo obligatorio", "mutacion": "manifest-campo-faltante", "expect": "reject", "codes_any": ["MANIFIESTO-INVALIDO"] },
+    { "name": "versión mínima de cliente no cumplida", "mutacion": "min-client-version", "expect": "reject", "codes_any": ["VERSION-CLIENTE"] },
+    { "name": "schema_version futura se rechaza (nunca se adivina)", "mutacion": "version-futura", "expect": "reject", "codes_any": ["VERSION-FUTURA"] },
+    { "name": "contract_version futura se rechaza", "mutacion": "contract-version-futura", "expect": "reject", "codes_any": ["CONTRATO-VERSION"] },
+    { "name": "downgrade de pack se rechaza", "mutacion": "downgrade", "instalado_version": "2.0.0", "expect": "reject", "codes_any": ["DOWNGRADE"] },
+    { "name": "reinstalar la misma versión es no-op", "mutacion": "ninguna", "instalado_version": "1.0.0", "expect": "accept", "motivo": "ya-instalado" },
+    { "name": "bundle con tamaño excedido", "mutacion": "ninguna", "tamano_simulado": 20971521, "expect": "reject", "codes_any": ["BUNDLE-INVALIDO", "RESPALDO-DEMASIADO-GRANDE"] }
+  ],
+  "delta_cases": [
+    {
+      "name": "delta válido: upsert + tombstone",
+      "kind": "valido",
+      "expect": "accept",
+      "expect_version": "1.1.0",
+      "expect_items": 2,
+      "expect_tombstones": ["tec:demo-test"]
+    },
+    {
+      "name": "idempotencia: aplicar dos veces el mismo delta deja el mismo estado",
+      "kind": "idempotencia",
+      "expect": "accept",
+      "motivo_segunda": "ya-aplicado",
+      "expect_version": "1.1.0"
+    },
+    {
+      "name": "orden estricto: sequence fuera de orden se rechaza",
+      "kind": "orden-invalido",
+      "expect": "reject",
+      "codes_any": ["ORDEN-INVALIDO"]
+    },
+    {
+      "name": "base_version distinta de la instalada",
+      "kind": "base-descuadre",
+      "expect": "reject",
+      "codes_any": ["BASE-DESCUADRE"]
+    },
+    {
+      "name": "downgrade por delta se rechaza",
+      "kind": "downgrade",
+      "expect": "reject",
+      "codes_any": ["DOWNGRADE"]
+    },
+    {
+      "name": "tombstone es definitivo: la resurrección se rechaza",
+      "kind": "tombstone-resurreccion",
+      "expect": "reject",
+      "codes_any": ["TOMBSTONE-CONFLICTO"]
+    },
+    {
+      "name": "upsert con hash inválido",
+      "kind": "hash-malo",
+      "expect": "reject",
+      "codes_any": ["HASH-INVALIDO"]
+    },
+    {
+      "name": "delta que exige cliente más nuevo",
+      "kind": "min-client",
+      "expect": "reject",
+      "codes_any": ["VERSION-CLIENTE"]
+    },
+    {
+      "name": "cadena de deltas en orden converge (offline 24 h)",
+      "kind": "cadena",
+      "expect": "accept",
+      "expect_version": "1.3.0",
+      "expect_items": 2
+    }
+  ],
+  "backup_cases": [
+    { "name": "round-trip completo sobre almacenamiento limpio", "mutacion": "ninguna", "expect": "accept" },
+    { "name": "backup con un bit alterado se rechaza", "mutacion": "checksum-alterado", "expect": "reject", "codes_any": ["RESPALDO-CORRUPTO"] },
+    { "name": "formato de backup futuro", "mutacion": "formato-futuro", "expect": "reject", "codes_any": ["VERSION-FUTURA"] },
+    { "name": "backup demasiado grande", "mutacion": "ninguna", "tamano_simulado": 52428801, "expect": "reject", "codes_any": ["RESPALDO-DEMASIADO-GRANDE"] },
+    { "name": "backup con JSON corrupto", "mutacion": "json-invalido", "expect": "reject", "codes_any": ["RESPALDO-CORRUPTO"] },
+    { "name": "backup con dato personal prohibido (privacidad)", "mutacion": "settings-con-nombre", "expect": "reject", "codes_any": ["RESPALDO-CORRUPTO", "MANIFIESTO-INVALIDO"] }
+  ],
+  "search_cases": [
+    { "name": "texto libre sin acentos coincide con texto acentuado", "query": { "texto": "sincronizacion" }, "expect_ids": ["qst:demo-test-0001", "tec:demo-test"] },
+    { "name": "texto libre encuentra la pregunta", "query": { "texto": "sirve el mini-pack" }, "expect_ids": ["qst:demo-test-0001"] },
+    { "name": "filtro por tipo", "query": { "tipo": "certificado" }, "expect_ids": ["crt:demo-test"] },
+    { "name": "filtro por tecnología (índice)", "query": { "tecnologia": "tec:demo-test" }, "expect_ids": ["qst:demo-test-0001"] },
+    { "name": "sin resultados devuelve lista vacía", "query": { "texto": "zzz-inexistente" }, "expect_ids": [] }
+  ],
+  "local_store_cases": [
+    {
+      "name": "base vacía → v1 (creación desde cero)",
+      "migracion": "ninguna",
+      "store_in": null,
+      "expect_local_schema_version": 1
+    },
+    {
+      "name": "v1 → v2 (migración declarativa sintética)",
+      "migracion": "sintetica-v1-v2",
+      "store_in": {
+        "local_schema_version": 1,
+        "packs": {
+          "pack-fv-test": {
+            "pack_id": "pack-fv-test",
+            "pack_version": "1.0.0",
+            "items_total": 3,
+            "installed_at": "2026-11-25T10:00:00Z",
+            "updated_at": "2026-11-25T10:00:00Z"
+          }
+        }
+      },
+      "expect_store": {
+        "local_schema_version": 2,
+        "formato": "fv-store/2",
+        "packs": {
+          "pack-fv-test": {
+            "pack_id": "pack-fv-test",
+            "pack_version": "1.0.0",
+            "items_total": 3,
+            "installed_at": "2026-11-25T10:00:00Z",
+            "updated_at": "2026-11-25T10:00:00Z"
+          }
+        }
+      }
+    },
+    {
+      "name": "migración fallida → rollback (el almacén queda intacto)",
+      "migracion": "fallida",
+      "store_in": {
+        "local_schema_version": 1,
+        "packs": {}
+      },
+      "expect_error": "MIGRACION-FALLIDA",
+      "expect_store": {
+        "local_schema_version": 1,
+        "packs": {}
+      }
+    }
+  ]
+}

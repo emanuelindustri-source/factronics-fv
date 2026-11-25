@@ -1,0 +1,24 @@
+{
+  "name": "@factronics-fv/sync-contracts",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Contratos de sincronización offline de F&V: manifiesto de pack, delta, tombstones, bundle .fvpack, backup local, integridad (SHA-256) y firma (ECDSA P-256). Implementación de referencia + servidor simulado para tests. Ver ADR-0009.",
+  "type": "module",
+  "license": "UNLICENSED",
+  "main": "src/index.mjs",
+  "exports": {
+    ".": "./src/index.mjs",
+    "./schemas/*.json": "./schemas/*.json"
+  },
+  "files": [
+    "src",
+    "schemas"
+  ],
+  "scripts": {
+    "test": "node --test test/*.test.mjs"
+  },
+  "dependencies": {
+    "ajv": "^8.17.1",
+    "ajv-formats": "^3.0.1"
+  }
+}

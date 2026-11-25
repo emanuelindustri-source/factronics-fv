@@ -1,0 +1,24 @@
+﻿
+> factronics-fv-ecosystem@0.5.0 i18n:check
+> node packages/i18n/src/generate.mjs --check && node packages/i18n/src/scan-hardcoded.mjs && node --test packages/i18n/test/i18n.test.mjs
+
+i18n OK: 13 idiomas, 148 claves, salidas al d├¡a.
+Sin textos hardcodeados: 13 idiomas, 148 claves.
+Ô£ö est├ín los 11 idiomas reales y exactamente 2 especiales (2.9332ms)
+Ô£ö cada idioma tiene las mismas claves que es-VE, sin vac├¡os ni marcadores raros (6.2155ms)
+Ô£ö es-VE define las 148 claves esperadas (0.2266ms)
+Ô£ö el pseudo-local es-XA se deriva exactamente de es-VE (1.9903ms)
+Ô£ö el pseudo-local nunca pierde marcadores de posici├│n (0.3882ms)
+Ô£ö los recursos Android generados est├ín al d├¡a y completos en los 13 locales (7.5342ms)
+Ô£ö paridad estricta de claves Android Ôåö PWA Ôåö cat├ílogo (9.7613ms)
+Ô£ö las copias de la PWA son id├®nticas al cat├ílogo fuente (6.4202ms)
+Ô£ö todos los textos pseudo-localizados est├ín marcados con Ôƒª Ôƒº (0.6385ms)
+Ô£ö no hay textos de UI hardcodeados ni claves/recurso inexistentes (6.9936ms)
+Ôä╣ tests 10
+Ôä╣ suites 0
+Ôä╣ pass 10
+Ôä╣ fail 0
+Ôä╣ cancelled 0
+Ôä╣ skipped 0
+Ôä╣ todo 0
+Ôä╣ duration_ms 184.0162

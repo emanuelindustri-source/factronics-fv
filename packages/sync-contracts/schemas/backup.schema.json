@@ -1,0 +1,102 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://factronics-fv.github.io/schemas/sync/1.0.0/backup.schema.json",
+  "title": "F&V — Copia de seguridad local (contrato v1)",
+  "description": "Archivo versionado de backup/export/import de packs e instalación. Sin datos personales: solo packs, estado de sincronización y preferencias no personales (idioma, tema, festividades). La integridad se garantiza con SHA-256 sobre la serialización canónica (claves ordenadas) de todo el documento salvo 'checksum'. Ver ADR-0009.",
+  "type": "object",
+  "required": [
+    "format",
+    "format_version",
+    "app_min_version",
+    "created",
+    "source",
+    "local_schema_version",
+    "packs",
+    "sync_state",
+    "settings",
+    "checksum"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "format": {
+      "const": "fv-backup"
+    },
+    "format_version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$",
+      "description": "Versión del formato de backup. Un formato futuro se rechaza (VERSION-FUTURA); jamás se interpreta a ciegas."
+    },
+    "app_min_version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$",
+      "description": "Versión mínima de app capaz de restaurar este backup."
+    },
+    "created": {
+      "type": "string",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z$"
+    },
+    "source": {
+      "enum": ["android", "web"],
+      "description": "Plataforma que generó el backup. No identifica al usuario."
+    },
+    "local_schema_version": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "packs": {
+      "type": "array",
+      "description": "Packs instalados con su manifiesto de sincronización, firma y archivos completos.",
+      "items": {
+        "type": "object",
+        "required": ["sync_manifest", "signature", "pack_manifest", "files"],
+        "additionalProperties": false,
+        "properties": {
+          "sync_manifest": { "$ref": "sync-manifest.schema.json" },
+          "signature": { "$ref": "signature.schema.json" },
+          "pack_manifest": {
+            "type": "object",
+            "description": "Contenido literal de pack.json (esquema de contenido F1.1, sin tocar)."
+          },
+          "files": {
+            "type": "object",
+            "description": "Mapa ruta → contenido exacto del archivo (UTF-8).",
+            "additionalProperties": { "type": "string" }
+          }
+        }
+      }
+    },
+    "sync_state": {
+      "type": "array",
+      "description": "Estado de sincronización por pack (última secuencia aplicada y versión actual).",
+      "items": {
+        "type": "object",
+        "required": ["pack_id", "pack_version", "last_applied_sequence"],
+        "additionalProperties": false,
+        "properties": {
+          "pack_id": { "type": "string", "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$" },
+          "pack_version": { "type": "string", "pattern": "^\\d+\\.\\d+\\.\\d+$" },
+          "last_applied_sequence": { "type": "integer", "minimum": 0 }
+        }
+      }
+    },
+    "settings": {
+      "type": "object",
+      "description": "Preferencias no personales. PROHIBIDO incluir nombre, foto, fecha de nacimiento, progreso o cualquier dato personal (política de privacidad F&V).",
+      "required": ["language", "theme_mode"],
+      "additionalProperties": false,
+      "properties": {
+        "language": { "type": "string" },
+        "theme_mode": { "enum": ["system", "light", "dark"] },
+        "dynamic_color": { "type": "boolean" },
+        "festivities_enabled": { "type": "boolean" },
+        "sober_mode": { "type": "boolean" },
+        "festivity_override": { "type": "string" }
+      }
+    },
+    "checksum": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$",
+      "description": "SHA-256 de la serialización canónica del documento sin este campo."
+    }
+  }
+}
