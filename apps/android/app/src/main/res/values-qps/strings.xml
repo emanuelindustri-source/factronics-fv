@@ -8,7 +8,7 @@
     <string name="nav_about">⟦Áçérçá dé····⟧</string>
     <string name="home_greeting">⟦Hólá, F&amp;V····⟧</string>
     <string name="home_subtitle">⟦Tú hérrámíéñtá dé éstúdíó ý çámpó — bý Fáçtróñíçs··················⟧</string>
-    <string name="home_phase">⟦Fásé 1.2 · Íñtérñáçíóñálízáçíóñ···········⟧</string>
+    <string name="home_phase">⟦Fásé 1.3 · Témá ý féstívídádés···········⟧</string>
     <string name="home_phase_done">⟦Çómplétádá····⟧</string>
     <string name="home_modules">⟦Módúlós dél prógrámá·······⟧</string>
     <string name="home_module_study">⟦Éstúdíó ý éxáméñés·······⟧</string>
@@ -48,7 +48,7 @@
     <string name="settings_dynamic_color">⟦Çólór díñámíçó (Mátéríál Ýóú)···········⟧</string>
     <string name="settings_dynamic_note">⟦Díspóñíblé éñ Áñdróíd 12+·········⟧</string>
     <string name="settings_festive">⟦Çápá dé féstívídádés·······⟧</string>
-    <string name="settings_festive_note">⟦Llégá éñ lá Fásé 1.3·······⟧</string>
+    <string name="settings_festive_note">⟦Áçéñtós é ílústráçíóñ ségúñ lá féçhá; désáçtíválá çúáñdó qúíérás.·······················⟧</string>
     <string name="settings_reduced_motion">⟦Móvímíéñtó rédúçídó (sígúé ál sístémá)··············⟧</string>
     <string name="settings_reduced_motion_note">⟦Lá ápp réspétá lá çóñfígúráçíóñ dé áççésíbílídád dél téléfóñó······················⟧</string>
     <string name="settings_formats">⟦Éjémpló dé fórmátó·······⟧</string>
@@ -61,11 +61,27 @@
     <string name="about_desc">⟦F&amp;V és lá áplíçáçíóñ íñtérñá dé éstúdíó, díágñóstíçó ý hérrámíéñtás dé çámpó dél éqúípó téçñíçó dé Fáçtróñíçs, Ç.Á.·········································⟧</string>
     <string name="about_disclaimer">⟦Prógrámá íñtérñó dé Fáçtróñíçs, Ç.Á. Ñó és úñá çértífíçáçíóñ ófíçíál dé Vídéójét Téçhñólógíés.·································⟧</string>
     <string name="about_version">⟦Vérsíóñ···⟧</string>
-    <string name="about_version_value">⟦F&amp;V %1$s · Fásé 1.2·········⟧</string>
+    <string name="about_version_value">⟦F&amp;V %1$s · Fásé 1.3·········⟧</string>
     <string name="about_team">⟦Éqúípó dé válídáçíóñ téçñíçá··········⟧</string>
     <string name="about_sources">⟦Fúéñtés íñstítúçíóñálés·········⟧</string>
     <string name="about_licenses">⟦Éstá ápp úsá bíblíótéçás dé çódígó ábíértó (ÁñdróídX, Jétpáçk Çómpósé, Kótlíñ, Réáçt é í18ñéxt). Lós dátós téçñíçós réálés sé públíçáráñ sóló çóñ fúéñté ý révísíóñ.··························································⟧</string>
     <string name="about_privacy">⟦Príváçídád: lá ápp ñó sólíçítá pérmísós íññéçésáríós. Tús dátós pérsóñálés sé gúárdáñ éñ él díspósítívó.·····································⟧</string>
     <string name="about_translations_pending">⟦Trádúççíóñés dé íñtérfáz: péñdíéñtés dé révísíóñ pór hábláñtés ñátívós.·························⟧</string>
     <string name="about_unlock_almost">⟦Úñá púlsáçíóñ más…·······⟧</string>
+    <string name="festivity_christmas">⟦Ñávídád···⟧</string>
+    <string name="festivity_epiphany">⟦Díá dé Réýés·····⟧</string>
+    <string name="festivity_valentine">⟦Sáñ Váléñtíñ·····⟧</string>
+    <string name="festivity_carnival">⟦Çárñávál···⟧</string>
+    <string name="festivity_mothers_day">⟦Díá dé lá Mádré······⟧</string>
+    <string name="festivity_fathers_day">⟦Díá dél Pádré·····⟧</string>
+    <string name="festivity_childrens_day">⟦Díá dél Ñíñó·····⟧</string>
+    <string name="festivity_halloween">⟦Hállówééñ····⟧</string>
+    <string name="festivity_independence">⟦Díá dé lá Íñdépéñdéñçíá·········⟧</string>
+    <string name="festivity_none">⟦Síñ féstívídád·····⟧</string>
+    <string name="settings_festivity_enabled">⟦Féstívídádés·····⟧</string>
+    <string name="settings_festivity_sober">⟦Módó sóbríó····⟧</string>
+    <string name="settings_festivity_override">⟦Fórzár féstívídád······⟧</string>
+    <string name="settings_festivity_auto">⟦Áútómátíçó····⟧</string>
+    <string name="settings_festivity_note">⟦Sé çálçúlá çóñ lá féçhá ý zóñá hóráríá dél díspósítívó. Púédés désáçtívárlá, fórzár úñá féstívídád ó úsár módó sóbríó.··········································⟧</string>
+    <string name="home_festivity_active">⟦Témá féstívó: %1$s·······⟧</string>
 </resources>

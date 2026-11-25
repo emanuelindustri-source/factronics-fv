@@ -1,0 +1,83 @@
+﻿
+> factronics-fv-ecosystem@0.4.0 test
+> npm test --workspace=@factronics-fv/content-schema --workspace=@factronics-fv/content-packs-demo
+
+> @factronics-fv/content-schema@1.0.0 test
+> node --test test/*.test.mjs
+
+▶ migraciones: mecanismo declarado
+  ✔ un pack ya en la versión vigente no se toca (1.9184ms)
+  ✔ un pack más nuevo que la herramienta se rechaza (no se adivina) (0.3875ms)
+  ✔ sin ruta de migración declarada, un pack viejo no se inventa: se rechaza (0.3025ms)
+  ✔ una migración sintética declarada transforma y normaliza el pack (0.5767ms)
+  ✔ una migración que no avanza de versión se rechaza (0.3146ms)
+  ✔ el registro real MIGRATIONS existe (vacío en v1) y el comparador semver funciona (0.2043ms)
+✔ migraciones: mecanismo declarado (5.533ms)
+▶ migraciones: pack demo real
+  ✔ el pack del repositorio ya está en la versión vigente (2.7073ms)
+✔ migraciones: pack demo real (2.9057ms)
+▶ casos de control (ítems válidos)
+  ✔ un ítem con source_ref completo y etiqueta DEMO valida sin errores (58.4151ms)
+  ✔ pregunta válida con respuesta dentro de las opciones (7.2025ms)
+  ✔ referencias resueltas: documento citado por source_ref.documento_id (6.7019ms)
+✔ casos de control (ítems válidos) (73.2902ms)
+▶ procedencia obligatoria (source_ref)
+  ✔ un ítem SIN source_ref se rechaza explícitamente (sin fuente no se publica) (0.865ms)
+  ✔ source_ref sin revisor se rechaza (procedencia incompleta) (0.4448ms)
+  ✔ source_ref sin cita_textual se rechaza (procedencia incompleta) (0.4059ms)
+  ✔ source_ref.documento_id no puede ser autorreferencia (0.4164ms)
+  ✔ source_ref con pagina_fin menor que pagina se rechaza (0.3558ms)
+✔ procedencia obligatoria (source_ref) (2.9171ms)
+▶ IDs estables
+  ✔ ID malformado se rechaza (0.4357ms)
+  ✔ prefijo del ID incoherente con el tipo se rechaza (0.3852ms)
+  ✔ ID duplicado se rechaza (0.3692ms)
+✔ IDs estables (1.3832ms)
+▶ referencias entre ítems
+  ✔ referencia rota (el destino no existe) se rechaza (0.3408ms)
+  ✔ referencia al tipo equivocado se rechaza (0.3128ms)
+✔ referencias entre ítems (0.7634ms)
+▶ reglas de packs demo
+  ✔ ítem sin etiqueta DEMO en pack demo se rechaza (0.2953ms)
+  ✔ código sin prefijo DEMO- en pack demo se rechaza (4.6206ms)
+  ✔ el código 'DEMO-...' si se acepta (0.3687ms)
+✔ reglas de packs demo (5.4294ms)
+▶ preguntas y certificados
+  ✔ respuesta fuera de las opciones se rechaza (0.3586ms)
+  ✔ certificado sin el aviso obligatorio se rechaza (6.6134ms)
+  ✔ certificado que se declara oficial se rechaza (0.5727ms)
+✔ preguntas y certificados (7.7017ms)
+▶ pack demo del repositorio (integración)
+  ✔ el pack demo completo valida sin errores (46.3887ms)
+  ✔ el 100% de los ítems tiene source_ref completo y revisor (1.0877ms)
+  ✔ todos los ítems del pack demo están etiquetados como DEMO (0.1571ms)
+  ✔ el manifiesto del pack demo declara demo=true (0.0957ms)
+✔ pack demo del repositorio (integración) (47.9238ms)
+ℹ tests 30
+ℹ suites 9
+ℹ pass 30
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 300.1156
+
+> @factronics-fv/content-packs-demo@1.0.0 test
+> node --test test/*.test.mjs
+
+▶ pack demo F&V (gate de F1.1)
+  ✔ el pack demo valida sin errores (124.0367ms)
+  ✔ 100 % de ítems con source_ref completo; 0 sin fuente (0.9493ms)
+  ✔ todo source_ref tiene revisor y fecha de revisión (0.3892ms)
+  ✔ todo código del pack es inequívocamente DEMO (0.1884ms)
+  ✔ todos los ítems están etiquetados DEMO y el manifiesto declara demo=true (0.1433ms)
+  ✔ el pack cubre los 15 tipos de entidad del dominio (1.5229ms)
+✔ pack demo F&V (gate de F1.1) (128.4618ms)
+ℹ tests 6
+ℹ suites 1
+ℹ pass 6
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 259.8777

@@ -5,16 +5,21 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import com.factronics.fv.data.FestivityEngine
 import com.factronics.fv.data.LocaleHelper
 import com.factronics.fv.data.SettingsStore
 import com.factronics.fv.data.SupportedLocales
 import com.factronics.fv.ui.FVApp
 import com.factronics.fv.ui.theme.FVTheme
+import kotlinx.coroutines.delay
+import java.time.Instant
+import java.time.ZoneId
 
 class MainActivity : ComponentActivity() {
 
@@ -31,9 +36,34 @@ class MainActivity : ComponentActivity() {
         setContent {
             var themeMode by remember { mutableStateOf(settings.themeMode) }
             var dynamicColor by remember { mutableStateOf(settings.dynamicColor) }
+            var festivitiesEnabled by remember { mutableStateOf(settings.festivitiesEnabled) }
+            var soberMode by remember { mutableStateOf(settings.soberMode) }
+            var festivityOverride by remember { mutableStateOf(settings.festivityOverride) }
+            var now by remember { mutableStateOf(Instant.now()) }
 
-            FVTheme(themeMode = themeMode, dynamicColor = dynamicColor) {
+            LaunchedEffect(Unit) {
+                while (true) {
+                    delay(60_000)
+                    now = Instant.now()
+                }
+            }
+
+            val festivityId = FestivityEngine.resolve(
+                instant = now,
+                zoneId = ZoneId.systemDefault(),
+                country = "VE",
+                enabled = festivitiesEnabled,
+                sober = soberMode,
+                override = festivityOverride
+            )
+
+            FVTheme(
+                themeMode = themeMode,
+                dynamicColor = dynamicColor,
+                festivityId = festivityId
+            ) {
                 FVApp(
+                    festivityId = festivityId,
                     onThemeModeChange = { mode ->
                         themeMode = mode
                         settings.themeMode = mode
@@ -41,6 +71,18 @@ class MainActivity : ComponentActivity() {
                     onDynamicColorChange = { enabled ->
                         dynamicColor = enabled
                         settings.dynamicColor = enabled
+                    },
+                    onFestivitiesEnabledChange = { enabled ->
+                        festivitiesEnabled = enabled
+                        settings.festivitiesEnabled = enabled
+                    },
+                    onSoberModeChange = { enabled ->
+                        soberMode = enabled
+                        settings.soberMode = enabled
+                    },
+                    onFestivityOverrideChange = { value ->
+                        festivityOverride = value
+                        settings.festivityOverride = value
                     },
                     onLanguageChange = { lang ->
                         val normalized = SupportedLocales.normalize(lang)

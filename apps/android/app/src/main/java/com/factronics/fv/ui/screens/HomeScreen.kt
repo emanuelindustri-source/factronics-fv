@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
@@ -27,9 +28,12 @@ import androidx.compose.ui.semantics.heading
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.dp
 import com.factronics.fv.R
+import com.factronics.fv.data.FestivityEngine
+import com.factronics.fv.ui.FestivityUi
+import com.factronics.fv.ui.components.FestivityArt
 
 @Composable
-fun HomeScreen() {
+fun HomeScreen(festivityId: String) {
     val modules = listOf(
         R.string.home_module_study,
         R.string.home_module_calc,
@@ -59,6 +63,27 @@ fun HomeScreen() {
                 color = MaterialTheme.colorScheme.onBackground
             )
             Spacer(Modifier.height(8.dp))
+            if (festivityId != FestivityEngine.NONE) {
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    FestivityArt(festivityId)
+                    Spacer(Modifier.width(10.dp))
+                    Surface(
+                        color = MaterialTheme.colorScheme.secondaryContainer,
+                        shape = MaterialTheme.shapes.small
+                    ) {
+                        Text(
+                            text = stringResource(
+                                R.string.home_festivity_active,
+                                stringResource(FestivityUi.nameRes(festivityId))
+                            ),
+                            style = MaterialTheme.typography.labelLarge,
+                            color = MaterialTheme.colorScheme.onSecondaryContainer,
+                            modifier = Modifier.padding(horizontal = 12.dp, vertical = 6.dp)
+                        )
+                    }
+                }
+                Spacer(Modifier.height(8.dp))
+            }
         }
 
         item {

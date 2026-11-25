@@ -1,0 +1,59 @@
+﻿
+ RUN  v2.1.9 C:/Factronics_VJ_Ecosystem/apps/web
+
+ ✓ src/theme.test.ts > resolveTheme > devuelve el modo explícito tal cual
+ ✓ src/theme-contrast.test.ts > paletas compartidas > la PWA coincide exactamente con el archivo compartido
+ ✓ src/theme-contrast.test.ts > paletas compartidas > el CSS de la PWA coincide con la paleta compartida
+ ✓ src/theme-contrast.test.ts > contraste AA > tema base claro y oscuro
+ ✓ src/theme-contrast.test.ts > contraste AA > todas las festividades en claro y oscuro
+ ✓ src/format.test.ts > formato de números > es-VE usa punto de miles y coma decimal
+ ✓ src/format.test.ts > formato de números > en-US usa coma de miles y punto decimal
+ ✓ src/format.test.ts > formato de números > de-DE usa punto de miles y coma decimal
+ ✓ src/format.test.ts > formato de números > ja-JP usa coma de miles y punto decimal
+ ✓ src/format.test.ts > formato de porcentajes > es-VE y ja-JP
+ ✓ src/format.test.ts > formato de porcentajes > en-US
+ ✓ src/format.test.ts > formato de porcentajes > de-DE separa con espacio duro
+ ✓ src/format.test.ts > formato de fechas largas > es-VE
+ ✓ src/format.test.ts > formato de fechas largas > en-US
+ ✓ src/format.test.ts > formato de fechas largas > de-DE
+ ✓ src/format.test.ts > formato de fechas largas > ja-JP
+ ✓ src/festivities.test.ts > motor de festividades > Navidad en Caracas
+ ✓ src/festivities.test.ts > motor de festividades > Inicio de la ventana de Navidad
+ ✓ src/festivities.test.ts > motor de festividades > Un día antes de Navidad
+ ✓ src/festivities.test.ts > motor de festividades > Día de Reyes en Caracas
+ ✓ src/festivities.test.ts > motor de festividades > Reyes: 23:30 del 4 de enero en Caracas
+ ✓ src/festivities.test.ts > motor de festividades > Reyes: 00:30 del 5 de enero en Caracas
+ ✓ src/festivities.test.ts > motor de festividades > Conflicto Carnaval vs San Valentín: gana Carnaval
+ ✓ src/festivities.test.ts > motor de festividades > Martes de Carnaval 2026
+ ✓ src/festivities.test.ts > motor de festividades > San Valentín fuera de Carnaval
+ ✓ src/festivities.test.ts > motor de festividades > Día de la Madre en Venezuela (segundo domingo de mayo)
+ ✓ src/festivities.test.ts > motor de festividades > Día de la Madre no aplica fuera de Venezuela
+ ✓ src/festivities.test.ts > motor de festividades > Día del Padre en Venezuela (tercer domingo de junio)
+ ✓ src/festivities.test.ts > motor de festividades > Día del Niño en Venezuela (tercer domingo de julio)
+ ✓ src/festivities.test.ts > motor de festividades > Independencia de Venezuela
+ ✓ src/festivities.test.ts > motor de festividades > Halloween
+ ✓ src/festivities.test.ts > motor de festividades > Un día antes de la ventana de Halloween
+ ✓ src/festivities.test.ts > motor de festividades > 29 de febrero de 2028 cae en Carnaval
+ ✓ src/festivities.test.ts > motor de festividades > Después del Carnaval de 2028
+ ✓ src/festivities.test.ts > motor de festividades > Cambio de zona: 23:30 del 25 de febrero de 2028 en Nueva York
+ ✓ src/festivities.test.ts > motor de festividades > Cambio de zona: 00:30 del 26 de febrero de 2028 en Nueva York
+ ✓ src/festivities.test.ts > motor de festividades > Navidad en Auckland: 00:30 del 15 de diciembre
+ ✓ src/festivities.test.ts > motor de festividades > Auckland: todavía 14 de diciembre
+ ✓ src/festivities.test.ts > motor de festividades > Override manual: Halloween en junio
+ ✓ src/festivities.test.ts > motor de festividades > Override manual: sin festividad en Navidad
+ ✓ src/festivities.test.ts > motor de festividades > Festividades desactivadas
+ ✓ src/festivities.test.ts > motor de festividades > Modo sobrio suprime la festividad
+ ✓ src/festivities.test.ts > motor de festividades > Año nuevo sin festividad
+ ✓ src/festivities.test.ts > motor de festividades > Pascua conocida (2024–2028)
+ ✓ src/festivities.test.ts > motor de festividades > enésimo domingo del mes
+ ✓ src/festivities.test.ts > motor de festividades > un override desconocido vuelve a automático
+ ✓ src/i18n.test.ts > catálogo de la PWA > tiene 11 idiomas reales y 2 especiales
+ ✓ src/i18n.test.ts > catálogo de la PWA > todos los locales tienen exactamente las mismas 83 claves
+ ✓ src/i18n.test.ts > catálogo de la PWA > los marcadores de posición son idénticos en todos los idiomas
+ ✓ src/i18n.test.ts > catálogo de la PWA > el pseudo-local está marcado y el latín no usa marcadores
+ ✓ src/i18n.test.ts > detección de idioma > mapea variantes al idioma soportado más cercano
+
+ Test Files  5 passed (5)
+      Tests  51 passed (51)
+   Start at  17:18:21
+   Duration  817ms (transform 353ms, setup 0ms, collect 592ms, tests 209ms, environment 2ms, prepare 914ms)

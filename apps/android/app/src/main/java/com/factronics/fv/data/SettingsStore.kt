@@ -30,21 +30,52 @@ class SettingsStore(context: Context) {
         get() = prefs.getBoolean(KEY_SPECIAL_LOCALES, false)
         set(value) = prefs.edit().putBoolean(KEY_SPECIAL_LOCALES, value).apply()
 
+    /** F1.3: capa de festividades y modo sobrio. */
+    var festivitiesEnabled: Boolean
+        get() = prefs.getBoolean(KEY_FESTIVITIES, true)
+        set(value) = prefs.edit().putBoolean(KEY_FESTIVITIES, value).apply()
+
+    var soberMode: Boolean
+        get() = prefs.getBoolean(KEY_SOBER, false)
+        set(value) = prefs.edit().putBoolean(KEY_SOBER, value).apply()
+
+    /** "auto" | "none" | id de festividad */
+    var festivityOverride: String
+        get() = prefs.getString(KEY_FESTIVITY_OVERRIDE, "auto") ?: "auto"
+        set(value) = prefs.edit().putString(KEY_FESTIVITY_OVERRIDE, value).apply()
+
     /**
      * SOLO DEBUG — escritura síncrona para el smoke test por ADB.
      * El receptor de debug se ejecuta en un proceso que se detiene enseguida;
      * apply() podría no alcanzar a escribir en disco.
      */
-    fun persistForTest(language: String, specialUnlocked: Boolean): Boolean =
-        prefs.edit()
-            .putString(KEY_LANGUAGE, SupportedLocales.normalize(language))
-            .putBoolean(KEY_SPECIAL_LOCALES, specialUnlocked)
-            .commit()
+    fun persistForTest(
+        language: String? = null,
+        specialUnlocked: Boolean? = null,
+        themeMode: String? = null,
+        festivityOverride: String? = null,
+        soberMode: Boolean? = null,
+        festivitiesEnabled: Boolean? = null,
+        dynamicColor: Boolean? = null
+    ): Boolean {
+        val editor = prefs.edit()
+        language?.let { editor.putString(KEY_LANGUAGE, SupportedLocales.normalize(it)) }
+        specialUnlocked?.let { editor.putBoolean(KEY_SPECIAL_LOCALES, it) }
+        themeMode?.let { editor.putString(KEY_THEME, it) }
+        festivityOverride?.let { editor.putString(KEY_FESTIVITY_OVERRIDE, it) }
+        soberMode?.let { editor.putBoolean(KEY_SOBER, it) }
+        festivitiesEnabled?.let { editor.putBoolean(KEY_FESTIVITIES, it) }
+        dynamicColor?.let { editor.putBoolean(KEY_DYNAMIC, it) }
+        return editor.commit()
+    }
 
     private companion object {
         const val KEY_LANGUAGE = "language"
         const val KEY_THEME = "theme_mode"
         const val KEY_DYNAMIC = "dynamic_color"
         const val KEY_SPECIAL_LOCALES = "special_locales_unlocked"
+        const val KEY_FESTIVITIES = "festivities_enabled"
+        const val KEY_SOBER = "sober_mode"
+        const val KEY_FESTIVITY_OVERRIDE = "festivity_override"
     }
 }

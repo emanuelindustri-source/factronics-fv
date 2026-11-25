@@ -191,3 +191,36 @@ test("el easter egg desbloquea latín y pseudo-local tras 7 pulsaciones", async 
   await page.locator(".nav button").nth(2).click();
   await expect(page.getByText("Latina · easter egg")).toBeVisible();
 });
+
+test("festividad forzada, tema claro/oscuro y modo sobrio", async ({ page }) => {
+  await openWithLanguage(page, "es-VE");
+  await page.locator(".nav button").nth(2).click();
+
+  // Forzar Navidad y comprobar el atributo + la etiqueta de Inicio.
+  await page.locator("#festivity-override").selectOption("christmas");
+  await expect(page.locator("html")).toHaveAttribute("data-festivity", "christmas");
+  await page.locator(".nav button").nth(0).click();
+  await expect(page.getByText("Tema festivo: Navidad")).toBeVisible();
+
+  // Persistencia en IndexedDB tras recargar.
+  await page.waitForTimeout(300);
+  await page.reload();
+  await expect(page.locator("html")).toHaveAttribute("data-festivity", "christmas");
+
+  // Modo sobrio: sin festividad y sin animaciones.
+  await page.locator(".nav button").nth(2).click();
+  await page.getByLabel("Modo sobrio").check();
+  await expect(page.locator("html")).toHaveAttribute("data-sober", "true");
+  await expect(page.locator("html")).not.toHaveAttribute("data-festivity");
+
+  // Desactivar festividades también las suprime.
+  await page.getByLabel("Modo sobrio").uncheck();
+  await page.getByLabel("Festividades", { exact: true }).uncheck();
+  await expect(page.locator("html")).not.toHaveAttribute("data-festivity");
+
+  // Tema claro/oscuro explícito.
+  await page.getByLabel("Claro", { exact: true }).check();
+  await expect(page.locator("html")).toHaveAttribute("data-theme", "light");
+  await page.getByLabel("Oscuro", { exact: true }).check();
+  await expect(page.locator("html")).toHaveAttribute("data-theme", "dark");
+});

@@ -7,6 +7,10 @@
   --fv-text: #1a2733;
   --fv-text-soft: #4a5b6a;
   --fv-radius: 14px;
+  --fv-accent: #f2a900;
+  --fv-on-accent: #0b2237;
+  --fv-accent-soft: #ffe08a;
+  --fv-on-accent-soft: #0b2237;
 }
 
 :root[data-theme="dark"] {
@@ -15,7 +19,32 @@
   --fv-text: #e8eef4;
   --fv-text-soft: #a9bccd;
   --fv-amber: #ffd166;
+  --fv-accent: #f2a900;
+  --fv-on-accent: #0b2237;
+  --fv-accent-soft: #3d2f00;
+  --fv-on-accent-soft: #ffe08a;
 }
+
+/* Festividades: solo acentos e ilustración; nunca alteran fondos ni texto. */
+:root[data-festivity="christmas"] { --fv-accent: #B3261E; --fv-on-accent: #FFFFFF; --fv-accent-soft: #FFDAD6; --fv-on-accent-soft: #410002; }
+:root[data-festivity="epiphany"] { --fv-accent: #8A5A00; --fv-on-accent: #FFFFFF; --fv-accent-soft: #FFE8B3; --fv-on-accent-soft: #3D2A00; }
+:root[data-festivity="valentine"] { --fv-accent: #AD1457; --fv-on-accent: #FFFFFF; --fv-accent-soft: #FFD9E2; --fv-on-accent-soft: #3E001D; }
+:root[data-festivity="carnival"] { --fv-accent: #6A1B9A; --fv-on-accent: #FFFFFF; --fv-accent-soft: #F3D9FF; --fv-on-accent-soft: #2A0A3D; }
+:root[data-festivity="mothersDay"] { --fv-accent: #A3115C; --fv-on-accent: #FFFFFF; --fv-accent-soft: #FFD9E2; --fv-on-accent-soft: #3E001D; }
+:root[data-festivity="fathersDay"] { --fv-accent: #0D47A1; --fv-on-accent: #FFFFFF; --fv-accent-soft: #D6E3FF; --fv-on-accent-soft: #001B3F; }
+:root[data-festivity="childrensDay"] { --fv-accent: #B54708; --fv-on-accent: #FFFFFF; --fv-accent-soft: #FFDCC2; --fv-on-accent-soft: #3A1A00; }
+:root[data-festivity="halloween"] { --fv-accent: #B45309; --fv-on-accent: #FFFFFF; --fv-accent-soft: #FFDDB8; --fv-on-accent-soft: #3A1A00; }
+:root[data-festivity="independence"] { --fv-accent: #F2C200; --fv-on-accent: #0B2237; --fv-accent-soft: #FFF1B8; --fv-on-accent-soft: #3A2F00; }
+
+:root[data-theme="dark"][data-festivity="christmas"] { --fv-accent: #FFB4AB; --fv-on-accent: #0B2237; --fv-accent-soft: #5C1A17; --fv-on-accent-soft: #FFDAD6; }
+:root[data-theme="dark"][data-festivity="epiphany"] { --fv-accent: #FFD166; --fv-on-accent: #0B2237; --fv-accent-soft: #5A4300; --fv-on-accent-soft: #FFE8B3; }
+:root[data-theme="dark"][data-festivity="valentine"] { --fv-accent: #FFB1C8; --fv-on-accent: #0B2237; --fv-accent-soft: #6B0030; --fv-on-accent-soft: #FFD9E2; }
+:root[data-theme="dark"][data-festivity="carnival"] { --fv-accent: #E7B9FF; --fv-on-accent: #0B2237; --fv-accent-soft: #4A1A6B; --fv-on-accent-soft: #F3D9FF; }
+:root[data-theme="dark"][data-festivity="mothersDay"] { --fv-accent: #FFB1C8; --fv-on-accent: #0B2237; --fv-accent-soft: #6B0030; --fv-on-accent-soft: #FFD9E2; }
+:root[data-theme="dark"][data-festivity="fathersDay"] { --fv-accent: #A8C7FA; --fv-on-accent: #0B2237; --fv-accent-soft: #00306B; --fv-on-accent-soft: #D6E3FF; }
+:root[data-theme="dark"][data-festivity="childrensDay"] { --fv-accent: #FFB77A; --fv-on-accent: #0B2237; --fv-accent-soft: #6B2A00; --fv-on-accent-soft: #FFDCC2; }
+:root[data-theme="dark"][data-festivity="halloween"] { --fv-accent: #FFB86B; --fv-on-accent: #0B2237; --fv-accent-soft: #6B3300; --fv-on-accent-soft: #FFDDB8; }
+:root[data-theme="dark"][data-festivity="independence"] { --fv-accent: #F2C200; --fv-on-accent: #0B2237; --fv-accent-soft: #5A4A00; --fv-on-accent-soft: #FFF1B8; }
 
 * {
   box-sizing: border-box;
@@ -55,6 +84,12 @@ body {
   opacity: 0.92;
 }
 
+.hero h1,
+.hero p {
+  position: relative;
+  z-index: 1;
+}
+
 .pulse {
   position: absolute;
   right: -10px;
@@ -64,13 +99,15 @@ body {
 
 .badge {
   display: inline-block;
-  background: var(--fv-amber);
-  color: var(--fv-navy-deep);
+  background: var(--fv-accent);
+  color: var(--fv-on-accent);
   border-radius: 999px;
   padding: 4px 12px;
   font-size: 0.85rem;
   font-weight: 600;
   margin-top: 12px;
+  position: relative;
+  z-index: 1;
 }
 
 .card {
@@ -94,8 +131,8 @@ body {
 }
 
 .chip {
-  background: var(--fv-amber);
-  color: var(--fv-navy-deep);
+  background: var(--fv-accent);
+  color: var(--fv-on-accent);
   border-radius: 8px;
   padding: 3px 10px;
   font-size: 0.8rem;
@@ -152,7 +189,7 @@ body {
 
 .nav button[aria-current="page"] {
   color: var(--fv-navy);
-  box-shadow: inset 0 3px 0 var(--fv-amber);
+  box-shadow: inset 0 3px 0 var(--fv-accent);
 }
 
 :root[data-theme="dark"] .nav button[aria-current="page"] {
@@ -245,9 +282,77 @@ button.version-link {
   cursor: pointer;
 }
 
-button.version-link:focus-visible {
-  outline: 3px solid var(--fv-amber);
+button.primary:focus-visible,
+button.version-link:focus-visible,
+select:focus-visible,
+input[type="checkbox"]:focus-visible,
+input[type="radio"]:focus-visible {
+  outline: 3px solid var(--fv-accent);
   outline-offset: 2px;
+}
+
+.festivity-art {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 96px;
+  height: 96px;
+  opacity: 0.92;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.festivity-label {
+  display: inline-block;
+  margin-top: 10px;
+  background: var(--fv-accent-soft);
+  color: var(--fv-on-accent-soft);
+  border-radius: 999px;
+  padding: 4px 12px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.switch-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 48px;
+  cursor: pointer;
+}
+
+.switch-row input {
+  width: 22px;
+  height: 22px;
+  accent-color: var(--fv-accent);
+}
+
+select {
+  width: 100%;
+  min-height: 48px;
+  border-radius: 10px;
+  border: 1px solid rgba(16, 49, 79, 0.25);
+  padding: 0 12px;
+  font-size: 1rem;
+  background: var(--fv-surface);
+  color: var(--fv-text);
+  margin-top: 4px;
+}
+
+:root[data-sober="true"] *,
+:root[data-sober="true"] .festivity-art {
+  animation: none !important;
+  transition: none !important;
+}
+
+:root[data-sober="true"] .festivity-art {
+  display: none;
+}
+
+@media (max-width: 380px) {
+  .festivity-art {
+    display: none;
+  }
 }
 
 .radio-row label {

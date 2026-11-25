@@ -27,7 +27,18 @@ class DebugLocaleReceiver : BroadcastReceiver() {
 
         val store = SettingsStore(context)
         val isSpecial = SupportedLocales.all.first { it.tag == tag }.special
-        if (!store.persistForTest(tag, isSpecial || store.specialLocalesUnlocked)) return
+        val ok = store.persistForTest(
+            language = tag,
+            specialUnlocked = isSpecial || store.specialLocalesUnlocked,
+            themeMode = intent.getStringExtra(EXTRA_THEME),
+            festivityOverride = intent.getStringExtra(EXTRA_FESTIVITY),
+            soberMode = intent.takeIf { it.hasExtra(EXTRA_SOBER) }?.getBooleanExtra(EXTRA_SOBER, false),
+            festivitiesEnabled = intent.takeIf { it.hasExtra(EXTRA_FESTIVITIES) }
+                ?.getBooleanExtra(EXTRA_FESTIVITIES, true),
+            dynamicColor = intent.takeIf { it.hasExtra(EXTRA_DYNAMIC) }
+                ?.getBooleanExtra(EXTRA_DYNAMIC, true)
+        )
+        if (!ok) return
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
             context.getSystemService(LocaleManager::class.java).applicationLocales =
@@ -37,5 +48,10 @@ class DebugLocaleReceiver : BroadcastReceiver() {
 
     private companion object {
         const val EXTRA_LANG = "lang"
+        const val EXTRA_THEME = "theme"
+        const val EXTRA_FESTIVITY = "festivity"
+        const val EXTRA_SOBER = "sober"
+        const val EXTRA_FESTIVITIES = "festivities"
+        const val EXTRA_DYNAMIC = "dynamic"
     }
 }

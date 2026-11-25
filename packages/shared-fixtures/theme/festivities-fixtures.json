@@ -1,0 +1,206 @@
+{
+  "version": 1,
+  "timezoneDefault": "America/Caracas",
+  "notes": [
+    "Fechas fijas: ventana declarada por mes/día y duración en días.",
+    "Carnaval: domingo a martes, calculado como Pascua - 50 a Pascua - 47.",
+    "Días de familia en Venezuela: segundo domingo de mayo, tercer domingo de junio y tercer domingo de julio.",
+    "Prioridad: Carnaval > San Valentín > Halloween > Independencia > Navidad > Reyes > Madre > Padre > Niño.",
+    "País: solo las festividades venezolanas se filtran por país; el resto aplica en cualquier país."
+  ],
+  "cases": [
+    {
+      "name": "Navidad en Caracas",
+      "instant": "2026-12-25T15:00:00Z",
+      "zone": "America/Caracas",
+      "country": "VE",
+      "expected": "christmas"
+    },
+    {
+      "name": "Inicio de la ventana de Navidad",
+      "instant": "2026-12-15T15:00:00Z",
+      "zone": "America/Caracas",
+      "country": "VE",
+      "expected": "christmas"
+    },
+    {
+      "name": "Un día antes de Navidad",
+      "instant": "2026-12-14T15:00:00Z",
+      "zone": "America/Caracas",
+      "country": "VE",
+      "expected": "none"
+    },
+    {
+      "name": "Día de Reyes en Caracas",
+      "instant": "2027-01-06T15:00:00Z",
+      "zone": "America/Caracas",
+      "country": "VE",
+      "expected": "epiphany"
+    },
+    {
+      "name": "Reyes: 23:30 del 4 de enero en Caracas",
+      "instant": "2027-01-05T03:30:00Z",
+      "zone": "America/Caracas",
+      "country": "VE",
+      "expected": "none"
+    },
+    {
+      "name": "Reyes: 00:30 del 5 de enero en Caracas",
+      "instant": "2027-01-05T04:30:00Z",
+      "zone": "America/Caracas",
+      "country": "VE",
+      "expected": "epiphany"
+    },
+    {
+      "name": "Conflicto Carnaval vs San Valentín: gana Carnaval",
+      "instant": "2026-02-14T15:00:00Z",
+      "zone": "America/Caracas",
+      "country": "VE",
+      "expected": "carnival"
+    },
+    {
+      "name": "Martes de Carnaval 2026",
+      "instant": "2026-02-17T15:00:00Z",
+      "zone": "America/Caracas",
+      "country": "VE",
+      "expected": "carnival"
+    },
+    {
+      "name": "San Valentín fuera de Carnaval",
+      "instant": "2026-02-10T15:00:00Z",
+      "zone": "America/Caracas",
+      "country": "VE",
+      "expected": "valentine"
+    },
+    {
+      "name": "Día de la Madre en Venezuela (segundo domingo de mayo)",
+      "instant": "2026-05-10T15:00:00Z",
+      "zone": "America/Caracas",
+      "country": "VE",
+      "expected": "mothersDay"
+    },
+    {
+      "name": "Día de la Madre no aplica fuera de Venezuela",
+      "instant": "2026-05-10T15:00:00Z",
+      "zone": "America/Caracas",
+      "country": "US",
+      "expected": "none"
+    },
+    {
+      "name": "Día del Padre en Venezuela (tercer domingo de junio)",
+      "instant": "2026-06-21T15:00:00Z",
+      "zone": "America/Caracas",
+      "country": "VE",
+      "expected": "fathersDay"
+    },
+    {
+      "name": "Día del Niño en Venezuela (tercer domingo de julio)",
+      "instant": "2026-07-19T15:00:00Z",
+      "zone": "America/Caracas",
+      "country": "VE",
+      "expected": "childrensDay"
+    },
+    {
+      "name": "Independencia de Venezuela",
+      "instant": "2026-07-05T15:00:00Z",
+      "zone": "America/Caracas",
+      "country": "VE",
+      "expected": "independence"
+    },
+    {
+      "name": "Halloween",
+      "instant": "2026-10-31T15:00:00Z",
+      "zone": "America/Caracas",
+      "country": "VE",
+      "expected": "halloween"
+    },
+    {
+      "name": "Un día antes de la ventana de Halloween",
+      "instant": "2026-10-24T15:00:00Z",
+      "zone": "America/Caracas",
+      "country": "VE",
+      "expected": "none"
+    },
+    {
+      "name": "29 de febrero de 2028 cae en Carnaval",
+      "instant": "2028-02-29T15:00:00Z",
+      "zone": "America/Caracas",
+      "country": "VE",
+      "expected": "carnival"
+    },
+    {
+      "name": "Después del Carnaval de 2028",
+      "instant": "2028-03-01T15:00:00Z",
+      "zone": "America/Caracas",
+      "country": "VE",
+      "expected": "none"
+    },
+    {
+      "name": "Cambio de zona: 23:30 del 25 de febrero de 2028 en Nueva York",
+      "instant": "2028-02-26T04:30:00Z",
+      "zone": "America/New_York",
+      "country": "VE",
+      "expected": "none"
+    },
+    {
+      "name": "Cambio de zona: 00:30 del 26 de febrero de 2028 en Nueva York",
+      "instant": "2028-02-26T05:30:00Z",
+      "zone": "America/New_York",
+      "country": "VE",
+      "expected": "carnival"
+    },
+    {
+      "name": "Navidad en Auckland: 00:30 del 15 de diciembre",
+      "instant": "2026-12-14T11:30:00Z",
+      "zone": "Pacific/Auckland",
+      "country": "VE",
+      "expected": "christmas"
+    },
+    {
+      "name": "Auckland: todavía 14 de diciembre",
+      "instant": "2026-12-14T10:30:00Z",
+      "zone": "Pacific/Auckland",
+      "country": "VE",
+      "expected": "none"
+    },
+    {
+      "name": "Override manual: Halloween en junio",
+      "instant": "2026-06-15T15:00:00Z",
+      "zone": "America/Caracas",
+      "country": "VE",
+      "override": "halloween",
+      "expected": "halloween"
+    },
+    {
+      "name": "Override manual: sin festividad en Navidad",
+      "instant": "2026-12-25T15:00:00Z",
+      "zone": "America/Caracas",
+      "country": "VE",
+      "override": "none",
+      "expected": "none"
+    },
+    {
+      "name": "Festividades desactivadas",
+      "instant": "2026-12-25T15:00:00Z",
+      "zone": "America/Caracas",
+      "country": "VE",
+      "enabled": false,
+      "expected": "none"
+    },
+    {
+      "name": "Modo sobrio suprime la festividad",
+      "instant": "2026-12-25T15:00:00Z",
+      "zone": "America/Caracas",
+      "country": "VE",
+      "sober": true,
+      "expected": "none"
+    },
+    {
+      "name": "Año nuevo sin festividad",
+      "instant": "2027-01-01T04:30:00Z",
+      "zone": "America/Caracas",
+      "country": "VE",
+      "expected": "none"
+    }
+  ]
+}

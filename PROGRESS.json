@@ -2,9 +2,9 @@
   "project": "F&V",
   "tagline": "by Factronics",
   "package": "com.factronics.fv",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "updated": "2026-11-25",
-  "currentPhase": "F1.2",
+  "currentPhase": "F1.3",
   "phases": [
     {
       "id": "F0",
@@ -42,7 +42,19 @@
         { "id": "1.2.6", "name": "Smoke Android 13 locales y capturas es-VE/ja/hi en teléfono", "status": "completada" }
       ]
     },
-    { "id": "F1.3", "name": "Motor de tema y festividades", "status": "pendiente" },
+    {
+      "id": "F1.3",
+      "name": "Motor de tema y festividades",
+      "status": "completada",
+      "note": "Cerrada 2026-11-25: motor con reloj inyectado, 26 fixtures, contraste AA, Material You, opt-out/sobrio y evidencia Android/PWA. Tag fase-1.3.",
+      "subphases": [
+        { "id": "1.3.1", "name": "Tokens de color, superficies neutras y contraste AA", "status": "completada" },
+        { "id": "1.3.2", "name": "Motor de festividades, Pascua/Carnaval y fixtures compartidos", "status": "completada" },
+        { "id": "1.3.3", "name": "Android: tema festivo, Material You, Ajustes y persistencia", "status": "completada" },
+        { "id": "1.3.4", "name": "PWA: variables CSS, arte SVG, Ajustes y persistencia", "status": "completada" },
+        { "id": "1.3.5", "name": "Evidencia en teléfono/PWA, ADR-0008 y CI", "status": "completada" }
+      ]
+    },
     { "id": "F1.4", "name": "Offline, packs y sincronización", "status": "pendiente" },
     { "id": "F2.1", "name": "Shell nativo Android", "status": "pendiente" },
     { "id": "F2.2", "name": "Perfil completo local", "status": "pendiente" },

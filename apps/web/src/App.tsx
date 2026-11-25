@@ -1,8 +1,15 @@
-// F&V (by Factronics) — PWA (F1.2: 11 idiomas reales + latín/pseudo-local).
+// F&V (by Factronics) — PWA (F1.2 i18n + F1.3 tema/festividades).
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { ABOUT_SOURCES_VALUE, ABOUT_TEAM_NAMES, APP_VERSION } from "./constants";
 import { getProfile, saveProfile, type Profile } from "./db";
+import { FestivityArt } from "./FestivityArt";
+import {
+  FESTIVITY_IDS,
+  festivityNameKey,
+  resolveFestivity,
+  type FestivityId
+} from "./festivities";
 import {
   formatDate,
   formatInteger,
@@ -28,12 +35,38 @@ export default function App() {
   const [theme, setTheme] = useState<ThemeMode>("system");
   const [savedMsg, setSavedMsg] = useState(false);
   const [specialUnlocked, setSpecialUnlocked] = useState(() => readSpecialLocalesUnlocked());
+  const [festivitiesEnabled, setFestivitiesEnabled] = useState(true);
+  const [soberMode, setSoberMode] = useState(false);
+  const [festivityOverride, setFestivityOverride] = useState("auto");
+  const [now, setNow] = useState(() => new Date());
+
+  const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone || "America/Caracas";
+  // País del producto: Venezuela. El motor acepta cualquier ISO para el futuro.
+  const festivityId = resolveFestivity({
+    now,
+    zone: timezone,
+    country: "VE",
+    enabled: festivitiesEnabled,
+    sober: soberMode,
+    override: festivityOverride
+  });
+
+  useEffect(() => {
+    applyTheme(theme, festivityId, soberMode);
+  }, [theme, festivityId, soberMode]);
+
+  useEffect(() => {
+    const timer = setInterval(() => setNow(new Date()), 60_000);
+    return () => clearInterval(timer);
+  }, []);
 
   useEffect(() => {
     void getProfile().then((p) => {
       setProfile(p);
       setTheme(p.theme as ThemeMode);
-      applyTheme(p.theme as ThemeMode);
+      setFestivitiesEnabled(p.festivitiesEnabled ?? true);
+      setSoberMode(p.soberMode ?? false);
+      setFestivityOverride(p.festivityOverride ?? "auto");
       if (p.language !== i18n.language) {
         void saveProfile({ language: i18n.language }).then(setProfile);
       }
@@ -48,8 +81,22 @@ export default function App() {
 
   const changeTheme = async (mode: ThemeMode) => {
     setTheme(mode);
-    applyTheme(mode);
     await saveProfile({ theme: mode });
+  };
+
+  const changeFestivitiesEnabled = async (enabled: boolean) => {
+    setFestivitiesEnabled(enabled);
+    await saveProfile({ festivitiesEnabled: enabled });
+  };
+
+  const changeSoberMode = async (enabled: boolean) => {
+    setSoberMode(enabled);
+    await saveProfile({ soberMode: enabled });
+  };
+
+  const changeFestivityOverride = async (value: string) => {
+    setFestivityOverride(value);
+    await saveProfile({ festivityOverride: value });
   };
 
   const unlockSpecial = () => {
@@ -59,7 +106,7 @@ export default function App() {
 
   return (
     <div className="app">
-      {tab === "home" && <Home />}
+      {tab === "home" && <Home festivityId={festivityId} />}
       {tab === "profile" && (
         <ProfileTab
           profile={profile}
@@ -80,6 +127,13 @@ export default function App() {
           onLanguage={changeLanguage}
           language={i18n.language}
           specialUnlocked={specialUnlocked}
+          festivitiesEnabled={festivitiesEnabled}
+          soberMode={soberMode}
+          festivityOverride={festivityOverride}
+          festivityId={festivityId}
+          onFestivitiesEnabled={changeFestivitiesEnabled}
+          onSoberMode={changeSoberMode}
+          onFestivityOverride={changeFestivityOverride}
         />
       )}
       {tab === "about" && <About specialUnlocked={specialUnlocked} onUnlock={unlockSpecial} />}
@@ -99,8 +153,9 @@ export default function App() {
   );
 }
 
-function Home() {
+function Home({ festivityId }: { festivityId: FestivityId }) {
   const { t } = useTranslation();
+  const festivityName = festivityId === "none" ? null : t(festivityNameKey(festivityId));
   const modules = [
     "home.module.study",
     "home.module.calc",
@@ -112,6 +167,7 @@ function Home() {
   return (
     <>
       <header className="hero">
+        <FestivityArt id={festivityId} />
         <h1>{t("home.greeting")}</h1>
         <p>{t("home.subtitle")}</p>
         <span className="badge">
@@ -121,13 +177,19 @@ function Home() {
           <path
             d="M0 55 H40 L55 20 L75 78 L92 55 H180"
             fill="none"
-            stroke="#F2A900"
+            stroke="var(--fv-accent)"
             strokeWidth="6"
             strokeLinecap="round"
             strokeLinejoin="round"
           />
         </svg>
       </header>
+
+      {festivityName && (
+        <p className="festivity-label">
+          {t("home.festivity.active", { name: festivityName })}
+        </p>
+      )}
 
       <section className="card">
         <h2>{t("home.modules")}</h2>
@@ -215,13 +277,27 @@ function SettingsTab({
   onTheme,
   onLanguage,
   language,
-  specialUnlocked
+  specialUnlocked,
+  festivitiesEnabled,
+  soberMode,
+  festivityOverride,
+  festivityId,
+  onFestivitiesEnabled,
+  onSoberMode,
+  onFestivityOverride
 }: {
   theme: ThemeMode;
   onTheme: (m: ThemeMode) => void;
   onLanguage: (l: string) => void;
   language: string;
   specialUnlocked: boolean;
+  festivitiesEnabled: boolean;
+  soberMode: boolean;
+  festivityOverride: string;
+  festivityId: FestivityId;
+  onFestivitiesEnabled: (enabled: boolean) => void;
+  onSoberMode: (enabled: boolean) => void;
+  onFestivityOverride: (value: string) => void;
 }) {
   const { t } = useTranslation();
   const locales = specialUnlocked ? ALL_LOCALES : REAL_LOCALES;
@@ -282,6 +358,50 @@ function SettingsTab({
             </label>
           ))}
         </div>
+      </section>
+
+      <section className="card">
+        <h2>{t("settings.festive")}</h2>
+        <p className="status">{t("settings.festiveNote")}</p>
+        <label className="switch-row">
+          <input
+            type="checkbox"
+            checked={festivitiesEnabled}
+            onChange={(event) => onFestivitiesEnabled(event.target.checked)}
+          />
+          <span>{t("settings.festivity.enabled")}</span>
+        </label>
+        <label className="switch-row">
+          <input
+            type="checkbox"
+            checked={soberMode}
+            onChange={(event) => onSoberMode(event.target.checked)}
+          />
+          <span>{t("settings.festivity.sober")}</span>
+        </label>
+        <label className="field" htmlFor="festivity-override">
+          {t("settings.festivity.override")}
+        </label>
+        <select
+          id="festivity-override"
+          value={festivityOverride}
+          disabled={!festivitiesEnabled || soberMode}
+          onChange={(event) => onFestivityOverride(event.target.value)}
+        >
+          <option value="auto">{t("settings.festivity.auto")}</option>
+          <option value="none">{t("festivity.none")}</option>
+          {FESTIVITY_IDS.map((id) => (
+            <option key={id} value={id}>
+              {t(`festivity.${id}`)}
+            </option>
+          ))}
+        </select>
+        <p className="status">{t("settings.festivity.note")}</p>
+        {festivityId !== "none" && (
+          <p className="festivity-label">
+            {t("home.festivity.active", { name: t(festivityNameKey(festivityId)) })}
+          </p>
+        )}
       </section>
 
       <section className="card">

@@ -60,8 +60,8 @@ test("cada idioma tiene las mismas claves que es-VE, sin vacíos ni marcadores r
   assert.deepEqual(errors, [], errors.join("\n"));
 });
 
-test("es-VE define las 67 claves esperadas", () => {
-  assert.equal(baseKeys.length, 67);
+test("es-VE define las 83 claves esperadas", () => {
+  assert.equal(baseKeys.length, 83);
 });
 
 test("el pseudo-local es-XA se deriva exactamente de es-VE", () => {

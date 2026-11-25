@@ -1,0 +1,7 @@
+Evidencia de tema y festividades en Android (Redmi 22101316G, API 34)
+OK: Tema claro (sin festividad) (light, auto, sobrio=false)
+OK: Tema oscuro (sin festividad) (dark, auto, sobrio=false)
+OK: Navidad forzada (light, christmas, sobrio=false)
+OK: Carnaval forzado (light, carnival, sobrio=false)
+OK: Halloween forzado (light, halloween, sobrio=false)
+OK: Modo sobrio (Navidad suprimida) (light, christmas, sobrio=true)

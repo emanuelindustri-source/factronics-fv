@@ -1,0 +1,9 @@
+﻿gitleaks.exe : 5:18PM INF 12 commits scanned.
+En línea: 1 Carácter: 326
++ ... ts-f13.txt; & C:\tools\gitleaks\gitleaks.exe detect --source . --reda ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (5:18PM INF 12 commits scanned.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+
+5:18PM INF scanned ~1145949 bytes (1.15 MB) in 359ms
+5:18PM INF no leaks found

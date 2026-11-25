@@ -7,9 +7,10 @@ Aplicación de estudio, diagnóstico y herramientas de campo para técnicos de *
 - **Portal público** (Astro + GitHub Pages)
 - **Backend** (Supabase, en fases posteriores)
 
-> Estado actual: **F1.2 (internacionalización real) completada**: 11 idiomas + latín y
-> pseudo-local, verificada en Redmi real y PWA. F1.1 completada. Consulta el tracker en el
-> portal o en [`PROGRESS.json`](PROGRESS.json).
+> Estado actual: **F1.3 (motor de tema y festividades) completada**: 9 festividades,
+> Material You, contraste AA y modo sobrio, verificados en Redmi real y PWA. F1.2
+> (internacionalización) completada. Consulta el tracker en el portal o en
+> [`PROGRESS.json`](PROGRESS.json).
 
 ## Repositorios
 
@@ -24,7 +25,7 @@ Aplicación de estudio, diagnóstico y herramientas de campo para técnicos de *
 apps/android      Android nativo (Kotlin/Compose)
 apps/web          PWA offline (React/TS/Vite)
 apps/portal       Portal público (Astro → GitHub Pages)
-packages/         Esquema de contenido, packs demo, fixtures e i18n (catálogo de idiomas)
+packages/         Esquema de contenido, packs demo, fixtures compartidos e i18n
 tools/            Ingesta, Blender headless, informes
 supabase/         Migraciones, RLS, Edge Functions (fase F8+)
 docs/             ADRs, plan, legal, handoff, evidencia

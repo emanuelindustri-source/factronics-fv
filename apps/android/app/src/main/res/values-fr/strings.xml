@@ -8,7 +8,7 @@
     <string name="nav_about">À propos</string>
     <string name="home_greeting">Bonjour, F&amp;V</string>
     <string name="home_subtitle">Votre outil d\'étude et de terrain — by Factronics</string>
-    <string name="home_phase">Phase 1.2 · Internationalisation</string>
+    <string name="home_phase">Phase 1.3 · Thème et fêtes</string>
     <string name="home_phase_done">Terminée</string>
     <string name="home_modules">Modules du programme</string>
     <string name="home_module_study">Étude et examens</string>
@@ -48,7 +48,7 @@
     <string name="settings_dynamic_color">Couleur dynamique (Material You)</string>
     <string name="settings_dynamic_note">Disponible sur Android 12 et versions ultérieures</string>
     <string name="settings_festive">Couche festive</string>
-    <string name="settings_festive_note">Arrive à la phase 1.3</string>
+    <string name="settings_festive_note">Accents et illustration selon la date ; désactivable à tout moment.</string>
     <string name="settings_reduced_motion">Mouvement réduit (suit le système)</string>
     <string name="settings_reduced_motion_note">L\'application respecte les réglages d\'accessibilité de votre téléphone</string>
     <string name="settings_formats">Exemple de format</string>
@@ -61,11 +61,27 @@
     <string name="about_desc">F&amp;V est l\'application interne d\'étude, de diagnostic et d\'outils de terrain de l\'équipe technique de Factronics, C.A.</string>
     <string name="about_disclaimer">Programme interne de Factronics, C.A. Ce n\'est pas une certification officielle de Videojet Technologies.</string>
     <string name="about_version">Version</string>
-    <string name="about_version_value">F&amp;V %1$s · Phase 1.2</string>
+    <string name="about_version_value">F&amp;V %1$s · Phase 1.3</string>
     <string name="about_team">Équipe de validation technique</string>
     <string name="about_sources">Sources institutionnelles</string>
     <string name="about_licenses">Cette application utilise des bibliothèques open source (AndroidX, Jetpack Compose, Kotlin, React et i18next). Les données techniques réelles ne seront publiées qu\'avec une source et une révision.</string>
     <string name="about_privacy">Confidentialité : l\'application ne demande aucune autorisation inutile. Vos données personnelles restent sur l\'appareil.</string>
     <string name="about_translations_pending">Traductions de l\'interface : en attente de révision par des locuteurs natifs.</string>
     <string name="about_unlock_almost">Encore un appui…</string>
+    <string name="festivity_christmas">Noël</string>
+    <string name="festivity_epiphany">Épiphanie</string>
+    <string name="festivity_valentine">Saint-Valentin</string>
+    <string name="festivity_carnival">Carnaval</string>
+    <string name="festivity_mothers_day">Fête des Mères</string>
+    <string name="festivity_fathers_day">Fête des Pères</string>
+    <string name="festivity_childrens_day">Fête des Enfants</string>
+    <string name="festivity_halloween">Halloween</string>
+    <string name="festivity_independence">Fête de l\'Indépendance</string>
+    <string name="festivity_none">Aucune fête</string>
+    <string name="settings_festivity_enabled">Fêtes</string>
+    <string name="settings_festivity_sober">Mode sobre</string>
+    <string name="settings_festivity_override">Forcer une fête</string>
+    <string name="settings_festivity_auto">Automatique</string>
+    <string name="settings_festivity_note">Calculé à partir de la date et du fuseau horaire de l\'appareil. Vous pouvez la désactiver, forcer une fête ou utiliser le mode sobre.</string>
+    <string name="home_festivity_active">Thème festif : %1$s</string>
 </resources>

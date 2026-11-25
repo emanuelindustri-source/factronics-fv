@@ -8,7 +8,7 @@
     <string name="nav_about">Sobre</string>
     <string name="home_greeting">Olá, F&amp;V</string>
     <string name="home_subtitle">Sua ferramenta de estudo e campo — by Factronics</string>
-    <string name="home_phase">Fase 1.2 · Internacionalização</string>
+    <string name="home_phase">Fase 1.3 · Tema e festividades</string>
     <string name="home_phase_done">Concluída</string>
     <string name="home_modules">Módulos do programa</string>
     <string name="home_module_study">Estudo e exames</string>
@@ -48,7 +48,7 @@
     <string name="settings_dynamic_color">Cor dinâmica (Material You)</string>
     <string name="settings_dynamic_note">Disponível no Android 12+</string>
     <string name="settings_festive">Camada de festividades</string>
-    <string name="settings_festive_note">Chega na Fase 1.3</string>
+    <string name="settings_festive_note">Acentos e ilustração conforme a data; desative quando quiser.</string>
     <string name="settings_reduced_motion">Movimento reduzido (segue o sistema)</string>
     <string name="settings_reduced_motion_note">O app respeita as configurações de acessibilidade do celular</string>
     <string name="settings_formats">Exemplo de formato</string>
@@ -61,11 +61,27 @@
     <string name="about_desc">F&amp;V é o aplicativo interno de estudo, diagnóstico e ferramentas de campo da equipe técnica da Factronics, C.A.</string>
     <string name="about_disclaimer">Programa interno da Factronics, C.A. Não é uma certificação oficial da Videojet Technologies.</string>
     <string name="about_version">Versão</string>
-    <string name="about_version_value">F&amp;V %1$s · Fase 1.2</string>
+    <string name="about_version_value">F&amp;V %1$s · Fase 1.3</string>
     <string name="about_team">Equipe de validação técnica</string>
     <string name="about_sources">Fontes institucionais</string>
     <string name="about_licenses">Este app usa bibliotecas de código aberto (AndroidX, Jetpack Compose, Kotlin, React e i18next). Dados técnicos reais só serão publicados com fonte e revisão.</string>
     <string name="about_privacy">Privacidade: o app não solicita permissões desnecessárias. Seus dados pessoais ficam no dispositivo.</string>
     <string name="about_translations_pending">Traduções da interface: pendentes de revisão por falantes nativos.</string>
     <string name="about_unlock_almost">Mais um toque…</string>
+    <string name="festivity_christmas">Natal</string>
+    <string name="festivity_epiphany">Dia de Reis</string>
+    <string name="festivity_valentine">Dia de São Valentim</string>
+    <string name="festivity_carnival">Carnaval</string>
+    <string name="festivity_mothers_day">Dia das Mães</string>
+    <string name="festivity_fathers_day">Dia dos Pais</string>
+    <string name="festivity_childrens_day">Dia das Crianças</string>
+    <string name="festivity_halloween">Halloween</string>
+    <string name="festivity_independence">Dia da Independência</string>
+    <string name="festivity_none">Sem festividade</string>
+    <string name="settings_festivity_enabled">Festividades</string>
+    <string name="settings_festivity_sober">Modo sóbrio</string>
+    <string name="settings_festivity_override">Forçar festividade</string>
+    <string name="settings_festivity_auto">Automático</string>
+    <string name="settings_festivity_note">Calculado com a data e o fuso horário do dispositivo. Você pode desativar, forçar uma festividade ou usar o modo sóbrio.</string>
+    <string name="home_festivity_active">Tema festivo: %1$s</string>
 </resources>

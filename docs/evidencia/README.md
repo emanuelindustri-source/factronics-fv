@@ -141,6 +141,74 @@ determinista, marcadores, recursos existentes y escáner de literales).
 
 ## Pendiente posterior a F1.2 (no bloquea la fase)
 
-1. Revisión por hablantes nativos de las 67 cadenas; la app lo declara en Acerca de.
+1. Revisión por hablantes nativos de las 83 cadenas; la app lo declara en Acerca de.
 2. Aprobación término por término del glosario (hoy todo “pendiente de revisión”).
 3. Futuras fases: ingesta real (F4.x), 3D/simulador (F6.x), números de parte (F10.2).
+
+---
+
+# Evidencia — Fase 1.3 · Motor de tema y festividades (2026-11-25)
+
+Verificado en Windows, PWA y **Redmi 22101316G (Android 14 / API 34)**.
+
+## Android — teléfono real
+
+| Archivo | Qué demuestra |
+|---|---|
+| `36-android-tema-claro.png` | Tema base claro con tokens neutros de marca (sin lavandas de M3) |
+| `37-android-tema-oscuro.png` | Tema base oscuro |
+| `38-android-navidad.png` | Navidad forzada: árbol, etiqueta y acentos rojos |
+| `39-android-carnaval.png` | Carnaval forzado: confeti y acentos morados |
+| `40-android-halloween.png` | Halloween forzado: calabaza y acentos naranjas |
+| `41-android-modo-sobrio.png` | Modo sobrio: Navidad suprimida, tema base, sin arte |
+| `50-android-material-you.png` | Material You + Navidad: fondo dinámico y acentos festivos conviven |
+| `48-android-festividades.txt` | Comprobación automática de los 6 estados |
+| `49-android-festividad-ui.txt` | Opt-out y modo sobrio por UI real + persistencia tras reiniciar |
+
+- `:app:testDebugUnitTest` → **14/14 en verde**: motor de festividades (4), paletas/contraste (3),
+  formatos (5) y recursos (2).
+- Material You verificado en Android 12+; el fallback de marca aplica en versiones anteriores.
+
+## PWA — Playwright
+
+| Archivo | Qué demuestra |
+|---|---|
+| `42-pwa-tema-claro.png` | Tema base claro |
+| `43-pwa-tema-oscuro.png` | Tema base oscuro |
+| `44-pwa-navidad.png` | Navidad: arte, etiqueta y acentos |
+| `45-pwa-carnaval.png` | Carnaval |
+| `46-pwa-halloween.png` | Halloween |
+| `47-pwa-modo-sobrio.png` | Modo sobrio: sin festividad ni animaciones |
+
+- Vitest → **51/51**: 30 del motor/fixtures, 4 de contraste/paletas, 17 de i18n/formatos.
+- Playwright → **22/22**: incluye forzar festividad, persistencia tras recarga, modo sobrio,
+  desactivar festividades y tema claro/oscuro.
+
+## Logs y CI
+
+| Archivo | Qué demuestra |
+|---|---|
+| `51-i18n-check-f13.txt` | 13 idiomas, **83 claves**, salidas al día, pseudo y **0 literales** |
+| `52-android-tests-f13.txt` | Android: build + **14/14** tests JVM |
+| `53-vitest-f13.txt` | PWA: **51/51** tests (motor, contraste, i18n, formatos) |
+| `54-playwright-f13.txt` | PWA: **22/22** E2E (12 locales, festividades, sobrio, offline) |
+| `55-validate-content-f13.txt` | Pack demo intacto: 25/25 con fuente, 0 errores |
+| `56-content-tests-f13.txt` | Tests del contenido en verde |
+| `57-gitleaks-f13.txt` | Gitleaks: **no leaks found** |
+
+## Gate F1.3
+
+- **27 fixtures compartidos** entre Android y PWA: fechas fijas/móviles, 29 de febrero,
+  cambio de año, zonas horarias, DST, conflicto Carnaval/San Valentín, override y opt-out.
+- **Contraste AA**: todas las parejas de las 9 festividades y del tema base, claro/oscuro.
+- **Material You** no se rompe: la festividad solo cambia acentos/contenedores.
+- **Opt-out/modo sobrio** verificado por UI en teléfono y por E2E en PWA, con persistencia.
+- **Contenido de F1.1 intacto**; sin migración de esquema.
+- Gitleaks local limpio.
+
+## Nota de fechas
+
+Las fechas móviles (Pascua/Carnaval, enésimos domingos) son algorítmicas y probadas. Las
+fechas culturales venezolanas de familia (Madre/Padre/Niño) quedan **pendientes de
+validación cultural** por Factronics; no se presentan como oficiales ni como dato técnico.
+No se usó material de `VIDEOJET_DOCS_ENTRADA/`.

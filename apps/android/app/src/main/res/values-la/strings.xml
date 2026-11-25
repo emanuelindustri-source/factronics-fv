@@ -8,7 +8,7 @@
     <string name="nav_about">De hoc</string>
     <string name="home_greeting">Salve, F&amp;V</string>
     <string name="home_subtitle">Instrumentum tuum studii et campi — by Factronics</string>
-    <string name="home_phase">Phasis 1.2 · Internationalizatio</string>
+    <string name="home_phase">Phasis 1.3 · Thema et festivitates</string>
     <string name="home_phase_done">Perfecta</string>
     <string name="home_modules">Moduli programmatis</string>
     <string name="home_module_study">Studium et examinationes</string>
@@ -48,7 +48,7 @@
     <string name="settings_dynamic_color">Color dynamicus (Material You)</string>
     <string name="settings_dynamic_note">Praesto in Android 12+</string>
     <string name="settings_festive">Stratum festivum</string>
-    <string name="settings_festive_note">In Phase 1.3 adveniet</string>
+    <string name="settings_festive_note">Colores et imago secundum diem; quandocumque tollere potes.</string>
     <string name="settings_reduced_motion">Motus reductus (systema sequitur)</string>
     <string name="settings_reduced_motion_note">App configurationem accessibilitatis telephoni tui observat</string>
     <string name="settings_formats">Exemplum formae</string>
@@ -61,11 +61,27 @@
     <string name="about_desc">F&amp;V est applicatio interna studii, diagnosis et instrumentorum campi pro grege technico Factronics, C.A.</string>
     <string name="about_disclaimer">Programma internum Factronics, C.A. Non est certificatio officialis Videojet Technologies.</string>
     <string name="about_version">Versio</string>
-    <string name="about_version_value">F&amp;V %1$s · Phasis 1.2</string>
+    <string name="about_version_value">F&amp;V %1$s · Phasis 1.3</string>
     <string name="about_team">Grex validationis technicae</string>
     <string name="about_sources">Fontes institutionales</string>
     <string name="about_licenses">Haec applicatio bibliothecis fontis aperti utitur (AndroidX, Jetpack Compose, Kotlin, React et i18next). Data technica vera solum cum fonte et recensione publicabuntur.</string>
     <string name="about_privacy">Privatum: applicatio permissiones superfluas non petit. Data personalia tua in instrumento manent.</string>
     <string name="about_translations_pending">Translationes interfaciei: recensio a locutoribus indigenis exspectatur.</string>
     <string name="about_unlock_almost">Unum tactum amplius…</string>
+    <string name="festivity_christmas">Natalis</string>
+    <string name="festivity_epiphany">Epiphania</string>
+    <string name="festivity_valentine">Dies Sancti Valentini</string>
+    <string name="festivity_carnival">Carnivalis</string>
+    <string name="festivity_mothers_day">Dies Matris</string>
+    <string name="festivity_fathers_day">Dies Patris</string>
+    <string name="festivity_childrens_day">Dies Puerorum</string>
+    <string name="festivity_halloween">Halloween</string>
+    <string name="festivity_independence">Dies Libertatis</string>
+    <string name="festivity_none">Nulla festivitas</string>
+    <string name="settings_festivity_enabled">Festivitates</string>
+    <string name="settings_festivity_sober">Modus sobrius</string>
+    <string name="settings_festivity_override">Festivitatem cogere</string>
+    <string name="settings_festivity_auto">Automaticus</string>
+    <string name="settings_festivity_note">Ex die et zona temporis instrumenti computatur. Potes eam tollere, festivitatem cogere aut modo sobrio uti.</string>
+    <string name="home_festivity_active">Thema festivum: %1$s</string>
 </resources>

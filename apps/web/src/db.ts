@@ -8,6 +8,9 @@ export interface Profile {
   company: string;
   language: string;
   theme: string;
+  festivitiesEnabled?: boolean;
+  soberMode?: boolean;
+  festivityOverride?: string;
 }
 
 class FVDatabase extends Dexie {
@@ -29,7 +32,10 @@ export const DEMO_PROFILE: Profile = {
   role: "profile.role.demo",
   company: "Factronics, C.A.",
   language: "es-VE",
-  theme: "system"
+  theme: "system",
+  festivitiesEnabled: true,
+  soberMode: false,
+  festivityOverride: "auto"
 };
 
 export async function getProfile(): Promise<Profile> {

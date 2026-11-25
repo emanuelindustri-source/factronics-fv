@@ -2,6 +2,29 @@
 
 Formato basado en [Keep a Changelog](https://keepachangelog.com/es-ES/1.1.0/).
 
+## [0.4.0] — 2026-11-25 — Fase 1.3 · Motor de tema y festividades
+
+Cerrada y etiquetada `fase-1.3`. Verificada en Windows, PWA y **teléfono real Xiaomi Redmi
+22101316G (Android 14 / API 34)**.
+
+### Añadido
+- **Motor de festividades con reloj inyectado** (`festivities.ts` y `FestivityEngine.kt`): fechas fijas con ventana, Pascua/Carnaval (Meeus/Jones/Butcher), enésimos domingos de Venezuela, prioridad en conflictos, filtro por país, override manual, opt-out y modo sobrio.
+- **27 fixtures compartidos** Android↔PWA en `packages/shared-fixtures/theme/festivities-fixtures.json`: 29 de febrero, cambio de año, zonas horarias, DST, conflicto Carnaval/San Valentín y casos de opt-out.
+- **Android:** temas por capa sobre Material You (solo acentos/contenedores), tokens neutros de superficie, 9 paletas festivas, arte vectorial original, sección de Ajustes con switches y selector de festividad, persistencia sin reinicio y refresco de fecha cada minuto.
+- **PWA:** variables CSS de festividad, arte SVG propio, sección de Ajustes accesible, persistencia en IndexedDB, `data-festivity`/`data-sober` y recálculo cada minuto.
+- **Contraste AA:** `palettes.json` compartido, contraste calculado en Vitest y JUnit para todas las festividades (claro/oscuro) y el tema base; CSS sincronizado por prueba.
+- **Evidencia:** capturas Android (claro, oscuro, Navidad, Carnaval, Halloween, sobrio, Material You) y PWA (6 estados); logs de opt-out por UI y persistencia.
+- **ADR-0008:** reglas, prioridades, paletas, fechas y límites; días de familia venezolanos marcados como pendientes de validación cultural.
+
+### Corregido
+- Tokens de superficie por defecto de Material 3 (lavandas) reemplazados por neutros de marca, sin romper Material You ni el contraste.
+- El tema festivo no sustituye el esquema base: solo acentos y contenedores, para no degradar fondos, texto ni controles.
+
+### Pendiente posterior (no bloquea F1.3)
+- Validación cultural de las fechas de Día de la Madre/Padre/Niño por Factronics.
+- Partículas/sonidos opcionales (F1.3 usa arte estático para respetar movimiento reducido y batería).
+- Revisión nativa de las traducciones de interfaz.
+
 ## [0.3.0] — 2026-11-25 — Fase 1.2 · Internacionalización real
 
 Cerrada y etiquetada `fase-1.2`. Verificada en Windows, PWA y **teléfono real Xiaomi Redmi

@@ -1,5 +1,6 @@
 package com.factronics.fv.ui.screens
 
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -11,8 +12,11 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.selection.selectable
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material3.DropdownMenu
+import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.RadioButton
 import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
@@ -33,14 +37,20 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.factronics.fv.R
+import com.factronics.fv.data.FestivityEngine
 import com.factronics.fv.data.FvFormatters
 import com.factronics.fv.data.SettingsStore
 import com.factronics.fv.data.SupportedLocales
+import com.factronics.fv.ui.FestivityUi
 
 @Composable
 fun SettingsScreen(
+    festivityId: String,
     onThemeModeChange: (String) -> Unit,
     onDynamicColorChange: (Boolean) -> Unit,
+    onFestivitiesEnabledChange: (Boolean) -> Unit,
+    onSoberModeChange: (Boolean) -> Unit,
+    onFestivityOverrideChange: (String) -> Unit,
     onLanguageChange: (String) -> Unit
 ) {
     val context = LocalContext.current
@@ -49,10 +59,19 @@ fun SettingsScreen(
     var language by remember { mutableStateOf(store.language) }
     var themeMode by remember { mutableStateOf(store.themeMode) }
     var dynamicColor by remember { mutableStateOf(store.dynamicColor) }
+    var festivitiesEnabled by remember { mutableStateOf(store.festivitiesEnabled) }
+    var soberMode by remember { mutableStateOf(store.soberMode) }
+    var festivityOverride by remember { mutableStateOf(store.festivityOverride) }
+    var overrideMenuExpanded by remember { mutableStateOf(false) }
     val specialUnlocked = store.specialLocalesUnlocked
 
     val localeTag = LocalConfiguration.current.locales[0].toLanguageTag()
     val locale = SupportedLocales.formattingLocale(localeTag)
+    val overrideLabel = when (festivityOverride) {
+        FestivityEngine.AUTO -> stringResource(R.string.settings_festivity_auto)
+        FestivityEngine.NONE -> stringResource(R.string.festivity_none)
+        else -> stringResource(FestivityUi.nameRes(festivityOverride))
+    }
 
     Column(
         modifier = Modifier
@@ -122,6 +141,85 @@ fun SettingsScreen(
         HorizontalDivider()
         Spacer(Modifier.height(16.dp))
 
+        // --- Festividades (F1.3) ---
+        Text(
+            text = stringResource(R.string.settings_festive),
+            style = MaterialTheme.typography.titleLarge,
+            modifier = Modifier.semantics { heading() }
+        )
+        Text(
+            text = stringResource(R.string.settings_festive_note),
+            style = MaterialTheme.typography.bodyMedium,
+            color = MaterialTheme.colorScheme.onSurfaceVariant
+        )
+        SwitchSettingRow(
+            label = stringResource(R.string.settings_festivity_enabled),
+            checked = festivitiesEnabled
+        ) { enabled ->
+            festivitiesEnabled = enabled
+            onFestivitiesEnabledChange(enabled)
+        }
+        SwitchSettingRow(
+            label = stringResource(R.string.settings_festivity_sober),
+            checked = soberMode
+        ) { enabled ->
+            soberMode = enabled
+            onSoberModeChange(enabled)
+        }
+        Spacer(Modifier.height(8.dp))
+        Text(
+            text = stringResource(R.string.settings_festivity_override),
+            style = MaterialTheme.typography.titleMedium
+        )
+        Box {
+            OutlinedButton(
+                onClick = { overrideMenuExpanded = true },
+                enabled = festivitiesEnabled && !soberMode,
+                modifier = Modifier.heightIn(min = 48.dp)
+            ) {
+                Text(overrideLabel)
+            }
+            DropdownMenu(
+                expanded = overrideMenuExpanded,
+                onDismissRequest = { overrideMenuExpanded = false }
+            ) {
+                FestivityUi.overrideIds.forEach { id ->
+                    val label = when (id) {
+                        FestivityEngine.AUTO -> stringResource(R.string.settings_festivity_auto)
+                        FestivityEngine.NONE -> stringResource(R.string.festivity_none)
+                        else -> stringResource(FestivityUi.nameRes(id))
+                    }
+                    DropdownMenuItem(
+                        text = { Text(label) },
+                        onClick = {
+                            festivityOverride = id
+                            overrideMenuExpanded = false
+                            onFestivityOverrideChange(id)
+                        }
+                    )
+                }
+            }
+        }
+        Text(
+            text = stringResource(R.string.settings_festivity_note),
+            style = MaterialTheme.typography.bodySmall,
+            color = MaterialTheme.colorScheme.onSurfaceVariant
+        )
+        if (festivityId != FestivityEngine.NONE) {
+            Text(
+                text = stringResource(
+                    R.string.home_festivity_active,
+                    stringResource(FestivityUi.nameRes(festivityId))
+                ),
+                style = MaterialTheme.typography.bodySmall,
+                color = MaterialTheme.colorScheme.primary
+            )
+        }
+
+        Spacer(Modifier.height(8.dp))
+        HorizontalDivider()
+        Spacer(Modifier.height(16.dp))
+
         // --- Ejemplo de formato ---
         Text(
             text = stringResource(R.string.settings_formats),
@@ -171,24 +269,6 @@ fun SettingsScreen(
             )
         }
 
-        // --- Festividades (próximamente) ---
-        Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(vertical = 8.dp),
-            verticalAlignment = Alignment.CenterVertically
-        ) {
-            Column(modifier = Modifier.weight(1f)) {
-                Text(stringResource(R.string.settings_festive), style = MaterialTheme.typography.titleMedium)
-                Text(
-                    stringResource(R.string.settings_festive_note),
-                    style = MaterialTheme.typography.bodyMedium,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant
-                )
-            }
-            Switch(checked = false, onCheckedChange = null, enabled = false)
-        }
-
         // --- Movimiento reducido ---
         Row(
             modifier = Modifier
@@ -208,6 +288,24 @@ fun SettingsScreen(
         }
 
         Spacer(Modifier.height(24.dp))
+    }
+}
+
+@Composable
+private fun SwitchSettingRow(label: String, checked: Boolean, onChange: (Boolean) -> Unit) {
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .heightIn(min = 48.dp)
+            .padding(vertical = 4.dp),
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        Text(
+            text = label,
+            style = MaterialTheme.typography.bodyLarge,
+            modifier = Modifier.weight(1f)
+        )
+        Switch(checked = checked, onCheckedChange = onChange)
     }
 }
 

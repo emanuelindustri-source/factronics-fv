@@ -1,0 +1,7 @@
+Verificación de festividades por UI real (Redmi 22101316G, API 34)
+OK: Navidad activa visible en Ajustes
+OK: Modo sobrio oculta la festividad
+OK: al desactivar modo sobrio vuelve la festividad
+OK: desactivar festividades oculta la festividad
+OK: la desactivación persiste tras cerrar y abrir
+RESULTADO: opt-out y modo sobrio verificados en teléfono real

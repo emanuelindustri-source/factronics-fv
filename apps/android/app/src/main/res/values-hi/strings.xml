@@ -8,7 +8,7 @@
     <string name="nav_about">परिचय</string>
     <string name="home_greeting">नमस्ते, F&amp;V</string>
     <string name="home_subtitle">आपका अध्ययन और फ़ील्ड टूल — by Factronics</string>
-    <string name="home_phase">चरण 1.2 · अंतर्राष्ट्रीयकरण</string>
+    <string name="home_phase">चरण 1.3 · थीम और उत्सव</string>
     <string name="home_phase_done">पूर्ण</string>
     <string name="home_modules">प्रोग्राम मॉड्यूल</string>
     <string name="home_module_study">अध्ययन और परीक्षाएँ</string>
@@ -48,7 +48,7 @@
     <string name="settings_dynamic_color">गतिशील रंग (Material You)</string>
     <string name="settings_dynamic_note">Android 12+ पर उपलब्ध</string>
     <string name="settings_festive">त्योहार थीम</string>
-    <string name="settings_festive_note">चरण 1.3 में आएगी</string>
+    <string name="settings_festive_note">तारीख के अनुसार रंग और चित्रण; कभी भी बंद करें।</string>
     <string name="settings_reduced_motion">कम गति (सिस्टम का पालन)</string>
     <string name="settings_reduced_motion_note">ऐप आपके फ़ोन की सुगम्यता सेटिंग्स का पालन करता है</string>
     <string name="settings_formats">प्रारूप उदाहरण</string>
@@ -61,11 +61,27 @@
     <string name="about_desc">F&amp;V, Factronics, C.A. की तकनीकी टीम के लिए अध्ययन, निदान और फ़ील्ड टूल का आंतरिक ऐप है।</string>
     <string name="about_disclaimer">Factronics, C.A. का आंतरिक कार्यक्रम। यह Videojet Technologies का आधिकारिक प्रमाणन नहीं है।</string>
     <string name="about_version">संस्करण</string>
-    <string name="about_version_value">F&amp;V %1$s · चरण 1.2</string>
+    <string name="about_version_value">F&amp;V %1$s · चरण 1.3</string>
     <string name="about_team">तकनीकी सत्यापन टीम</string>
     <string name="about_sources">संस्थागत स्रोत</string>
     <string name="about_licenses">यह ऐप ओपन-सोर्स लाइब्रेरी (AndroidX, Jetpack Compose, Kotlin, React और i18next) का उपयोग करता है। वास्तविक तकनीकी डेटा केवल स्रोत और समीक्षा के साथ प्रकाशित किया जाएगा।</string>
     <string name="about_privacy">गोपनीयता: ऐप अनावश्यक अनुमतियाँ नहीं मांगता। आपका व्यक्तिगत डेटा डिवाइस पर रहता है।</string>
     <string name="about_translations_pending">इंटरफ़ेस अनुवाद: मूल वक्ताओं द्वारा समीक्षा लंबित।</string>
     <string name="about_unlock_almost">एक और टैप…</string>
+    <string name="festivity_christmas">क्रिसमस</string>
+    <string name="festivity_epiphany">एपिफ़नी</string>
+    <string name="festivity_valentine">वैलेंटाइन डे</string>
+    <string name="festivity_carnival">कार्निवल</string>
+    <string name="festivity_mothers_day">मातृ दिवस</string>
+    <string name="festivity_fathers_day">पितृ दिवस</string>
+    <string name="festivity_childrens_day">बाल दिवस</string>
+    <string name="festivity_halloween">हैलोवीन</string>
+    <string name="festivity_independence">स्वतंत्रता दिवस</string>
+    <string name="festivity_none">कोई उत्सव नहीं</string>
+    <string name="settings_festivity_enabled">उत्सव</string>
+    <string name="settings_festivity_sober">सादा मोड</string>
+    <string name="settings_festivity_override">उत्सव चुनें</string>
+    <string name="settings_festivity_auto">स्वचालित</string>
+    <string name="settings_festivity_note">डिवाइस की तारीख और समय क्षेत्र से गणना की जाती है। आप इसे बंद कर सकते हैं, कोई उत्सव चुन सकते हैं या सादा मोड का उपयोग कर सकते हैं।</string>
+    <string name="home_festivity_active">उत्सव थीम: %1$s</string>
 </resources>

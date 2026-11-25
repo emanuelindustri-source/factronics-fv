@@ -32,8 +32,12 @@ private data class FVRoute(val route: String, val labelRes: Int, val icon: @Comp
 
 @Composable
 fun FVApp(
+    festivityId: String,
     onThemeModeChange: (String) -> Unit,
     onDynamicColorChange: (Boolean) -> Unit,
+    onFestivitiesEnabledChange: (Boolean) -> Unit,
+    onSoberModeChange: (Boolean) -> Unit,
+    onFestivityOverrideChange: (String) -> Unit,
     onLanguageChange: (String) -> Unit
 ) {
     val navController = rememberNavController()
@@ -82,12 +86,16 @@ fun FVApp(
             startDestination = "home",
             modifier = Modifier.padding(innerPadding)
         ) {
-            composable("home") { HomeScreen() }
+            composable("home") { HomeScreen(festivityId = festivityId) }
             composable("profile") { ProfileScreen() }
             composable("settings") {
                 SettingsScreen(
+                    festivityId = festivityId,
                     onThemeModeChange = onThemeModeChange,
                     onDynamicColorChange = onDynamicColorChange,
+                    onFestivitiesEnabledChange = onFestivitiesEnabledChange,
+                    onSoberModeChange = onSoberModeChange,
+                    onFestivityOverrideChange = onFestivityOverrideChange,
                     onLanguageChange = onLanguageChange
                 )
             }

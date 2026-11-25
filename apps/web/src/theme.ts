@@ -1,4 +1,6 @@
-// F&V — utilidades de tema (claro/oscuro/sistema)
+// F&V — utilidades de tema (claro/oscuro/sistema) y festividades (F1.3).
+import type { FestivityId } from "./festivities";
+
 export type ThemeMode = "system" | "light" | "dark";
 
 export function resolveTheme(mode: ThemeMode): "light" | "dark" {
@@ -6,6 +8,21 @@ export function resolveTheme(mode: ThemeMode): "light" | "dark" {
   return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
 }
 
-export function applyTheme(mode: ThemeMode): void {
-  document.documentElement.setAttribute("data-theme", resolveTheme(mode));
+/**
+ * Aplica tema y festividad al documento. La festividad nunca cambia la
+ * legibilidad: solo acentos e ilustración. En modo sobrio no se pinta nada.
+ */
+export function applyTheme(
+  mode: ThemeMode,
+  festivityId: FestivityId = "none",
+  soberMode = false
+): void {
+  const root = document.documentElement;
+  root.setAttribute("data-theme", resolveTheme(mode));
+  root.setAttribute("data-sober", soberMode ? "true" : "false");
+  if (festivityId === "none" || soberMode) {
+    root.removeAttribute("data-festivity");
+  } else {
+    root.setAttribute("data-festivity", festivityId);
+  }
 }

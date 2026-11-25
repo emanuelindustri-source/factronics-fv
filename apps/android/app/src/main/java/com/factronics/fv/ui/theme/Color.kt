@@ -18,11 +18,17 @@ val FVAmberSoft = Color(0xFFFFE08A)
 val FVBackgroundLight = Color(0xFFF6F8FB)
 val FVSurfaceLight = Color(0xFFFFFFFF)
 val FVTextLight = Color(0xFF1A2733)
+val FVSurfaceVariantLight = Color(0xFFE3E9F0)
+val FVOnSurfaceVariantLight = Color(0xFF46586A)
+val FVSurfaceContainerLight = Color(0xFFEDF1F6)
 
 // Superficies oscuras
 val FVBackgroundDark = Color(0xFF0E1B26)
 val FVSurfaceDark = Color(0xFF152938)
 val FVTextDark = Color(0xFFE8EEF4)
+val FVSurfaceVariantDark = Color(0xFF2A4052)
+val FVOnSurfaceVariantDark = Color(0xFFC3D2DF)
+val FVSurfaceContainerDark = Color(0xFF1A2E3E)
 
 // Acentos
 val FVTeal = Color(0xFF1F7A8C)

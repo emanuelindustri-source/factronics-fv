@@ -61,11 +61,17 @@ export const SAME_AS_BASE_ALLOWED = {
   "settings.formats.number": ["pt-BR", "pt-PT"],
   "settings.theme": ["it", "pt-BR", "pt-PT"],
   "settings.theme.light": ["pt-BR", "pt-PT"],
-  "settings.theme.system": ["it", "pt-BR", "pt-PT"]
+  "settings.theme.system": ["it", "pt-BR", "pt-PT"],
+  // F1.3: nombres de festividades y términos que coinciden legítimamente.
+  "festivity.halloween": ["en", "pt-BR", "pt-PT", "it", "de", "fr", "la"],
+  "festivity.carnival": ["pt-BR", "pt-PT", "fr"],
+  "settings.festivity.enabled": ["pt-BR", "pt-PT"],
+  "settings.festivity.auto": ["pt-BR", "pt-PT"],
+  "home.festivity.active": ["it", "pt-BR", "pt-PT"]
 };
 
 /** Marcadores de posición admitidos. Deben ser iguales en todos los idiomas. */
-export const ALLOWED_PLACEHOLDERS = ["days", "version"];
+export const ALLOWED_PLACEHOLDERS = ["days", "name", "version"];
 
 /** Prefijo de los textos pseudo-localizados. */
 export const PSEUDO_OPEN = "⟦";
