@@ -35,8 +35,11 @@ jobs:
           java-version: "17"
       - name: Instalar SDK 35 (el runner ya incluye cmdline-tools)
         run: |
-          yes | sdkmanager --licenses > /dev/null 2>&1 || true
-          sdkmanager "platforms;android-35" "build-tools;35.0.0"
+          SDKMGR="$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager"
+          if [ ! -f "$SDKMGR" ]; then SDKMGR=$(ls -d "$ANDROID_HOME"/cmdline-tools/*/bin/sdkmanager | head -n1); fi
+          echo "Usando: $SDKMGR"
+          yes | "$SDKMGR" --licenses > /dev/null 2>&1 || true
+          "$SDKMGR" "platforms;android-35" "build-tools;35.0.0"
       - uses: gradle/actions/setup-gradle@v4
       - name: Compilar APK debug
         run: ./gradlew :app:assembleDebug --console=plain
