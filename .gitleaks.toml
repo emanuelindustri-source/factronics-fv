@@ -1,0 +1,26 @@
+# ============================================================
+# F&V (by Factronics) — configuración de gitleaks
+# REGLA: ningún secreto real en el repo (ver .gitignore y ADR-0005).
+#
+# Este archivo SOLO documenta falsos positivos conocidos de la regla
+# "generic-api-key". No se permite aquí ningún secreto real:
+#   - Las claves criptográficas de las pruebas se generan EFÍMERAS en memoria
+#     (WebCrypto/KeyPairGenerator) y se descartan; solo circulan por variables
+#     de código como `privateKeyB64`.
+#   - La clave DEMO de packs vive en _private/ (fuera de git, ADR-0005/ADR-0009)
+#     y la clave de producción nunca entra al repositorio.
+# ============================================================
+
+title = "F&V — allowlist de falsos positivos (sin secretos reales)"
+
+[[allowlists]]
+description = "Identificadores de código de claves efímeras en memoria (no son secretos)"
+regexes = [
+  '''privateKeyB64''',
+]
+
+[[allowlists]]
+description = "Directorio local gitignored _private/ (keystore y claves fuera de git; solo aparece en escaneos --no-git locales)"
+paths = [
+  '''_private/''',
+]

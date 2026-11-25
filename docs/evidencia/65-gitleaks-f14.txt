@@ -1,9 +1,9 @@
-﻿C:\tools\gitleaks\gitleaks.exe : [90m7:15PM[0m [32mINF[0m [1m13 commits scanned.[0m
-En línea: 1 Carácter: 446
-+ ... ts-f14.txt; C:\tools\gitleaks\gitleaks.exe detect --source C:\Factron ...
-+                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    + CategoryInfo          : NotSpecified: ([90m7:15PM[0m...ts scanned.[0m:String) [], RemoteException
+﻿C:\tools\gitleaks\gitleaks.exe : [90m7:21PM[0m [32mINF[0m [1m14 commits scanned.[0m
+En línea: 1 Carácter: 1
++ C:\tools\gitleaks\gitleaks.exe detect --source C:\Factronics_VJ_Ecosy ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: ([90m7:21PM[0m...ts scanned.[0m:String) [], RemoteException
     + FullyQualifiedErrorId : NativeCommandError
  
-[90m7:15PM[0m [32mINF[0m [1mscanned ~1320127 bytes (1.32 MB) in 398ms[0m
-[90m7:15PM[0m [32mINF[0m [1mno leaks found[0m
+[90m7:21PM[0m [32mINF[0m [1mscanned ~2068076 bytes (2.07 MB) in 317ms[0m
+[90m7:21PM[0m [32mINF[0m [1mno leaks found[0m
