@@ -42,7 +42,9 @@ jobs:
           "$SDKMGR" "platforms;android-35" "build-tools;35.0.0"
       - uses: gradle/actions/setup-gradle@v4
       - name: Compilar APK debug
-        run: ./gradlew :app:assembleDebug --console=plain
+        run: |
+          chmod +x gradlew
+          ./gradlew :app:assembleDebug --console=plain
         working-directory: apps/android
 
   web:
