@@ -2,23 +2,23 @@
 > factronics-fv-ecosystem@0.3.0 i18n:check
 > node packages/i18n/src/generate.mjs --check && node packages/i18n/src/scan-hardcoded.mjs && node --test packages/i18n/test/i18n.test.mjs
 
-i18n OK: 13 idiomas, 67 claves, salidas al d├¡a.
+i18n OK: 13 idiomas, 67 claves, salidas al día.
 Sin textos hardcodeados: 13 idiomas, 67 claves.
-Ô£ö est├ín los 11 idiomas reales y exactamente 2 especiales (1.861ms)
-Ô£ö cada idioma tiene las mismas claves que es-VE, sin vac├¡os ni marcadores raros (3.2704ms)
-Ô£ö es-VE define las 67 claves esperadas (0.4649ms)
-Ô£ö el pseudo-local es-XA se deriva exactamente de es-VE (1.3772ms)
-Ô£ö el pseudo-local nunca pierde marcadores de posici├│n (0.501ms)
-Ô£ö los recursos Android generados est├ín al d├¡a y completos en los 13 locales (13.4056ms)
-Ô£ö paridad estricta de claves Android Ôåö PWA Ôåö cat├ílogo (10.8523ms)
-Ô£ö las copias de la PWA son id├®nticas al cat├ílogo fuente (4.3001ms)
-Ô£ö todos los textos pseudo-localizados est├ín marcados con Ôƒª Ôƒº (0.5438ms)
-Ô£ö no hay textos de UI hardcodeados ni claves/recurso inexistentes (6.6813ms)
-Ôä╣ tests 10
-Ôä╣ suites 0
-Ôä╣ pass 10
-Ôä╣ fail 0
-Ôä╣ cancelled 0
-Ôä╣ skipped 0
-Ôä╣ todo 0
-Ôä╣ duration_ms 147.736
+✔ están los 11 idiomas reales y exactamente 2 especiales (3.3553ms)
+✔ cada idioma tiene las mismas claves que es-VE, sin vacíos ni marcadores raros (2.7304ms)
+✔ es-VE define las 67 claves esperadas (0.1455ms)
+✔ el pseudo-local es-XA se deriva exactamente de es-VE (0.6821ms)
+✔ el pseudo-local nunca pierde marcadores de posición (0.2561ms)
+✔ los recursos Android generados están al día y completos en los 13 locales (3.1053ms)
+✔ paridad estricta de claves Android ↔ PWA ↔ catálogo (3.0305ms)
+✔ las copias de la PWA son idénticas al catálogo fuente (1.7734ms)
+✔ todos los textos pseudo-localizados están marcados con ⟦ ⟧ (0.2201ms)
+✔ no hay textos de UI hardcodeados ni claves/recurso inexistentes (3.7477ms)
+ℹ tests 10
+ℹ suites 0
+ℹ pass 10
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 101.1327

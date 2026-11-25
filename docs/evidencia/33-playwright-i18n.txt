@@ -1,33 +1,33 @@
 ﻿
 Running 21 tests using 1 worker
 
-node.exe : (node:14440) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+node.exe : (node:1172) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
 En línea: 1 Carácter: 1
 + & "C:\Program Files\nodejs/node.exe" "C:\Program Files\nodejs/node_mo ...
 + ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    + CategoryInfo          : NotSpecified: ((node:14440) Wa... env being set.:String) [], RemoteException
+    + CategoryInfo          : NotSpecified: ((node:1172) War... env being set.:String) [], RemoteException
     + FullyQualifiedErrorId : NativeCommandError
 
 (Use `node --trace-warnings ...` to show where the warning was created)
-[1/21] e2e\pwa.spec.ts:42:1 ÔÇ║ la PWA carga en es-VE y muestra el saludo
-[2/21] e2e\pwa.spec.ts:47:1 ÔÇ║ el perfil persiste en IndexedDB tras recargar
-[3/21] e2e\pwa.spec.ts:62:1 ÔÇ║ funciona sin conexi├│n y con service worker instalado
-[4/21] e2e\pwa.spec.ts:78:1 ÔÇ║ el selector de idioma es persistente (japon├®s tras recargar)
-[5/21] e2e\pwa.spec.ts:89:1 ÔÇ║ los formatos de Ajustes siguen el locale elegido
-[6/21] e2e\pwa.spec.ts:100:3 ÔÇ║ detecci├│n en el primer arranque ÔÇ║ un navegador en espa├▒ol arranca en espa├▒ol de Venezuela
-[7/21] e2e\pwa.spec.ts:109:3 ÔÇ║ detecci├│n de otro idioma soportado ÔÇ║ un navegador en ingl├®s arranca en ingl├®s
-[8/21] e2e\pwa.spec.ts:117:3 ÔÇ║ smoke es-VE: la interfaz renderiza completa
-[9/21] e2e\pwa.spec.ts:117:3 ÔÇ║ smoke en: la interfaz renderiza completa
-[10/21] e2e\pwa.spec.ts:117:3 ÔÇ║ smoke pt-BR: la interfaz renderiza completa
-[11/21] e2e\pwa.spec.ts:117:3 ÔÇ║ smoke pt-PT: la interfaz renderiza completa
-[12/21] e2e\pwa.spec.ts:117:3 ÔÇ║ smoke it: la interfaz renderiza completa
-[13/21] e2e\pwa.spec.ts:117:3 ÔÇ║ smoke de: la interfaz renderiza completa
-[14/21] e2e\pwa.spec.ts:117:3 ÔÇ║ smoke fr: la interfaz renderiza completa
-[15/21] e2e\pwa.spec.ts:117:3 ÔÇ║ smoke zh-Hans: la interfaz renderiza completa
-[16/21] e2e\pwa.spec.ts:117:3 ÔÇ║ smoke ja: la interfaz renderiza completa
-[17/21] e2e\pwa.spec.ts:117:3 ÔÇ║ smoke ko: la interfaz renderiza completa
-[18/21] e2e\pwa.spec.ts:117:3 ÔÇ║ smoke hi: la interfaz renderiza completa
-[19/21] e2e\pwa.spec.ts:117:3 ÔÇ║ smoke la: la interfaz renderiza completa
-[20/21] e2e\pwa.spec.ts:136:1 ÔÇ║ el pseudo-local revela que no quedan literales fuera del cat├ílogo
-[21/21] e2e\pwa.spec.ts:178:1 ÔÇ║ el easter egg desbloquea lat├¡n y pseudo-local tras 7 pulsaciones
-  21 passed (7.5s)
+[1/21] e2e\pwa.spec.ts:42:1 › la PWA carga en es-VE y muestra el saludo
+[2/21] e2e\pwa.spec.ts:47:1 › el perfil persiste en IndexedDB tras recargar
+[3/21] e2e\pwa.spec.ts:62:1 › funciona sin conexión y con service worker instalado
+[4/21] e2e\pwa.spec.ts:78:1 › el selector de idioma es persistente (japonés tras recargar)
+[5/21] e2e\pwa.spec.ts:89:1 › los formatos de Ajustes siguen el locale elegido
+[6/21] e2e\pwa.spec.ts:100:3 › detección en el primer arranque › un navegador en español arranca en español de Venezuela
+[7/21] e2e\pwa.spec.ts:109:3 › detección de otro idioma soportado › un navegador en inglés arranca en inglés
+[8/21] e2e\pwa.spec.ts:117:3 › smoke es-VE: la interfaz renderiza completa
+[9/21] e2e\pwa.spec.ts:117:3 › smoke en: la interfaz renderiza completa
+[10/21] e2e\pwa.spec.ts:117:3 › smoke pt-BR: la interfaz renderiza completa
+[11/21] e2e\pwa.spec.ts:117:3 › smoke pt-PT: la interfaz renderiza completa
+[12/21] e2e\pwa.spec.ts:117:3 › smoke it: la interfaz renderiza completa
+[13/21] e2e\pwa.spec.ts:117:3 › smoke de: la interfaz renderiza completa
+[14/21] e2e\pwa.spec.ts:117:3 › smoke fr: la interfaz renderiza completa
+[15/21] e2e\pwa.spec.ts:117:3 › smoke zh-Hans: la interfaz renderiza completa
+[16/21] e2e\pwa.spec.ts:117:3 › smoke ja: la interfaz renderiza completa
+[17/21] e2e\pwa.spec.ts:117:3 › smoke ko: la interfaz renderiza completa
+[18/21] e2e\pwa.spec.ts:117:3 › smoke hi: la interfaz renderiza completa
+[19/21] e2e\pwa.spec.ts:117:3 › smoke la: la interfaz renderiza completa
+[20/21] e2e\pwa.spec.ts:136:1 › el pseudo-local revela que no quedan literales fuera del catálogo
+[21/21] e2e\pwa.spec.ts:178:1 › el easter egg desbloquea latín y pseudo-local tras 7 pulsaciones
+  21 passed (7.2s)

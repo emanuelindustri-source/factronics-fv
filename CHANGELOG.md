@@ -2,11 +2,10 @@
 
 Formato basado en [Keep a Changelog](https://keepachangelog.com/es-ES/1.1.0/).
 
-## [0.3.0] — 2026-11-25 — Fase 1.2 · Internacionalización real (en verificación)
+## [0.3.0] — 2026-11-25 — Fase 1.2 · Internacionalización real
 
-> Estado honesto: código, recursos, CI y pruebas automáticas listos. El **smoke en
-> teléfono físico y las capturas Android (23–28) quedaron pendientes** porque el
-> dispositivo se retiró del equipo de pruebas. No se etiqueta `fase-1.2` hasta completarlos.
+Cerrada y etiquetada `fase-1.2`. Verificada en Windows, PWA y **teléfono real Xiaomi Redmi
+22101316G (Android 14 / API 34)**.
 
 ### Añadido
 - **Catálogo único de textos de interfaz** en `packages/i18n` (`@factronics-fv/i18n`): **67 claves × 13 locales** (es-VE base, en, pt-BR, pt-PT, it, de, fr, zh-Hans, ja, ko, hi + latín `la` y pseudo-local `es-XA`). Una sola fuente de verdad para Android y PWA.
@@ -24,10 +23,14 @@ Formato basado en [Keep a Changelog](https://keepachangelog.com/es-ES/1.1.0/).
 - Deriva y literales del walking skeleton: textos de equipo, fuentes, versión, iniciales del avatar y selector es/en pasan al sistema de traducción o a recursos `translatable="false"` documentados.
 - Android: el pseudo-local en `values-es-rXA` era elegido por **cualquier** teléfono en español; se movió a `values-qps` y se añadió mapeo `resourceTag`.
 
-### Pendiente (bloqueo documentado)
-- Smoke Android de 13 locales y capturas 23–25/27/28 en dispositivo físico.
-- Prueba manual del selector en teléfono (2 idiomas).
+### Verificado en dispositivo
+- Smoke Android **13/13 locales** en Redmi 22101316G (API 34): es-VE, en, pt-BR, pt-PT, it, de, fr, zh-Hans, ja, ko, hi, la y es-XA. Informe en `docs/evidencia/28-android-smoke-i18n.json`.
+- Selector por UI real (Ajustes → English → Español) y persistencia tras cerrar/abrir: `docs/evidencia/28b-android-selector.txt`.
+- Capturas Android es-VE/ja/hi, pseudo y latín; tras `pm clear` arranca en es-VE (regresión del pseudo `qps` cubierta).
+
+### Pendiente posterior (no bloquea F1.2)
 - Revisión por hablantes nativos de las traducciones de interfaz.
+- Aprobación término por término del glosario (40 términos, todos pendientes).
 
 ## [0.2.0] — 2026-11-25 — Fase 1.1 · Esquema canónico y procedencia
 

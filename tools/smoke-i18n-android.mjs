@@ -87,7 +87,7 @@ function setLanguage(tag) {
   sleep(400);
   adbText([
     "shell", "am", "broadcast",
-    "-a", `${PACKAGE}.DEBUG_SET_LANG`,
+    "-n", `${PACKAGE}/.debug.DebugLocaleReceiver`,
     "--es", "lang", tag
   ]);
   sleep(700);

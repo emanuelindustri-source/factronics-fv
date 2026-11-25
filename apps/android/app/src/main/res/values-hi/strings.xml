@@ -9,7 +9,7 @@
     <string name="home_greeting">नमस्ते, F&amp;V</string>
     <string name="home_subtitle">आपका अध्ययन और फ़ील्ड टूल — by Factronics</string>
     <string name="home_phase">चरण 1.2 · अंतर्राष्ट्रीयकरण</string>
-    <string name="home_phase_done">सत्यापन में</string>
+    <string name="home_phase_done">पूर्ण</string>
     <string name="home_modules">प्रोग्राम मॉड्यूल</string>
     <string name="home_module_study">अध्ययन और परीक्षाएँ</string>
     <string name="home_module_calc">खपत कैलकुलेटर</string>

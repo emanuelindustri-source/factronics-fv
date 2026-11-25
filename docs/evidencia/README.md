@@ -73,9 +73,8 @@ el repo público: los ítems demo usan exclusivamente códigos `DEMO-` (ADR-0003
 
 # Evidencia — Fase 1.2 · Internacionalización real (2026-11-25)
 
-Ejecución real en Windows local. **Estado: código y pruebas automáticas en verde; el smoke
-en teléfono físico quedó pendiente porque el dueño retiró el dispositivo del equipo de
-pruebas.** No se declara la fase cerrada hasta ejecutar `23..28`.
+Ejecución real en Windows local y en teléfono **Xiaomi Redmi 22101316G (Android 14 / API 34)**.
+**Estado: F1.2 cerrada; los 13 locales renderizan y el selector se verificó por UI real.**
 
 ## PWA — capturas reales (Playwright + Chromium)
 
@@ -93,31 +92,27 @@ pruebas.** No se declara la fase cerrada hasta ejecutar `23..28`.
 - `npm run test` (Vitest) → **17/17 en verde** (catálogo, detección y formatos).
   Log: `32-vitest-i18n.txt`.
 
-## Android — verificación automática completada, dispositivo pendiente
+## Android — verificado en teléfono real
 
 | Archivo | Qué demuestra |
 |---|---|
 | `34-android-unit-tests.txt` | `:app:testDebugUnitTest` en verde: formatos es-VE/en-US/de-DE/ja-JP y paridad de las 13 carpetas de recursos |
-| `23-android-es-VE.png` | **Pendiente** de capturar en dispositivo (script listo) |
-| `24-android-ja.png` | **Pendiente** de capturar en dispositivo |
-| `25-android-hi.png` | **Pendiente** de capturar en dispositivo |
-| `27-android-pseudo.png` | **Pendiente** de capturar en dispositivo |
-| `28-android-smoke-i18n.json` | **Pendiente**: informe del smoke de 13 locales |
+| `23-android-es-VE.png` | Inicio en español de Venezuela en el Redmi |
+| `24-android-ja.png` | Inicio en japonés en el Redmi |
+| `25-android-hi.png` | Inicio en hindi (devanagari) en el Redmi |
+| `27-android-pseudo.png` | Pseudo-local `es-XA` en Android: todo marcado `⟦…⟧`, desbordes visibles |
+| `27b-android-latina.png` | Latín (`la`) renderizado desde el selector (easter egg) |
+| `23b-android-ajustes-es-VE.png` | Ajustes: los 11 idiomas + latín/pseudo desbloqueados |
+| `28-android-smoke-i18n.json` | Informe del smoke: **13/13 locales OK**, 17 textos por locale |
+| `28b-android-selector.txt` | Selector por UI real: es-VE → English → Español (Venezuela), persistencia tras cerrar y abrir |
 
-Comando exacto para completar el gate cuando el teléfono vuelva a estar conectado:
-
-```powershell
-cd C:\Factronics_VJ_Ecosystem\apps\android
-.\gradlew.bat :app:assembleDebug
-adb install -r app\build\outputs\apk\debug\app-debug.apk
-cd C:\Factronics_VJ_Ecosystem
-node tools\smoke-i18n-android.mjs
-```
-
-El script fija cada idioma con el receptor **solo-debug** `DEBUG_SET_LANG`, reinicia la app,
-lee la jerarquía con `uiautomator`, comprueba el saludo y la ausencia de literales/claves,
-y captura las pantallas. Hallazgo ya corregido: el pseudo-local usa `values-qps` (no
-`values-es-rXA`) para no secuestrar los teléfonos en español.
+- `node tools\smoke-i18n-android.mjs` → **13/13 en verde** (es-VE, en, pt-BR, pt-PT, it, de,
+  fr, zh-Hans, ja, ko, hi, la, es-XA). Comprueba saludo del locale, ausencia de claves
+  crudas/marcadores sin interpolar y, en pseudo, que todo el texto esté pseudo-localizado.
+- `node tools\ui-locale-check.mjs` → **selector real verificado** sin usar el hook de debug
+  (taps en Ajustes y en las filas de idioma). El idioma persiste tras `force-stop`.
+- Hallazgo corregido: el pseudo-local usa `values-qps` (no `values-es-rXA`) para no
+  secuestrar los teléfonos en español. Verificado tras `pm clear`: arranca en es-VE.
 
 ## Catálogo, paridad y CI
 
@@ -144,9 +139,8 @@ determinista, marcadores, recursos existentes y escáner de literales).
 - `VIDEOJET_DOCS_ENTRADA/` se revisó **solo a nivel de inventario** para el vocabulario
   genérico; no se copió contenido técnico ni códigos al repo.
 
-## Lo que falta para cerrar F1.2 (bloqueo documentado)
+## Pendiente posterior a F1.2 (no bloquea la fase)
 
-1. Smoke Android en los 13 locales + capturas es-VE/ja/hi (requiere el teléfono).
-2. Prueba en teléfono real del cambio de idioma en la UI (2 idiomas) y regreso al español.
-3. Revisión por hablantes nativos de las 67 cadenas (queda como tarea del equipo; la app
-   lo declara en Acerca de).
+1. Revisión por hablantes nativos de las 67 cadenas; la app lo declara en Acerca de.
+2. Aprobación término por término del glosario (hoy todo “pendiente de revisión”).
+3. Futuras fases: ingesta real (F4.x), 3D/simulador (F6.x), números de parte (F10.2).

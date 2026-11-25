@@ -2,7 +2,6 @@
 > factronics-fv-ecosystem@0.3.0 test
 > npm test --workspace=@factronics-fv/content-schema --workspace=@factronics-fv/content-packs-demo
 
-
 > @factronics-fv/content-schema@1.0.0 test
 > node --test test/*.test.mjs
 

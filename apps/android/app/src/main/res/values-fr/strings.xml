@@ -9,7 +9,7 @@
     <string name="home_greeting">Bonjour, F&amp;V</string>
     <string name="home_subtitle">Votre outil d\'étude et de terrain — by Factronics</string>
     <string name="home_phase">Phase 1.2 · Internationalisation</string>
-    <string name="home_phase_done">En vérification</string>
+    <string name="home_phase_done">Terminée</string>
     <string name="home_modules">Modules du programme</string>
     <string name="home_module_study">Étude et examens</string>
     <string name="home_module_calc">Calculateur de consommation</string>

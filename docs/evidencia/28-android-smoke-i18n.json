@@ -1,0 +1,413 @@
+{
+  "generatedAt": "2026-11-25T20:45:59.530Z",
+  "device": "22101316G",
+  "report": [
+    {
+      "locale": "es-VE",
+      "ok": true,
+      "textCount": 17,
+      "checks": [
+        {
+          "name": "saludo del locale visible",
+          "ok": true
+        },
+        {
+          "name": "sin marcadores de pseudo-local",
+          "ok": true
+        },
+        {
+          "name": "sin marcadores sin interpolar",
+          "ok": true
+        },
+        {
+          "name": "sin claves crudas",
+          "ok": true
+        }
+      ],
+      "sample": [
+        "Hola, F&V",
+        "Tu herramienta de estudio y campo — by Factronics",
+        "Fase 1.2 · Internacionalización",
+        "Completada",
+        "Módulos del programa",
+        "Estudio y exámenes"
+      ]
+    },
+    {
+      "locale": "en",
+      "ok": true,
+      "textCount": 17,
+      "checks": [
+        {
+          "name": "saludo del locale visible",
+          "ok": true
+        },
+        {
+          "name": "sin marcadores de pseudo-local",
+          "ok": true
+        },
+        {
+          "name": "sin marcadores sin interpolar",
+          "ok": true
+        },
+        {
+          "name": "sin claves crudas",
+          "ok": true
+        }
+      ],
+      "sample": [
+        "Hello, F&V",
+        "Your study and field tool — by Factronics",
+        "Phase 1.2 · Internationalization",
+        "Completed",
+        "Program modules",
+        "Study & exams"
+      ]
+    },
+    {
+      "locale": "pt-BR",
+      "ok": true,
+      "textCount": 17,
+      "checks": [
+        {
+          "name": "saludo del locale visible",
+          "ok": true
+        },
+        {
+          "name": "sin marcadores de pseudo-local",
+          "ok": true
+        },
+        {
+          "name": "sin marcadores sin interpolar",
+          "ok": true
+        },
+        {
+          "name": "sin claves crudas",
+          "ok": true
+        }
+      ],
+      "sample": [
+        "Olá, F&V",
+        "Sua ferramenta de estudo e campo — by Factronics",
+        "Fase 1.2 · Internacionalização",
+        "Concluída",
+        "Módulos do programa",
+        "Estudo e exames"
+      ]
+    },
+    {
+      "locale": "pt-PT",
+      "ok": true,
+      "textCount": 17,
+      "checks": [
+        {
+          "name": "saludo del locale visible",
+          "ok": true
+        },
+        {
+          "name": "sin marcadores de pseudo-local",
+          "ok": true
+        },
+        {
+          "name": "sin marcadores sin interpolar",
+          "ok": true
+        },
+        {
+          "name": "sin claves crudas",
+          "ok": true
+        }
+      ],
+      "sample": [
+        "Olá, F&V",
+        "A sua ferramenta de estudo e campo — by Factronics",
+        "Fase 1.2 · Internacionalização",
+        "Concluída",
+        "Módulos do programa",
+        "Estudo e exames"
+      ]
+    },
+    {
+      "locale": "it",
+      "ok": true,
+      "textCount": 17,
+      "checks": [
+        {
+          "name": "saludo del locale visible",
+          "ok": true
+        },
+        {
+          "name": "sin marcadores de pseudo-local",
+          "ok": true
+        },
+        {
+          "name": "sin marcadores sin interpolar",
+          "ok": true
+        },
+        {
+          "name": "sin claves crudas",
+          "ok": true
+        }
+      ],
+      "sample": [
+        "Ciao, F&V",
+        "Il tuo strumento di studio e campo — by Factronics",
+        "Fase 1.2 · Internazionalizzazione",
+        "Completata",
+        "Moduli del programma",
+        "Studio ed esami"
+      ]
+    },
+    {
+      "locale": "de",
+      "ok": true,
+      "textCount": 17,
+      "checks": [
+        {
+          "name": "saludo del locale visible",
+          "ok": true
+        },
+        {
+          "name": "sin marcadores de pseudo-local",
+          "ok": true
+        },
+        {
+          "name": "sin marcadores sin interpolar",
+          "ok": true
+        },
+        {
+          "name": "sin claves crudas",
+          "ok": true
+        }
+      ],
+      "sample": [
+        "Hallo, F&V",
+        "Dein Lern- und Feldwerkzeug — by Factronics",
+        "Phase 1.2 · Internationalisierung",
+        "Abgeschlossen",
+        "Programmmodule",
+        "Lernen & Prüfungen"
+      ]
+    },
+    {
+      "locale": "fr",
+      "ok": true,
+      "textCount": 17,
+      "checks": [
+        {
+          "name": "saludo del locale visible",
+          "ok": true
+        },
+        {
+          "name": "sin marcadores de pseudo-local",
+          "ok": true
+        },
+        {
+          "name": "sin marcadores sin interpolar",
+          "ok": true
+        },
+        {
+          "name": "sin claves crudas",
+          "ok": true
+        }
+      ],
+      "sample": [
+        "Bonjour, F&V",
+        "Votre outil d'étude et de terrain — by Factronics",
+        "Phase 1.2 · Internationalisation",
+        "Terminée",
+        "Modules du programme",
+        "Étude et examens"
+      ]
+    },
+    {
+      "locale": "zh-Hans",
+      "ok": true,
+      "textCount": 17,
+      "checks": [
+        {
+          "name": "saludo del locale visible",
+          "ok": true
+        },
+        {
+          "name": "sin marcadores de pseudo-local",
+          "ok": true
+        },
+        {
+          "name": "sin marcadores sin interpolar",
+          "ok": true
+        },
+        {
+          "name": "sin claves crudas",
+          "ok": true
+        }
+      ],
+      "sample": [
+        "你好，F&V",
+        "你的学习与现场工具 — by Factronics",
+        "阶段 1.2 · 国际化",
+        "已完成",
+        "程序模块",
+        "学习与考试"
+      ]
+    },
+    {
+      "locale": "ja",
+      "ok": true,
+      "textCount": 17,
+      "checks": [
+        {
+          "name": "saludo del locale visible",
+          "ok": true
+        },
+        {
+          "name": "sin marcadores de pseudo-local",
+          "ok": true
+        },
+        {
+          "name": "sin marcadores sin interpolar",
+          "ok": true
+        },
+        {
+          "name": "sin claves crudas",
+          "ok": true
+        }
+      ],
+      "sample": [
+        "こんにちは、F&V",
+        "学習と現場のためのツール — by Factronics",
+        "フェーズ 1.2 · 国際化",
+        "完了",
+        "プログラムのモジュール",
+        "学習と試験"
+      ]
+    },
+    {
+      "locale": "ko",
+      "ok": true,
+      "textCount": 17,
+      "checks": [
+        {
+          "name": "saludo del locale visible",
+          "ok": true
+        },
+        {
+          "name": "sin marcadores de pseudo-local",
+          "ok": true
+        },
+        {
+          "name": "sin marcadores sin interpolar",
+          "ok": true
+        },
+        {
+          "name": "sin claves crudas",
+          "ok": true
+        }
+      ],
+      "sample": [
+        "안녕하세요, F&V",
+        "학습과 현장을 위한 도구 — by Factronics",
+        "단계 1.2 · 국제화",
+        "완료",
+        "프로그램 모듈",
+        "학습 및 시험"
+      ]
+    },
+    {
+      "locale": "hi",
+      "ok": true,
+      "textCount": 17,
+      "checks": [
+        {
+          "name": "saludo del locale visible",
+          "ok": true
+        },
+        {
+          "name": "sin marcadores de pseudo-local",
+          "ok": true
+        },
+        {
+          "name": "sin marcadores sin interpolar",
+          "ok": true
+        },
+        {
+          "name": "sin claves crudas",
+          "ok": true
+        }
+      ],
+      "sample": [
+        "नमस्ते, F&V",
+        "आपका अध्ययन और फ़ील्ड टूल — by Factronics",
+        "चरण 1.2 · अंतर्राष्ट्रीयकरण",
+        "पूर्ण",
+        "प्रोग्राम मॉड्यूल",
+        "अध्ययन और परीक्षाएँ"
+      ]
+    },
+    {
+      "locale": "la",
+      "ok": true,
+      "textCount": 17,
+      "checks": [
+        {
+          "name": "saludo del locale visible",
+          "ok": true
+        },
+        {
+          "name": "sin marcadores de pseudo-local",
+          "ok": true
+        },
+        {
+          "name": "sin marcadores sin interpolar",
+          "ok": true
+        },
+        {
+          "name": "sin claves crudas",
+          "ok": true
+        }
+      ],
+      "sample": [
+        "Salve, F&V",
+        "Instrumentum tuum studii et campi — by Factronics",
+        "Phasis 1.2 · Internationalizatio",
+        "Perfecta",
+        "Moduli programmatis",
+        "Studium et examinationes"
+      ]
+    },
+    {
+      "locale": "es-XA",
+      "ok": true,
+      "textCount": 17,
+      "checks": [
+        {
+          "name": "saludo del locale visible",
+          "ok": true
+        },
+        {
+          "name": "sin marcadores de pseudo-local",
+          "ok": true
+        },
+        {
+          "name": "sin marcadores sin interpolar",
+          "ok": true
+        },
+        {
+          "name": "sin claves crudas",
+          "ok": true
+        },
+        {
+          "name": "todos los textos están pseudo-localizados",
+          "ok": true
+        }
+      ],
+      "sample": [
+        "⟦Hólá, F&V····⟧",
+        "⟦Tú hérrámíéñtá dé éstúdíó ý çámpó — bý Fáçtróñíçs··················⟧",
+        "⟦Fásé 1.2 · Íñtérñáçíóñálízáçíóñ···········⟧",
+        "⟦Çómplétádá····⟧",
+        "⟦Módúlós dél prógrámá·······⟧",
+        "⟦Éstúdíó ý éxáméñés·······⟧"
+      ]
+    }
+  ]
+}

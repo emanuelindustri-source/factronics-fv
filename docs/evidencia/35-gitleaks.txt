@@ -1,9 +1,9 @@
-﻿gitleaks.exe : 8:15AM INF 9 commits scanned.
-En línea: 1 Carácter: 545
+﻿gitleaks.exe : 4:49PM INF 11 commits scanned.
+En línea: 1 Carácter: 621
 + ... ; cd ..\..; & C:\tools\gitleaks\gitleaks.exe detect --source . --reda ...
 +                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    + CategoryInfo          : NotSpecified: (8:15AM INF 9 commits scanned.:String) [], RemoteException
+    + CategoryInfo          : NotSpecified: (4:49PM INF 11 commits scanned.:String) [], RemoteException
     + FullyQualifiedErrorId : NativeCommandError
 
-8:15AM INF scanned ~807369 bytes (807.37 KB) in 311ms
-8:15AM INF no leaks found
+4:49PM INF scanned ~1119835 bytes (1.12 MB) in 336ms
+4:49PM INF no leaks found

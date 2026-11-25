@@ -9,7 +9,7 @@
     <string name="home_greeting">你好，F&amp;V</string>
     <string name="home_subtitle">你的学习与现场工具 — by Factronics</string>
     <string name="home_phase">阶段 1.2 · 国际化</string>
-    <string name="home_phase_done">验证中</string>
+    <string name="home_phase_done">已完成</string>
     <string name="home_modules">程序模块</string>
     <string name="home_module_study">学习与考试</string>
     <string name="home_module_calc">耗材计算器</string>

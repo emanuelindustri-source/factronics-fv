@@ -1,0 +1,6 @@
+Verificación del selector de idioma por UI real (Redmi 22101316G, API 34)
+OK: Ajustes abierto en español de Venezuela
+OK: selector cambió a English y persistió la preferencia
+OK: selector volvió a Español (Venezuela) y persistió es-VE
+OK: el idioma persiste tras cerrar y abrir la app
+RESULTADO: selector in-app verificado en teléfono real

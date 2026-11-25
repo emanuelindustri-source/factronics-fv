@@ -9,7 +9,7 @@
     <string name="home_greeting">こんにちは、F&amp;V</string>
     <string name="home_subtitle">学習と現場のためのツール — by Factronics</string>
     <string name="home_phase">フェーズ 1.2 · 国際化</string>
-    <string name="home_phase_done">検証中</string>
+    <string name="home_phase_done">完了</string>
     <string name="home_modules">プログラムのモジュール</string>
     <string name="home_module_study">学習と試験</string>
     <string name="home_module_calc">消費量計算</string>

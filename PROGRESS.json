@@ -31,15 +31,15 @@
     {
       "id": "F1.2",
       "name": "Internacionalización real",
-      "status": "curso",
-      "note": "Código, recursos, CI y pruebas automáticas en verde. Pendiente: smoke Android en los 13 locales y capturas en dispositivo físico (el teléfono se retiró del equipo). No cerrar ni etiquetar fase-1.2 hasta completarlo.",
+      "status": "completada",
+      "note": "Cerrada 2026-11-25: 13/13 locales en teléfono real, selector por UI verificado, CI en verde y tag fase-1.2.",
       "subphases": [
         { "id": "1.2.1", "name": "Catálogo único de 67 claves × 13 locales y generador Android/PWA", "status": "completada" },
         { "id": "1.2.2", "name": "Android: locales_config, selector persistente, formatos por locale", "status": "completada" },
         { "id": "1.2.3", "name": "PWA: i18next con detección, selector persistente e Intl", "status": "completada" },
         { "id": "1.2.4", "name": "Pseudo-local es-XA, detector de literales y latín como easter egg", "status": "completada" },
         { "id": "1.2.5", "name": "Glosario de 40 términos, ADR-0007, job de CI y evidencia", "status": "completada" },
-        { "id": "1.2.6", "name": "Smoke Android 13 locales y capturas es-VE/ja/hi en teléfono", "status": "curso" }
+        { "id": "1.2.6", "name": "Smoke Android 13 locales y capturas es-VE/ja/hi en teléfono", "status": "completada" }
       ]
     },
     { "id": "F1.3", "name": "Motor de tema y festividades", "status": "pendiente" },

@@ -7,9 +7,9 @@ Aplicación de estudio, diagnóstico y herramientas de campo para técnicos de *
 - **Portal público** (Astro + GitHub Pages)
 - **Backend** (Supabase, en fases posteriores)
 
-> Estado actual: **F1.2 (internacionalización real) en verificación**: código y pruebas
-> automáticas en verde; falta el smoke en teléfono físico. F1.1 completada. Consulta el
-> tracker en el portal o en [`PROGRESS.json`](PROGRESS.json).
+> Estado actual: **F1.2 (internacionalización real) completada**: 11 idiomas + latín y
+> pseudo-local, verificada en Redmi real y PWA. F1.1 completada. Consulta el tracker en el
+> portal o en [`PROGRESS.json`](PROGRESS.json).
 
 ## Repositorios
 

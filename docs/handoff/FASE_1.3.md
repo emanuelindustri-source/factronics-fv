@@ -1,9 +1,7 @@
 # HANDOFF — FASE 1.3 · Motor de tema y festividades
 
-> **BORRADOR — no ejecutar todavía.** F1.2 no está cerrada: falta el smoke Android en
-> teléfono y las capturas `23..28`. No iniciar F1.3 hasta que exista el tag `fase-1.2`,
-> `PROGRESS.json` marque F1.2 como `completada` y la evidencia Android esté en
-> `docs/evidencia/`.
+> **Handoff activo.** F1.2 cerrada con el tag `fase-1.2`: smoke Android 13/13 en Redmi
+> real, selector por UI verificado, PWA 21/21 E2E y CI en verde. Ya se puede iniciar F1.3.
 
 **Para:** chat nuevo · **Modelo recomendado:** **MiMo-V2.6-Pro** · **Esfuerzo:** **ALTO**
 (Compose, tokens de color, cálculo de fechas y accesibilidad; PLAN_MAESTRO §6).

@@ -1,25 +1,25 @@
 ﻿
  RUN  v2.1.9 C:/Factronics_VJ_Ecosystem/apps/web
 
- Ô£ô src/theme.test.ts > resolveTheme > devuelve el modo expl├¡cito tal cual
- Ô£ô src/format.test.ts > formato de n├║meros > es-VE usa punto de miles y coma decimal
- Ô£ô src/format.test.ts > formato de n├║meros > en-US usa coma de miles y punto decimal
- Ô£ô src/format.test.ts > formato de n├║meros > de-DE usa punto de miles y coma decimal
- Ô£ô src/format.test.ts > formato de n├║meros > ja-JP usa coma de miles y punto decimal
- Ô£ô src/format.test.ts > formato de porcentajes > es-VE y ja-JP
- Ô£ô src/format.test.ts > formato de porcentajes > en-US
- Ô£ô src/format.test.ts > formato de porcentajes > de-DE separa con espacio duro
- Ô£ô src/format.test.ts > formato de fechas largas > es-VE
- Ô£ô src/format.test.ts > formato de fechas largas > en-US
- Ô£ô src/format.test.ts > formato de fechas largas > de-DE
- Ô£ô src/format.test.ts > formato de fechas largas > ja-JP
- Ô£ô src/i18n.test.ts > cat├ílogo de la PWA > tiene 11 idiomas reales y 2 especiales
- Ô£ô src/i18n.test.ts > cat├ílogo de la PWA > todos los locales tienen exactamente las mismas 67 claves
- Ô£ô src/i18n.test.ts > cat├ílogo de la PWA > los marcadores de posici├│n son id├®nticos en todos los idiomas
- Ô£ô src/i18n.test.ts > cat├ílogo de la PWA > el pseudo-local est├í marcado y el lat├¡n no usa marcadores
- Ô£ô src/i18n.test.ts > detecci├│n de idioma > mapea variantes al idioma soportado m├ís cercano
+ ✓ src/theme.test.ts > resolveTheme > devuelve el modo explícito tal cual
+ ✓ src/format.test.ts > formato de números > es-VE usa punto de miles y coma decimal
+ ✓ src/format.test.ts > formato de números > en-US usa coma de miles y punto decimal
+ ✓ src/format.test.ts > formato de números > de-DE usa punto de miles y coma decimal
+ ✓ src/format.test.ts > formato de números > ja-JP usa coma de miles y punto decimal
+ ✓ src/format.test.ts > formato de porcentajes > es-VE y ja-JP
+ ✓ src/format.test.ts > formato de porcentajes > en-US
+ ✓ src/format.test.ts > formato de porcentajes > de-DE separa con espacio duro
+ ✓ src/format.test.ts > formato de fechas largas > es-VE
+ ✓ src/format.test.ts > formato de fechas largas > en-US
+ ✓ src/format.test.ts > formato de fechas largas > de-DE
+ ✓ src/format.test.ts > formato de fechas largas > ja-JP
+ ✓ src/i18n.test.ts > catálogo de la PWA > tiene 11 idiomas reales y 2 especiales
+ ✓ src/i18n.test.ts > catálogo de la PWA > todos los locales tienen exactamente las mismas 67 claves
+ ✓ src/i18n.test.ts > catálogo de la PWA > los marcadores de posición son idénticos en todos los idiomas
+ ✓ src/i18n.test.ts > catálogo de la PWA > el pseudo-local está marcado y el latín no usa marcadores
+ ✓ src/i18n.test.ts > detección de idioma > mapea variantes al idioma soportado más cercano
 
  Test Files  3 passed (3)
       Tests  17 passed (17)
-   Start at  08:15:05
-   Duration  1.13s (transform 276ms, setup 0ms, collect 431ms, tests 137ms, environment 1ms, prepare 820ms)
+   Start at  16:48:51
+   Duration  625ms (transform 193ms, setup 0ms, collect 293ms, tests 84ms, environment 1ms, prepare 393ms)
