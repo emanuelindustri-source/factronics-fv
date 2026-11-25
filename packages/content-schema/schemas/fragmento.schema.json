@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://factronics-fv.github.io/schemas/content/1.0.0/fragmento.schema.json",
+  "title": "F&V — Entidad: fragmento",
+  "description": "Fragmento de texto extraído de una página de un documento, con la cita que lo respalda (ver también source_ref del propio ítem).",
+  "type": "object",
+  "allOf": [{ "$ref": "base.schema.json#/$defs/itemBase" }],
+  "properties": {
+    "tipo": { "const": "fragmento" },
+    "documento_id": { "$ref": "base.schema.json#/$defs/refDoc" },
+    "pagina_id": { "$ref": "base.schema.json#/$defs/refPag" },
+    "pagina_numero": { "type": "integer", "minimum": 1 },
+    "texto": { "type": "string", "minLength": 20, "maxLength": 2000 },
+    "tema": { "type": "string", "minLength": 3, "maxLength": 120 },
+    "entidades": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "$ref": "base.schema.json#/$defs/refItem" },
+      "description": "Ítems del pack que trata este fragmento."
+    }
+  },
+  "required": ["documento_id", "pagina_numero", "texto"],
+  "unevaluatedProperties": false
+}

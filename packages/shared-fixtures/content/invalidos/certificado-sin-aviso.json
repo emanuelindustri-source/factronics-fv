@@ -1,0 +1,27 @@
+{
+  "id": "crt:demo-sin-aviso",
+  "tipo": "certificado",
+  "schema_version": "1.0.0",
+  "revision": 1,
+  "estado": "borrador",
+  "actualizado": "2026-11-25",
+  "etiquetas": ["DEMO"],
+  "source_ref": {
+    "documento": "Documento demo F&V - Declaracion de procedencia",
+    "codigo_oficial": "DEMO-DOC-0001",
+    "revision": "DEMO-REV-A",
+    "pagina": 4,
+    "cita_textual": "Certificado de practica del pack demo (contenido ficticio, sin validez oficial).",
+    "confianza": "alta",
+    "revisor": "Khristyan Hidalgo",
+    "fecha_revision": "2026-11-25"
+  },
+  "programa": "Programa interno de competencias tecnicas de Factronics, C.A. (demo)",
+  "titulo": "Certificado DEMO de practica",
+  "usuario_alias": "tecnico-demo",
+  "emitido": "2026-11-25",
+  "estado": "publicado",
+  "estado_emision": "emitido",
+  "aviso": "Certificado de practica del pack demo.",
+  "intento_ids": ["att:demo-0001"]
+}

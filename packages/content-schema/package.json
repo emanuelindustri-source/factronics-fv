@@ -1,0 +1,28 @@
+{
+  "name": "@factronics-fv/content-schema",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Esquema canónico de contenido y sistema de procedencia (source_ref) del ecosistema F&V. JSON Schema + validadores ejecutables + tipos compartidos + migraciones declarativas.",
+  "type": "module",
+  "license": "UNLICENSED",
+  "main": "src/index.mjs",
+  "types": "src/types.ts",
+  "exports": {
+    ".": "./src/index.mjs",
+    "./schemas/*.json": "./schemas/*.json",
+    "./types": "./src/types.ts"
+  },
+  "files": [
+    "src",
+    "schemas"
+  ],
+  "scripts": {
+    "test": "node --test test/*.test.mjs",
+    "validate": "node src/cli.mjs validate ../content-packs-demo",
+    "migrate": "node src/cli.mjs migrate ../content-packs-demo"
+  },
+  "dependencies": {
+    "ajv": "^8.17.1",
+    "ajv-formats": "^3.0.1"
+  }
+}

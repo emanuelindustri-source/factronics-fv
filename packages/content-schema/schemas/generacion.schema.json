@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://factronics-fv.github.io/schemas/content/1.0.0/generacion.schema.json",
+  "title": "F&V — Entidad: generación",
+  "description": "Generación dentro de una familia de equipos.",
+  "type": "object",
+  "allOf": [{ "$ref": "base.schema.json#/$defs/itemBase" }],
+  "properties": {
+    "tipo": { "const": "generacion" },
+    "familia_id": { "$ref": "base.schema.json#/$defs/refFam" },
+    "nombre": { "type": "string", "minLength": 3, "maxLength": 120 },
+    "anio": {
+      "type": "integer",
+      "minimum": 1980,
+      "maximum": 2100,
+      "description": "Año de la generación. Opcional: no se consigna si la fuente no lo respalda (prohibido inventar)."
+    }
+  },
+  "required": ["familia_id", "nombre"],
+  "unevaluatedProperties": false
+}

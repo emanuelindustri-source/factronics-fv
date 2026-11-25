@@ -1,0 +1,11 @@
+{
+  "id": "tec:demo-sin-fuente",
+  "tipo": "tecnologia",
+  "schema_version": "1.0.0",
+  "revision": 1,
+  "estado": "borrador",
+  "actualizado": "2026-11-25",
+  "etiquetas": ["DEMO"],
+  "nombre": "Tecnologia DEMO sin procedencia",
+  "descripcion": "Caso negativo a proposito: este item NO tiene source_ref y el validador debe rechazarlo."
+}

@@ -1,0 +1,26 @@
+{
+  "id": "doc:demo-origen",
+  "tipo": "documento",
+  "schema_version": "1.0.0",
+  "revision": 1,
+  "estado": "publicado",
+  "actualizado": "2026-11-25",
+  "etiquetas": ["DEMO"],
+  "source_ref": {
+    "documento": "Documento demo F&V - Declaracion de procedencia",
+    "codigo_oficial": "DEMO-DOC-0001",
+    "revision": "DEMO-REV-A",
+    "pagina": 1,
+    "cita_textual": "El presente documento demo fue creado por y para las pruebas del ecosistema F&V; su contenido es ficticio.",
+    "confianza": "alta",
+    "revisor": "Khristyan Hidalgo",
+    "fecha_revision": "2026-11-25"
+  },
+  "titulo": "Documento demo F&V - Declaracion de procedencia",
+  "codigo_oficial": "DEMO-DOC-0001",
+  "revision_documento": "DEMO-REV-A",
+  "tipo_documento": "hoja_referencia",
+  "idioma": "es",
+  "editor": "F&V (by Factronics) - contenido demo",
+  "nota_licencia": "Contenido demo autorizado para pruebas. Sin material propietario de Videojet/Factronics."
+}

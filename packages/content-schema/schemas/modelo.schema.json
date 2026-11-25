@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://factronics-fv.github.io/schemas/content/1.0.0/modelo.schema.json",
+  "title": "F&V — Entidad: modelo",
+  "description": "Modelo de equipo dentro de una generación.",
+  "type": "object",
+  "allOf": [{ "$ref": "base.schema.json#/$defs/itemBase" }],
+  "properties": {
+    "tipo": { "const": "modelo" },
+    "generacion_id": { "$ref": "base.schema.json#/$defs/refGen" },
+    "tecnologia_id": { "$ref": "base.schema.json#/$defs/refTec" },
+    "nombre": { "type": "string", "minLength": 3, "maxLength": 120 },
+    "descripcion": { "type": "string", "minLength": 10, "maxLength": 800 }
+  },
+  "required": ["generacion_id", "nombre"],
+  "unevaluatedProperties": false
+}

@@ -1,0 +1,22 @@
+{
+  "id": "tec:demo-cij",
+  "tipo": "tecnologia",
+  "schema_version": "1.0.0",
+  "revision": 1,
+  "estado": "publicado",
+  "actualizado": "2026-11-25",
+  "etiquetas": ["DEMO"],
+  "source_ref": {
+    "documento": "Documento demo F&V - Declaracion de procedencia",
+    "codigo_oficial": "DEMO-DOC-0001",
+    "revision": "DEMO-REV-A",
+    "pagina": 1,
+    "cita_textual": "Cita textual de ejemplo tomada del documento demo (contenido ficticio de practica, sin relacion con equipos reales).",
+    "confianza": "alta",
+    "revisor": "Khristyan Hidalgo",
+    "fecha_revision": "2026-11-25"
+  },
+  "nombre": "Tecnologia DEMO de impresion por chorro continuo",
+  "siglas": "DEMO-CIJ",
+  "descripcion": "Descripcion demo generica con fines de practica. No describe equipos ni especificaciones reales."
+}

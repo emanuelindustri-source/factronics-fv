@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://factronics-fv.github.io/schemas/content/1.0.0/pack.schema.json",
+  "title": "F&V — Manifiesto de pack de contenido",
+  "description": "Manifiesto de un paquete de contenido versionado. 'schema_version' declara la versión del esquema con la que se escribió el pack; las migraciones lo llevan a la versión vigente.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "nombre",
+    "descripcion",
+    "version",
+    "schema_version",
+    "demo",
+    "idioma_default",
+    "creado",
+    "responsable"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$",
+      "description": "ID estable del pack (slug kebab-case)."
+    },
+    "nombre": { "type": "string", "minLength": 3, "maxLength": 120 },
+    "descripcion": { "type": "string", "minLength": 10, "maxLength": 800 },
+    "version": {
+      "$ref": "base.schema.json#/$defs/semver",
+      "description": "Versión del contenido del pack (semver): MAJOR = cambios incompatibles, MINOR = ítems nuevos, PATCH = correcciones con revisor."
+    },
+    "schema_version": { "$ref": "base.schema.json#/$defs/semver" },
+    "demo": {
+      "type": "boolean",
+      "description": "true = contenido demo autorizado, claramente etiquetado, sin códigos reales. false = contenido real (solo repo privado, ADR-0003)."
+    },
+    "idioma_default": {
+      "type": "string",
+      "pattern": "^[a-z]{2}(-[A-Za-z0-9]{2,8})*$"
+    },
+    "creado": { "$ref": "base.schema.json#/$defs/fecha" },
+    "responsable": { "type": "string", "minLength": 3, "maxLength": 120 }
+  }
+}

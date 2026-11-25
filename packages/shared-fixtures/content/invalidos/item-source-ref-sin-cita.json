@@ -1,0 +1,20 @@
+{
+  "id": "tec:demo-sin-cita",
+  "tipo": "tecnologia",
+  "schema_version": "1.0.0",
+  "revision": 1,
+  "estado": "borrador",
+  "actualizado": "2026-11-25",
+  "etiquetas": ["DEMO"],
+  "source_ref": {
+    "documento": "Documento demo F&V - Declaracion de procedencia",
+    "codigo_oficial": "DEMO-DOC-0001",
+    "revision": "DEMO-REV-A",
+    "pagina": 1,
+    "confianza": "media",
+    "revisor": "Khristyan Hidalgo",
+    "fecha_revision": "2026-11-25"
+  },
+  "nombre": "Tecnologia DEMO sin cita textual",
+  "descripcion": "Caso negativo a proposito: source_ref sin el campo obligatorio 'cita_textual'."
+}

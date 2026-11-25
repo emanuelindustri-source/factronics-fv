@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://factronics-fv.github.io/schemas/content/1.0.0/componente.schema.json",
+  "title": "F&V — Entidad: componente",
+  "description": "Componente físico de un sistema.",
+  "type": "object",
+  "allOf": [{ "$ref": "base.schema.json#/$defs/itemBase" }],
+  "properties": {
+    "tipo": { "const": "componente" },
+    "sistema_id": { "$ref": "base.schema.json#/$defs/refSis" },
+    "nombre": { "type": "string", "minLength": 3, "maxLength": 120 },
+    "funcion": { "type": "string", "minLength": 10, "maxLength": 800 },
+    "modelo_ids": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "$ref": "base.schema.json#/$defs/refMod" }
+    }
+  },
+  "required": ["sistema_id", "nombre", "funcion"],
+  "unevaluatedProperties": false
+}

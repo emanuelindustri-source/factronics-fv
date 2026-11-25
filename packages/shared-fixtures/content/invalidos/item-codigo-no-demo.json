@@ -1,0 +1,24 @@
+{
+  "id": "err:demo-codigo-no-demo",
+  "tipo": "codigo_error",
+  "schema_version": "1.0.0",
+  "revision": 1,
+  "estado": "borrador",
+  "actualizado": "2026-11-25",
+  "etiquetas": ["DEMO"],
+  "source_ref": {
+    "documento": "Documento demo F&V - Declaracion de procedencia",
+    "codigo_oficial": "DEMO-DOC-0001",
+    "revision": "DEMO-REV-A",
+    "pagina": 3,
+    "cita_textual": "Cita textual de ejemplo del documento demo (contenido ficticio de practica).",
+    "confianza": "alta",
+    "revisor": "Khristyan Hidalgo",
+    "fecha_revision": "2026-11-25"
+  },
+  "codigo": "ABC-12345",
+  "titulo": "Caso negativo: codigo sin prefijo DEMO",
+  "descripcion": "Caso negativo a proposito: en packs demo todo codigo debe empezar por 'DEMO-'. Este codigo es claramente ficticio y no pertenece a ningun producto real.",
+  "causa_sugerida": "Solo sirve para probar el validador.",
+  "accion_sugerida": "El validador debe rechazarlo con la regla DEMO-CODIGO."
+}

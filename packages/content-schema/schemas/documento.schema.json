@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://factronics-fv.github.io/schemas/content/1.0.0/documento.schema.json",
+  "title": "F&V — Entidad: documento",
+  "description": "Documento fuente (manual, boletín, dibujo, IPB, procedimiento...). Es la raíz de la trazabilidad: todo dato técnico cita a un documento por su código oficial y revisión. Los documentos reales se cargan en el repo privado con autorización escrita (ADR-0003).",
+  "type": "object",
+  "allOf": [{ "$ref": "base.schema.json#/$defs/itemBase" }],
+  "properties": {
+    "tipo": { "const": "documento" },
+    "titulo": { "type": "string", "minLength": 3, "maxLength": 300 },
+    "codigo_oficial": {
+      "type": "string",
+      "minLength": 2,
+      "maxLength": 60,
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9 ._\\-/]*$",
+      "description": "Código oficial del documento. En packs demo debe empezar por 'DEMO-'."
+    },
+    "revision_documento": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 40,
+      "description": "Revisión del documento (p. ej. 'A', 'AB', 'Rev C'). No confundir con 'revision', la revisión de contenido del ítem."
+    },
+    "tipo_documento": {
+      "type": "string",
+      "enum": [
+        "manual_operador",
+        "manual_servicio",
+        "boletin",
+        "dibujo",
+        "ipb",
+        "procedimiento",
+        "hoja_referencia",
+        "tabla",
+        "otro"
+      ]
+    },
+    "idioma": {
+      "type": "string",
+      "pattern": "^[a-z]{2}(-[A-Za-z0-9]{2,8})*$",
+      "description": "Idioma del documento (BCP-47 simplificado: es, en, pt, pt-BR...)."
+    },
+    "editor": { "type": "string", "minLength": 3, "maxLength": 120 },
+    "nota_licencia": {
+      "type": "string",
+      "minLength": 5,
+      "maxLength": 400,
+      "description": "Condiciones de uso del documento. Los documentos propietarios solo se referencian, no se distribuyen."
+    }
+  },
+  "required": ["titulo", "codigo_oficial", "revision_documento", "tipo_documento", "idioma"],
+  "unevaluatedProperties": false
+}

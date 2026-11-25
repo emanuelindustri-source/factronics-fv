@@ -1,0 +1,11 @@
+{
+  "name": "@factronics-fv/shared-fixtures",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Casos de prueba compartidos del ecosistema F&V: ítems válidos e inválidos (sin fuente, sin revisor, IDs malformados, códigos no-DEMO...) usados por los tests del validador y, en el futuro, por las apps Android/PWA.",
+  "type": "module",
+  "license": "UNLICENSED",
+  "scripts": {
+    "test": "node -e \"console.log('shared-fixtures: sin tests propios; sus fixtures se consumen desde content-schema')\""
+  }
+}

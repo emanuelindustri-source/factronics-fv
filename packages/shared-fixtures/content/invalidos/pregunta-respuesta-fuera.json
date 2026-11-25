@@ -1,0 +1,26 @@
+{
+  "id": "qst:demo-respuesta-fuera",
+  "tipo": "pregunta",
+  "schema_version": "1.0.0",
+  "revision": 1,
+  "estado": "borrador",
+  "actualizado": "2026-11-25",
+  "etiquetas": ["DEMO"],
+  "source_ref": {
+    "documento": "Documento demo F&V - Declaracion de procedencia",
+    "codigo_oficial": "DEMO-DOC-0001",
+    "revision": "DEMO-REV-A",
+    "pagina": 2,
+    "cita_textual": "Pregunta de practica redactada para el pack demo (contenido ficticio).",
+    "confianza": "alta",
+    "revisor": "Khristyan Hidalgo",
+    "fecha_revision": "2026-11-25"
+  },
+  "tipo_pregunta": "seleccion_simple",
+  "enunciado": "Caso negativo: la respuesta correcta no esta entre las opciones.",
+  "opciones": ["Opcion A", "Opcion B", "Opcion C"],
+  "respuesta_correcta": "Opcion Z",
+  "explicacion": "El validador debe rechazar esta pregunta.",
+  "dificultad": "basico",
+  "tema": "Pruebas del validador"
+}

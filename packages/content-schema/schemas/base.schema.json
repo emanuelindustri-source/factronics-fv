@@ -1,0 +1,152 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://factronics-fv.github.io/schemas/content/1.0.0/base.schema.json",
+  "title": "F&V — Definiciones base del esquema canónico de contenido (v1.0.0)",
+  "description": "Definiciones compartidas: identificadores estables, fechas, estados y, sobre todo, source_ref: la procedencia OBLIGATORIA de todo dato técnico. Sin source_ref completo el dato no puede validarse ni publicarse (AGENTS.md, regla 2).",
+  "$defs": {
+    "id": {
+      "type": "string",
+      "description": "ID estable con prefijo por tipo: <tipo>:<slug-kebab-case>. Inmutable una vez publicado; los cambios de contenido incrementan 'revision'.",
+      "pattern": "^(tec|fam|gen|mod|sis|cmp|prt|err|ink|doc|pag|frag|qst|att|crt):[a-z0-9]+(-[a-z0-9]+)*$"
+    },
+    "fecha": {
+      "type": "string",
+      "format": "date",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$",
+      "description": "Fecha ISO 8601 (AAAA-MM-DD)."
+    },
+    "semver": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$",
+      "description": "Versión semántica MAJOR.MINOR.PATCH."
+    },
+    "estadoItem": {
+      "type": "string",
+      "enum": ["borrador", "en_revision", "validado", "publicado", "retirado"],
+      "description": "Ciclo de vida del ítem. Solo 'publicado' se entrega a las apps."
+    },
+    "confianza": {
+      "type": "string",
+      "enum": ["alta", "media", "baja"],
+      "description": "Nivel de confianza de la extracción/verificación del dato respecto a su fuente."
+    },
+    "etiquetas": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "type": "string", "minLength": 1, "maxLength": 40 },
+      "description": "Etiquetas libres. Los packs demo exigen la etiqueta 'DEMO' en cada ítem."
+    },
+    "refTec": { "type": "string", "pattern": "^tec:[a-z0-9]+(-[a-z0-9]+)*$" },
+    "refFam": { "type": "string", "pattern": "^fam:[a-z0-9]+(-[a-z0-9]+)*$" },
+    "refGen": { "type": "string", "pattern": "^gen:[a-z0-9]+(-[a-z0-9]+)*$" },
+    "refMod": { "type": "string", "pattern": "^mod:[a-z0-9]+(-[a-z0-9]+)*$" },
+    "refSis": { "type": "string", "pattern": "^sis:[a-z0-9]+(-[a-z0-9]+)*$" },
+    "refCmp": { "type": "string", "pattern": "^cmp:[a-z0-9]+(-[a-z0-9]+)*$" },
+    "refDoc": { "type": "string", "pattern": "^doc:[a-z0-9]+(-[a-z0-9]+)*$" },
+    "refPag": { "type": "string", "pattern": "^pag:[a-z0-9]+(-[a-z0-9]+)*$" },
+    "refQst": { "type": "string", "pattern": "^qst:[a-z0-9]+(-[a-z0-9]+)*$" },
+    "refAtt": { "type": "string", "pattern": "^att:[a-z0-9]+(-[a-z0-9]+)*$" },
+    "refItem": {
+      "type": "string",
+      "pattern": "^(tec|fam|gen|mod|sis|cmp|prt|err|ink|doc|pag|frag|qst|att|crt):[a-z0-9]+(-[a-z0-9]+)*$",
+      "description": "Referencia genérica a cualquier ítem del pack."
+    },
+    "sourceRef": {
+      "type": "object",
+      "title": "Procedencia obligatoria (source_ref)",
+      "description": "Trazabilidad completa de un dato técnico: documento citado, código oficial del documento, revisión del documento, página, cita textual, nivel de confianza, revisor humano y fecha de revisión. OBLIGATORIO en todo ítem: sin source_ref el validador rechaza el dato y no puede publicarse.",
+      "additionalProperties": false,
+      "required": [
+        "documento",
+        "codigo_oficial",
+        "revision",
+        "pagina",
+        "cita_textual",
+        "confianza",
+        "revisor",
+        "fecha_revision"
+      ],
+      "properties": {
+        "documento": {
+          "type": "string",
+          "minLength": 3,
+          "maxLength": 200,
+          "description": "Título del documento de origen tal como aparece en él."
+        },
+        "codigo_oficial": {
+          "type": "string",
+          "minLength": 2,
+          "maxLength": 60,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9 ._\\-/]*$",
+          "description": "Código oficial del documento de origen. En packs demo debe empezar por 'DEMO-'."
+        },
+        "revision": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 40,
+          "description": "Revisión del documento de origen (p. ej. 'A', 'AB', 'Rev C')."
+        },
+        "pagina": {
+          "type": "integer",
+          "minimum": 1,
+          "description": "Página del documento donde se encuentra la cita."
+        },
+        "pagina_fin": {
+          "type": "integer",
+          "minimum": 1,
+          "description": "Página final si la cita abarca un rango (opcional, debe ser >= pagina)."
+        },
+        "cita_textual": {
+          "type": "string",
+          "minLength": 10,
+          "maxLength": 1000,
+          "description": "Cita textual del documento que respalda el dato. En packs demo: texto de práctica claramente ficticio."
+        },
+        "confianza": { "$ref": "#/$defs/confianza" },
+        "revisor": {
+          "type": "string",
+          "minLength": 3,
+          "maxLength": 120,
+          "description": "Persona que verificó el dato contra la fuente (revisión humana obligatoria)."
+        },
+        "fecha_revision": { "$ref": "#/$defs/fecha" },
+        "documento_id": {
+          "$ref": "#/$defs/refDoc",
+          "description": "Referencia al ítem 'documento' del pack que representa la fuente (opcional pero recomendada; no puede apuntar al propio ítem)."
+        }
+      }
+    },
+    "itemBase": {
+      "type": "object",
+      "description": "Campos comunes a todo ítem de contenido. La procedencia (source_ref) es obligatoria sin excepciones.",
+      "required": [
+        "id",
+        "tipo",
+        "schema_version",
+        "revision",
+        "estado",
+        "actualizado",
+        "etiquetas",
+        "source_ref"
+      ],
+      "properties": {
+        "id": { "$ref": "#/$defs/id" },
+        "tipo": { "type": "string" },
+        "schema_version": {
+          "$ref": "#/$defs/semver",
+          "description": "Versión del esquema con la que fue validado el ítem (debe coincidir con la del manifiesto del pack tras migrar)."
+        },
+        "revision": {
+          "type": "integer",
+          "minimum": 1,
+          "description": "Revisión del contenido del ítem; se incrementa en cada cambio de contenido. El ID nunca cambia."
+        },
+        "estado": { "$ref": "#/$defs/estadoItem" },
+        "actualizado": { "$ref": "#/$defs/fecha" },
+        "etiquetas": { "$ref": "#/$defs/etiquetas" },
+        "source_ref": { "$ref": "#/$defs/sourceRef" }
+      }
+    }
+  }
+}

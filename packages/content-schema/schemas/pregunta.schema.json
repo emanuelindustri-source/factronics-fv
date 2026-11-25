@@ -1,0 +1,67 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://factronics-fv.github.io/schemas/content/1.0.0/pregunta.schema.json",
+  "title": "F&V — Entidad: pregunta",
+  "description": "Pregunta del banco de evaluación (7 tipos). Toda pregunta es un dato técnico: exige source_ref completo.",
+  "type": "object",
+  "properties": {
+    "tipo": { "const": "pregunta" },
+    "tipo_pregunta": {
+      "type": "string",
+      "enum": [
+        "seleccion_simple",
+        "verdadero_falso",
+        "seleccion_multiple",
+        "completar_frase",
+        "describir_componente",
+        "diagnostico_error",
+        "numero_parte"
+      ]
+    },
+    "enunciado": { "type": "string", "minLength": 5, "maxLength": 800 },
+    "opciones": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 10,
+      "uniqueItems": true,
+      "items": { "type": "string", "minLength": 1, "maxLength": 300 }
+    },
+    "respuesta_correcta": {
+      "oneOf": [
+        { "type": "string", "minLength": 1, "maxLength": 600 },
+        {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 10,
+          "uniqueItems": true,
+          "items": { "type": "string", "minLength": 1, "maxLength": 300 }
+        }
+      ]
+    },
+    "explicacion": { "type": "string", "minLength": 5, "maxLength": 800 },
+    "dificultad": { "type": "string", "enum": ["basico", "intermedio", "avanzado"] },
+    "tema": { "type": "string", "minLength": 3, "maxLength": 120 },
+    "entidades": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "$ref": "base.schema.json#/$defs/refItem" }
+    }
+  },
+  "required": ["tipo_pregunta", "enunciado", "respuesta_correcta", "explicacion", "dificultad"],
+  "allOf": [
+    { "$ref": "base.schema.json#/$defs/itemBase" },
+    {
+      "if": {
+        "properties": {
+          "tipo_pregunta": {
+            "enum": ["seleccion_simple", "verdadero_falso", "seleccion_multiple"]
+          }
+        },
+        "required": ["tipo_pregunta"]
+      },
+      "then": { "required": ["opciones"] }
+    }
+  ],
+  "unevaluatedProperties": false
+}

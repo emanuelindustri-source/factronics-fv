@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://factronics-fv.github.io/schemas/content/1.0.0/sistema.schema.json",
+  "title": "F&V — Entidad: sistema",
+  "description": "Sistema funcional de un equipo (p. ej. fluido, control, impresión).",
+  "type": "object",
+  "allOf": [{ "$ref": "base.schema.json#/$defs/itemBase" }],
+  "properties": {
+    "tipo": { "const": "sistema" },
+    "nombre": { "type": "string", "minLength": 3, "maxLength": 120 },
+    "descripcion": { "type": "string", "minLength": 10, "maxLength": 800 },
+    "modelo_ids": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "$ref": "base.schema.json#/$defs/refMod" },
+      "description": "Modelos en los que se usa este sistema."
+    }
+  },
+  "required": ["nombre", "descripcion"],
+  "unevaluatedProperties": false
+}

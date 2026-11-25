@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://factronics-fv.github.io/schemas/content/1.0.0/tecnologia.schema.json",
+  "title": "F&V — Entidad: tecnología",
+  "description": "Tecnología de codificación/inspección (nivel raíz del catálogo).",
+  "type": "object",
+  "allOf": [{ "$ref": "base.schema.json#/$defs/itemBase" }],
+  "properties": {
+    "tipo": { "const": "tecnologia" },
+    "nombre": { "type": "string", "minLength": 3, "maxLength": 120 },
+    "siglas": { "type": "string", "minLength": 1, "maxLength": 12 },
+    "descripcion": { "type": "string", "minLength": 10, "maxLength": 800 }
+  },
+  "required": ["nombre"],
+  "unevaluatedProperties": false
+}

@@ -1,0 +1,30 @@
+{
+  "id": "qst:demo-0001",
+  "tipo": "pregunta",
+  "schema_version": "1.0.0",
+  "revision": 1,
+  "estado": "publicado",
+  "actualizado": "2026-11-25",
+  "etiquetas": ["DEMO"],
+  "source_ref": {
+    "documento": "Documento demo F&V - Declaracion de procedencia",
+    "codigo_oficial": "DEMO-DOC-0001",
+    "revision": "DEMO-REV-A",
+    "pagina": 2,
+    "cita_textual": "Pregunta de practica redactada para el pack demo; no evalua conocimiento de equipos reales.",
+    "confianza": "alta",
+    "revisor": "Khristyan Hidalgo",
+    "fecha_revision": "2026-11-25"
+  },
+  "tipo_pregunta": "seleccion_simple",
+  "enunciado": "Segun el documento demo, cual es el proposito de este pack?",
+  "opciones": [
+    "Probar el esquema de contenido de F&V",
+    "Representar un equipo real",
+    "Sustituir un manual oficial"
+  ],
+  "respuesta_correcta": "Probar el esquema de contenido de F&V",
+  "explicacion": "El pack demo existe solo para validar el esquema y la procedencia.",
+  "dificultad": "basico",
+  "tema": "Procedencia y esquema"
+}

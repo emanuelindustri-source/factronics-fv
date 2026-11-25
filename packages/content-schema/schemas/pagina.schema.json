@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://factronics-fv.github.io/schemas/content/1.0.0/pagina.schema.json",
+  "title": "F&V — Entidad: página",
+  "description": "Página de un documento fuente, para salto exacto y consulta 'ver fuente'.",
+  "type": "object",
+  "allOf": [{ "$ref": "base.schema.json#/$defs/itemBase" }],
+  "properties": {
+    "tipo": { "const": "pagina" },
+    "documento_id": { "$ref": "base.schema.json#/$defs/refDoc" },
+    "numero": { "type": "integer", "minimum": 1 },
+    "resumen": { "type": "string", "minLength": 5, "maxLength": 300 },
+    "texto": {
+      "type": "string",
+      "minLength": 5,
+      "maxLength": 2000,
+      "description": "Extracto breve. Solo con autorización; en packs demo, texto ficticio de práctica."
+    }
+  },
+  "required": ["documento_id", "numero"],
+  "unevaluatedProperties": false
+}

@@ -1,0 +1,11 @@
+{
+  "id": "pack-fv-demo-futuro",
+  "nombre": "Pack demo con schema_version del futuro",
+  "descripcion": "Caso negativo a proposito: el validador/migrador debe negarse a adivinar esquemas mas nuevos que la herramienta.",
+  "version": "1.0.0",
+  "schema_version": "2.0.0",
+  "demo": true,
+  "idioma_default": "es",
+  "creado": "2026-11-25",
+  "responsable": "Khristyan Hidalgo"
+}

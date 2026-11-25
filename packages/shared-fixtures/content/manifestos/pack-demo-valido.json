@@ -1,0 +1,11 @@
+{
+  "id": "pack-fv-demo",
+  "nombre": "Pack demo de fixtures F&V",
+  "descripcion": "Manifiesto de prueba para el validador y las migraciones. Contenido ficticio autorizado.",
+  "version": "1.0.0",
+  "schema_version": "1.0.0",
+  "demo": true,
+  "idioma_default": "es",
+  "creado": "2026-11-25",
+  "responsable": "Khristyan Hidalgo"
+}
