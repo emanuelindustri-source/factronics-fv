@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="fv_navy">#10314F</color>
+    <color name="fv_navy_deep">#0B2237</color>
+    <color name="fv_amber">#F2A900</color>
+    <color name="fv_background">#F6F8FB</color>
+    <color name="fv_background_dark">#0E1B26</color>
+</resources>

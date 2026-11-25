@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Tema raíz con splash (Android 12+ y retrocompatible) -->
+    <style name="Theme.FV" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/fv_navy</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/ic_launcher_foreground</item>
+        <item name="postSplashScreenTheme">@style/Theme.FV.Main</item>
+    </style>
+
+    <style name="Theme.FV.Main" parent="android:Theme.Material.Light.NoActionBar">
+        <item name="android:windowBackground">@color/fv_background</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+    </style>
+</resources>

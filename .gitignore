@@ -1,0 +1,59 @@
+# ============================================================
+# F&V (by Factronics) — .gitignore
+# REGLA: ningún secreto ni contenido propietario en el repo.
+# ============================================================
+
+# --- Contenido propietario de Videojet/Factronics (SOLO LOCAL) ---
+VIDEOJET_DOCS_ENTRADA/
+_private/
+
+# --- Secretos y credenciales ---
+*.keystore
+*.jks
+*.pem
+*.p12
+*.token
+.env
+.env.*
+!.env.example
+secrets/
+**/credentials*.json
+**/service-account*.json
+
+# --- Binarios de release (se publican por GitHub Releases, no en git) ---
+*.apk
+*.aab
+releases/*.zip
+releases/*.apks
+
+# --- Node / Web ---
+node_modules/
+dist/
+.astro/
+.vite/
+coverage/
+playwright-report/
+test-results/
+*.tsbuildinfo
+
+# --- Android / Gradle ---
+.gradle/
+build/
+local.properties
+.cxx/
+captures/
+*.hprof
+
+# --- Python ---
+.venv/
+.venv-*/
+__pycache__/
+*.pyc
+.pytest_cache/
+uv.lock
+
+# --- Sistema ---
+Thumbs.db
+Desktop.ini
+.DS_Store
+*.log
